@@ -10,7 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -28,7 +27,7 @@ import fr.anmonnier.oc_javaee_p3.main.model.ModelTableau;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
 
-public class RecherchePlusMoins extends JPanel implements Observateur {
+public class RecherchePlusMoinsModeChallenger extends JPanel implements Observateur {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel jlPremiereInstruction=new JLabel("La combinaison secrète a été générée par l'ordinateur.");
@@ -46,10 +45,10 @@ public class RecherchePlusMoins extends JPanel implements Observateur {
 	private RecherchePlusMoinsControler controler;
 	private BoiteDialogueFinDePartie jdFinDePartie;
 
-	public RecherchePlusMoins(int nbreCases, int nbEssais,ModeleDonnees model) {
+	public RecherchePlusMoinsModeChallenger(int nbCases, int nbEssais,ModeleDonnees model) {
 		this.setPreferredSize(new Dimension(900,600));
 		this.setBackground(Color.WHITE);
-		this.nbreCases=nbreCases;
+		this.nbreCases=nbCases;
 		this.nbEssais=nbEssais;
 		this.model=model;
 		controler=new RecherchePlusMoinsControler(model);
@@ -109,12 +108,12 @@ public class RecherchePlusMoins extends JPanel implements Observateur {
 			public void keyPressed(KeyEvent e) {}
 
 			public void keyReleased(KeyEvent event) {
-				for (int i=0;i<4;i++) {
+				for (int i=0;i<nbreCases;i++) {
 					if(jftfPropositionJoueur.getText().charAt(i)!=' ') {
 						verificationJftf++;
 					}
 				}
-				if(verificationJftf==4) {
+				if(verificationJftf==nbreCases) {
 					jbValider.setEnabled(true); 
 					verificationJftf=0;
 				}
@@ -129,7 +128,7 @@ public class RecherchePlusMoins extends JPanel implements Observateur {
 		//Lors de la validation, les données saisies doivent être transmises au contrôleur
 		jbValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controler.setPropositionJoueur(jftfPropositionJoueur.getText());
+				controler.setPropositionJoueurModeChallenger(jftfPropositionJoueur.getText());
 				jftfPropositionJoueur.setText("");
 				jbValider.setEnabled(false);
 			}
@@ -182,7 +181,8 @@ public class RecherchePlusMoins extends JPanel implements Observateur {
 			nbreAleatoire=(int)(Math.random()*(max-min));
 			combinaisonSecrete+=String.valueOf(nbreAleatoire);	
 		}
-		controler.setPropositionSecrete(combinaisonSecrete);
+		controler.setModeDeJeu(0);
+		controler.setPropositionSecreteModeChallenger(combinaisonSecrete);
 		System.out.println("COMBINAISON SECRETE :"+combinaisonSecrete);
 		
 
@@ -199,20 +199,20 @@ public class RecherchePlusMoins extends JPanel implements Observateur {
 			}
 		}
 		
-		if(verifCombinaisonSecrete==4) {
+		if(verifCombinaisonSecrete==nbreCases) {
 			JOptionPane.showMessageDialog(null, "Félicitations!!! Vous avez trouvé la combinaison secrète en moins de "+nbEssais+" essais.", 
 					"Fin de Partie",JOptionPane.INFORMATION_MESSAGE);	
 			
 		}
 		
 		//En cas de défaîte
-		if (rowIndex==10 && verifCombinaisonSecrete!=4) {
+		if (rowIndex==nbEssais && verifCombinaisonSecrete!=nbreCases) {
 			JOptionPane.showMessageDialog(null, "Vous avez perdu! La combinaison secrète était : "+combinaisonSecrete, "Fin de Partie",
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		//En cas de défaîte ou de victoire
-		if(rowIndex==10||verifCombinaisonSecrete==4) {
+		if(rowIndex==nbEssais||verifCombinaisonSecrete==nbreCases) {
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}

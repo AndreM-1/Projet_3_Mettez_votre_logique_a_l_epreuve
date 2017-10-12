@@ -9,13 +9,26 @@ public class RecherchePlusMoinsControler {
 		this.model=model;
 	}
 	
-	public void setPropositionJoueur(String propositionJoueur) {
-		model.setPropositionJoueur(propositionJoueur);
+	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
+		model.setPropositionJoueurModeChallenger(propositionJoueur);
 		
 	}
 	
-	public void setPropositionSecrete(String propositionSecrete) {
-		model.setPropositionSecrete(propositionSecrete);
+	public void setPropositionSecreteModeChallenger(String propositionSecrete) {
+		model.setPropositionSecreteModeChallenger(propositionSecrete);
+	}
+	
+	
+	public void setPropositionSecreteModeDefenseur(String propositionSecrete) {
+		model.setPropositionSecreteModeDefenseur(propositionSecrete);
+	}
+	
+	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
+		model.setReponseJoueurModeDefenseur(reponseJoueur);
+	}
+	
+	public void setModeDeJeu(int modeDeJeu) {
+		model.setModeDeJeu(modeDeJeu);
 	}
 	
 	public void setChoixFinDePartie(String choixFinDePartie) {

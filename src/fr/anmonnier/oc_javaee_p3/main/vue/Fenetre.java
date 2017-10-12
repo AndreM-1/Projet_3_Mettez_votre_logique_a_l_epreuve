@@ -38,7 +38,7 @@ public class Fenetre extends JFrame implements Observateur {
 			jmiModeDuel=new JMenuItem("Mode Duel"),jmi2ModeChallenger=new JMenuItem("Mode Challenger"), jmi2ModeDefenseur=new JMenuItem("Mode Défenseur"),
 			jmi2ModeDuel=new JMenuItem("Mode Duel"),jmiQuitter = new JMenuItem("Quitter"), 
 			jmiJeuRecherchePlusMoins = new JMenuItem("Recherche +/-"),jmiMastermind = new JMenuItem("Mastermind");
-	private JRadioButtonMenuItem[] jrbmiNbcases=new JRadioButtonMenuItem[7],jrbmiNbEssais=new JRadioButtonMenuItem[3];
+	private JRadioButtonMenuItem[] jrbmiNbcases=new JRadioButtonMenuItem[7],jrbmiNbEssais=new JRadioButtonMenuItem[4];
 	private ButtonGroup bgNbCases=new ButtonGroup(),bgNbEssais=new ButtonGroup();
 	private ModeleDonnees model;
 
@@ -87,8 +87,8 @@ public class Fenetre extends JFrame implements Observateur {
 		}
 		jrbmiNbcases[0].setSelected(true);
 
-		for (int i=0;i<3;i++) {
-			jrbmiNbEssais[i]=new JRadioButtonMenuItem(String.valueOf(10+5*i));
+		for (int i=0;i<4;i++) {
+			jrbmiNbEssais[i]=new JRadioButtonMenuItem(String.valueOf(5+5*i));
 			bgNbEssais.add(jrbmiNbEssais[i]);
 			jmNbEssais.add(jrbmiNbEssais[i]);
 		}
@@ -113,7 +113,21 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpContainer.add(new RecherchePlusMoins(nbreCases,nbEssais,model));
+				jpContainer.add(new RecherchePlusMoinsModeChallenger(nbreCases,nbEssais,model));
+				jpContainer.revalidate();
+				/*********************************************************************************************************
+				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
+				 *********************************************************************************************************/
+				initModel();
+
+			}
+		});
+		
+		jmiModeDefenseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jpContainer.removeAll();
+				jpContainer.setBackground(Color.WHITE);
+				jpContainer.add(new RecherchePlusMoinsModeDefenseur(nbreCases,nbEssais,model));
 				jpContainer.revalidate();
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
