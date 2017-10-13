@@ -27,6 +27,22 @@ public class RecherchePlusMoinsControler {
 		model.setReponseJoueurModeDefenseur(reponseJoueur);
 	}
 	
+	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
+		model.setPropositionSecreteOrdinateurModeDuel(propositionSecrete);
+	}
+	
+	public void setPropositionSecreteJoueurModeDuel(String propositionSecrete) {
+		model.setPropositionSecreteJoueurModeDuel(propositionSecrete);
+	}
+	
+	public void setPropositionJoueurModeDuel(String propositionJoueur) {
+		model.setPropositionJoueurModeDuel(propositionJoueur);
+	}
+	
+	public void setReponseJoueurModeDuel(String reponseJoueur) {
+		model.setReponseJoueurModeDuel(reponseJoueur);
+	}
+	
 	public void setModeDeJeu(int modeDeJeu) {
 		model.setModeDeJeu(modeDeJeu);
 	}

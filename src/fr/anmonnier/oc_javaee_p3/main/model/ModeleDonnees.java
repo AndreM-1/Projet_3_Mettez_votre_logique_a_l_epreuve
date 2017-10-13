@@ -13,6 +13,8 @@ public class ModeleDonnees implements Observable{
 	private String propositionJoueurModeChallenger="", propositionSecreteModeChallenger="",reponseModeChallenger="", choixFinDePartie="";
 	private String propositionSecreteModeDefenseur="",reponseJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="";
 	private int modeDeJeu=0,compteurReponseJoueurModeDefenseur=0;
+	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
+			reponseOrdinateurModeDuel="",affichage="",reponseJoueurModeDuel="",propositionOrdinateurModeDuel="";
 	
 	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
 		this.propositionJoueurModeChallenger=propositionJoueur;
@@ -54,7 +56,6 @@ public class ModeleDonnees implements Observable{
 	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
 		compteurReponseJoueurModeDefenseur++;
 		this.reponseJoueurModeDefenseur=reponseJoueur;		
-		int length=this.reponseJoueurModeDefenseur.length();
 		this.updateObservateur();
 		if(!this.reponseJoueurModeDefenseur.equals("====")&&compteurReponseJoueurModeDefenseur!=10) {
 			this.propositionOrdinateurModeDefenseur();
@@ -109,6 +110,100 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 	
+	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
+		this.propositionSecreteOrdinateurModeDuel=propositionSecrete;
+		System.out.println("COMBINAISON SECRETE ORDINATEUR MODE DUEL - Modèle Données:"+this.propositionSecreteOrdinateurModeDuel);
+	}
+	
+	public void setPropositionSecreteJoueurModeDuel(String propositionSecrete) {
+		this.propositionSecreteJoueurModeDuel=propositionSecrete;
+		System.out.println("COMBINAISON SECRETE JOUEUR MODE DUEL - Modèle Données:"+this.propositionSecreteJoueurModeDuel);
+	}
+	
+	public void setPropositionJoueurModeDuel(String propositionJoueur) {
+		this.propositionJoueurModeDuel=propositionJoueur;
+		affichage=this.propositionJoueurModeDuel;
+		this.updateObservateur();
+		this.analysePropositionJoueurModeDuel();
+		affichage=reponseOrdinateurModeDuel;
+		this.updateObservateur();
+		if(!reponseOrdinateurModeDuel.equals("====")) {
+			this.propositionOrdinateurModeDuel();
+			affichage=propositionOrdinateurModeDuel;
+			this.updateObservateur();
+		}
+	}
+	
+	public void setReponseJoueurModeDuel(String reponseJoueur) {
+		this.reponseJoueurModeDuel=reponseJoueur;
+		affichage=this.reponseJoueurModeDuel;
+		this.updateObservateur();
+	}
+	
+	public void analysePropositionJoueurModeDuel() {
+		char[] tabReponse=new char [this.propositionSecreteOrdinateurModeDuel.length()];
+		reponseOrdinateurModeDuel="";
+		for (int i=0;i<this.propositionSecreteOrdinateurModeDuel.length();i++) {
+			if(this.propositionJoueurModeDuel.charAt(i)==this.propositionSecreteOrdinateurModeDuel.charAt(i)) {
+				tabReponse[i]='=';	
+			}
+			else if (this.propositionJoueurModeDuel.charAt(i)<this.propositionSecreteOrdinateurModeDuel.charAt(i)) {
+				tabReponse[i]='+';	
+			}
+			else {
+				tabReponse[i]='-';	
+			}
+			reponseOrdinateurModeDuel+=String.valueOf(tabReponse[i]);
+		}
+	}
+	
+	public void propositionOrdinateurModeDuel() {
+		int tabAnalyse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
+		int tabReponse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
+		boolean verifChiffreSaisie=true;
+		if (reponseJoueurModeDuel.equals("")){
+			for (int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
+				propositionOrdinateurModeDuel+=String.valueOf((int)(Math.random()*10));
+			}
+		}
+		else {
+			for (int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
+				tabAnalyse[i]=Integer.valueOf(String.valueOf(propositionOrdinateurModeDuel.charAt(i)));
+				if(reponseJoueurModeDuel.charAt(i)=='-') {
+					tabReponse[i]=tabAnalyse[i]-1;
+					if(tabReponse[i]<0) {
+						tabReponse[i]=0;
+						verifChiffreSaisie=false;
+					}
+						
+				}
+				else if(reponseJoueurModeDuel.charAt(i)=='+') {
+					tabReponse[i]=tabAnalyse[i]+1;
+					if(tabReponse[i]>9) {
+						tabReponse[i]=9;
+						verifChiffreSaisie=false;
+					}			
+				}
+				else {
+					tabReponse[i]=tabAnalyse[i];
+				}	
+			}
+			
+			if(!verifChiffreSaisie) {
+				JOptionPane.showMessageDialog(null,"Attention : Vous aviez indiqué dans votre réponse précédente un \"-\" ou un \"+\" "
+					+ "alors que le chiffre était déjà à 0 ou 9 ", "Message d'avertissement", JOptionPane.WARNING_MESSAGE);
+			}
+			
+			propositionOrdinateurModeDuel="";
+			
+			for(int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
+				propositionOrdinateurModeDuel+=String.valueOf(tabReponse[i]);
+			}
+			reponseJoueurModeDuel="";
+		}
+	}
+	
+	
 	public void setModeDeJeu(int modeDeJeu) {
 		this.modeDeJeu=modeDeJeu;
 	}
@@ -140,6 +235,8 @@ public class ModeleDonnees implements Observable{
 			else if (modeDeJeu==1) {
 				obs.update(propositionOrdinateurModeDefenseur,reponseJoueurModeDefenseur);
 			}
+			else
+				obs.updateDuel(affichage);
 		}
 	}
 	
@@ -163,6 +260,10 @@ public class ModeleDonnees implements Observable{
 	}
 	public void relancerPartieObservateur() {
 		for (Observateur obs : listeObservateur) {
+			this.propositionSecreteOrdinateurModeDuel="";
+			this.propositionSecreteJoueurModeDuel="";
+			this.reponseJoueurModeDuel="";
+			this.propositionOrdinateurModeDuel="";
 			obs.relancerPartie();
 		}
 	}

@@ -218,6 +218,8 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		columnIndex=0;
 		this.gestionFinDePartie(reponse);
 	}
+	
+	public void updateDuel(String affichage) {}
 
 	public void relancerPartie() {
 		for(int i=0;i<rowIndex;i++) {
@@ -248,20 +250,21 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		//Gestion de la fin de la partie
 		verifCombinaisonSecrete=0;
 
-		//En cas de victoire
+		
 		for (int i=0;i<reponse.length();i++) {
 			if (reponse.charAt(i)=='=') {
 				verifCombinaisonSecrete++;
 			}
 		}
-
+		
+		//En cas de défaîte
 		if(verifCombinaisonSecrete==nbreCases) {
 			JOptionPane.showMessageDialog(null, "Vous avez perdu. L'ordinateur a trouvé la combinaison secrète "+
 					"en moins de "+nbEssais+" essais.", "Fin de Partie",JOptionPane.INFORMATION_MESSAGE);	
 
 		}
 
-		//En cas de défaîte
+		//En cas de victoire
 		if (rowIndex==nbEssais && verifCombinaisonSecrete!=nbreCases) {
 			JOptionPane.showMessageDialog(null, "Vous avez gagné! L'ordinateur n'a pas trouvé la combinaison secrète "+
 					"en moins de "+nbEssais+" essais.", "Fin de Partie",JOptionPane.INFORMATION_MESSAGE);

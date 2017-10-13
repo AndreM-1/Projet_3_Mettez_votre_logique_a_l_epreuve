@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
@@ -52,6 +53,7 @@ public class Fenetre extends JFrame implements Observateur {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		imageJeu.setPreferredSize(new Dimension(452,480));
+		jpContainer.setPreferredSize(new Dimension(900,600));
 		jpContainer.add(imageJeu);
 		jpContainer.setBackground(Color.WHITE);
 		this.setContentPane(jpContainer);
@@ -137,6 +139,32 @@ public class Fenetre extends JFrame implements Observateur {
 			}
 		});
 		
+		jmiModeDuel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jpContainer.removeAll();
+				jpContainer.setBackground(Color.WHITE);
+				jpContainer.add(new RecherchePlusMoinsModeDuel(nbreCases,nbEssais,model));
+				jpContainer.revalidate();
+				/*********************************************************************************************************
+				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
+				 *********************************************************************************************************/
+				initModel();
+
+			}
+		});
+		
+		jmiJeuRecherchePlusMoins.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String strInstructionsJeuRecherchePlusMoins=
+						"Le but de ce jeu est de découvrir la combinaison à x chiffres de l'adversaire (le défenseur)."
+						+ "\nPour ce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque chiffre de "
+						+ "\nla combinaison proposée si le chiffre de sa combinaison est plus grand (+), plus petit (-) "
+						+ "\nou si c'est le bon chiffre (=). Un mode duel où attaquant et défenseur jouent tour à tour "
+						+ "\nest également disponible";
+				JOptionPane.showMessageDialog(null, strInstructionsJeuRecherchePlusMoins, "Instructions Recherche +/-", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		
 		
 		jmiQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,6 +180,7 @@ public class Fenetre extends JFrame implements Observateur {
 
 	//Implémentation du pattern Observer
 	public void update(String propositionJoueur, String reponse) {}
+	public void updateDuel(String affichage) {}
 
 	public void quitterApplication() {
 		System.exit(0);
@@ -159,6 +188,7 @@ public class Fenetre extends JFrame implements Observateur {
 
 	public void acceuilObservateur() {
 		jpContainer.removeAll();
+		jpContainer.setBackground(Color.BLACK);
 		jpContainer.setBackground(Color.WHITE);
 		
 		/**********************************************************************
@@ -167,8 +197,8 @@ public class Fenetre extends JFrame implements Observateur {
 		this.imageJeu=new JLabel((new ImageIcon("src/fr/anmonnier/oc_javaee_p3/main/resources/MastermindFormatMoyen.jpg")));
 		jpContainer.add(imageJeu);
 		jpContainer.revalidate();
+	
 	}
 
 	public void relancerPartie() {}
-
 }

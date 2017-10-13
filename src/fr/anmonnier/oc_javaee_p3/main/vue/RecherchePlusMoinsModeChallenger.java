@@ -150,6 +150,8 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		columnIndex=0;
 		this.gestionFinDePartie(reponse);
 	}
+	
+	public void updateDuel(String affichage) {}
 
 	public void relancerPartie() {
 		for(int i=0;i<rowIndex;i++) {
@@ -171,10 +173,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 	public void quitterApplication() {}
 	public void acceuilObservateur() {}
 	
-
-	
-
-	//Génération de la combinaison secrètre par l'ordinateur
+	//Génération de la combinaison secrète par l'ordinateur
 	public void generationCombinaisonSecrete(){
 		int nbreAleatoire;
 		for (int i=0;i<this.nbreCases;i++) {
@@ -187,18 +186,19 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		
 
 	}
-
+    
+	//Gestion de la fin de la partie
 	public void gestionFinDePartie(String reponse) {
-		//Gestion de la fin de la partie
+		
 		verifCombinaisonSecrete=0;
 		
-		//En cas de victoire
 		for (int i=0;i<reponse.length();i++) {
 			if (reponse.charAt(i)=='=') {
 				verifCombinaisonSecrete++;
 			}
 		}
 		
+		//En cas de victoire
 		if(verifCombinaisonSecrete==nbreCases) {
 			JOptionPane.showMessageDialog(null, "Félicitations!!! Vous avez trouvé la combinaison secrète en moins de "+nbEssais+" essais.", 
 					"Fin de Partie",JOptionPane.INFORMATION_MESSAGE);	
@@ -217,5 +217,5 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 	}
-
+	
 }
