@@ -13,6 +13,7 @@ public class ModeleDonnees implements Observable{
 	private String propositionJoueurModeChallenger="", propositionSecreteModeChallenger="",reponseModeChallenger="", choixFinDePartie="";
 	private String propositionSecreteModeDefenseur="",reponseJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="";
 	private int modeDeJeu=0,compteurReponseJoueurModeDefenseur=0;
+	private int[] bornesMin, bornesMax;
 	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
 			reponseOrdinateurModeDuel="",affichage="",reponseJoueurModeDuel="",propositionOrdinateurModeDuel="";
 	
@@ -57,6 +58,12 @@ public class ModeleDonnees implements Observable{
 		reponseJoueurModeDefenseur="";
 		compteurReponseJoueurModeDefenseur=0;
 		propositionOrdinateurModeDefenseur="";
+		bornesMin=new int[propositionSecreteModeDefenseur.length()];
+		bornesMax=new int[propositionSecreteModeDefenseur.length()];
+		for (int i=0;i<propositionSecreteModeDefenseur.length();i++) {
+			bornesMin[i]=0;
+			bornesMax[i]=9;
+		}
 		this.propositionOrdinateurModeDefenseur();
 		this.updateObservateur();
 	}
@@ -75,7 +82,7 @@ public class ModeleDonnees implements Observable{
 	public void propositionOrdinateurModeDefenseur() {
 		int tabAnalyse[]=new int[this.propositionSecreteModeDefenseur.length()];
 		int tabReponse[]=new int[this.propositionSecreteModeDefenseur.length()];
-		boolean verifChiffreSaisie=true;
+		
 		if (reponseJoueurModeDefenseur.equals("")){
 			for (int i=0;i<propositionSecreteModeDefenseur.length();i++) {
 				propositionOrdinateurModeDefenseur+=String.valueOf((int)(Math.random()*10));
@@ -85,28 +92,21 @@ public class ModeleDonnees implements Observable{
 			for (int i=0;i<this.propositionSecreteModeDefenseur.length();i++) {
 				tabAnalyse[i]=Integer.valueOf(String.valueOf(propositionOrdinateurModeDefenseur.charAt(i)));
 				if(reponseJoueurModeDefenseur.charAt(i)=='-') {
-					tabReponse[i]=tabAnalyse[i]-1;
-					if(tabReponse[i]<0) {
-						tabReponse[i]=0;
-						verifChiffreSaisie=false;
-					}
-						
+					bornesMax[i]=tabAnalyse[i]-1;
+					tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2;
 				}
 				else if(reponseJoueurModeDefenseur.charAt(i)=='+') {
-					tabReponse[i]=tabAnalyse[i]+1;
-					if(tabReponse[i]>9) {
-						tabReponse[i]=9;
-						verifChiffreSaisie=false;
-					}			
+					bornesMin[i]=tabAnalyse[i]+1;
+					if((bornesMin[i]+bornesMax[i])%2==1)
+						tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2+1;
+					else {
+						tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2;
+					}
+							
 				}
 				else {
 					tabReponse[i]=tabAnalyse[i];
 				}	
-			}
-			
-			if(!verifChiffreSaisie) {
-				JOptionPane.showMessageDialog(null,"Attention : Seuls les chiffres entre 0 et 9 sont acceptés", 
-					"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
 			}
 			
 			propositionOrdinateurModeDefenseur="";
@@ -124,6 +124,12 @@ public class ModeleDonnees implements Observable{
 	
 	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
 		this.propositionSecreteOrdinateurModeDuel=propositionSecrete;
+		bornesMin=new int[propositionSecreteOrdinateurModeDuel.length()];
+		bornesMax=new int[propositionSecreteOrdinateurModeDuel.length()];
+		for (int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
+			bornesMin[i]=0;
+			bornesMax[i]=9;
+		}
 		System.out.println("COMBINAISON SECRETE ORDINATEUR MODE DUEL - Modèle Données:"+this.propositionSecreteOrdinateurModeDuel);
 	}
 	
@@ -172,7 +178,7 @@ public class ModeleDonnees implements Observable{
 	public void propositionOrdinateurModeDuel() {
 		int tabAnalyse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
 		int tabReponse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
-		boolean verifChiffreSaisie=true;
+		
 		if (reponseJoueurModeDuel.equals("")){
 			for (int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
 				propositionOrdinateurModeDuel+=String.valueOf((int)(Math.random()*10));
@@ -182,28 +188,21 @@ public class ModeleDonnees implements Observable{
 			for (int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
 				tabAnalyse[i]=Integer.valueOf(String.valueOf(propositionOrdinateurModeDuel.charAt(i)));
 				if(reponseJoueurModeDuel.charAt(i)=='-') {
-					tabReponse[i]=tabAnalyse[i]-1;
-					if(tabReponse[i]<0) {
-						tabReponse[i]=0;
-						verifChiffreSaisie=false;
-					}
+					bornesMax[i]=tabAnalyse[i]-1;
+					tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2;
 						
 				}
 				else if(reponseJoueurModeDuel.charAt(i)=='+') {
-					tabReponse[i]=tabAnalyse[i]+1;
-					if(tabReponse[i]>9) {
-						tabReponse[i]=9;
-						verifChiffreSaisie=false;
+					bornesMin[i]=tabAnalyse[i]+1;
+					if((bornesMin[i]+bornesMax[i])%2==1)
+						tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2+1;
+					else {
+						tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2;
 					}			
 				}
 				else {
 					tabReponse[i]=tabAnalyse[i];
 				}	
-			}
-			
-			if(!verifChiffreSaisie) {
-				JOptionPane.showMessageDialog(null,"Attention : Vous aviez indiqué dans votre réponse précédente un \"-\" ou un \"+\" "
-					+ "alors que le chiffre était déjà à 0 ou 9 ", "Message d'avertissement", JOptionPane.WARNING_MESSAGE);
 			}
 			
 			propositionOrdinateurModeDuel="";

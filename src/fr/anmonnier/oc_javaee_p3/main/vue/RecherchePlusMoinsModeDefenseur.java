@@ -45,6 +45,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	private RecherchePlusMoinsControler controler;
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private boolean finDePartie=false;
+	private String propositionSecreteModeDefenseur="",propositionOrdinateurModeDefenseur="",reponseAttendue="";
 
 	public RecherchePlusMoinsModeDefenseur(int nbCases, int nbEssais,ModeleDonnees model) {
 		this.setPreferredSize(new Dimension(900,600));
@@ -161,8 +162,9 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 			public void actionPerformed(ActionEvent arg0) {
 				jftfCombinaisonSecreteJoueur.setEnabled(false);
 				jbValiderCombinaisonSecreteJoueur.setEnabled(false);
+				propositionSecreteModeDefenseur=jftfCombinaisonSecreteJoueur.getText();
 				controler.setModeDeJeu(1);
-				controler.setPropositionSecreteModeDefenseur(jftfCombinaisonSecreteJoueur.getText());
+				controler.setPropositionSecreteModeDefenseur(propositionSecreteModeDefenseur);
 				jftfReponseJoueur.requestFocusInWindow();
 				jftfReponseJoueur.setEnabled(true);
 
@@ -172,9 +174,35 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 
 		jbValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controler.setReponseJoueurModeDefenseur(jftfReponseJoueur.getText());
-				jftfReponseJoueur.setText("");
-				jbValider.setEnabled(false);
+				reponseAttendue="";
+				
+				//On détermine la réponse attendue.
+				for (int i=0;i<propositionSecreteModeDefenseur.length();i++) {
+					if(propositionOrdinateurModeDefenseur.charAt(i)==propositionSecreteModeDefenseur.charAt(i)) {
+						reponseAttendue+=String.valueOf('=');
+					}
+					else if(propositionOrdinateurModeDefenseur.charAt(i)<propositionSecreteModeDefenseur.charAt(i)) {
+						reponseAttendue+=String.valueOf('+');
+					}
+					else {
+						reponseAttendue+=String.valueOf('-');
+					}
+				}
+				
+				/*On contrôle la réponse de l'utilisateur par rapport à la réponse attendue. L'utilisateur doit impérativement
+				/transmettre une réponse adéquate à l'ordinateur.*/
+				if(!jftfReponseJoueur.getText().equals(reponseAttendue)) {
+					JOptionPane.showMessageDialog(null,"Attention : votre réponse est erronée. Veuillez saisir une autre réponse, svp.", 
+							"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
+					jftfReponseJoueur.setText("");
+					jbValider.setEnabled(false);
+				}
+				else {
+					controler.setReponseJoueurModeDefenseur(jftfReponseJoueur.getText());
+					jftfReponseJoueur.setText("");
+					jbValider.setEnabled(false);
+				}
+				
 				if(!finDePartie)
 					jftfReponseJoueur.requestFocusInWindow();
 				else
@@ -194,6 +222,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	public void update(String propositionJoueur,String reponse) {
 		int previousRowIndex=0;
 		previousRowIndex=rowIndex;
+		this.propositionOrdinateurModeDefenseur=propositionJoueur;
 		((AbstractTableModel)jtTableau.getModel()).setValueAt(propositionJoueur,rowIndex,columnIndex);
 		((AbstractTableModel)jtTableau.getModel()).fireTableCellUpdated(rowIndex, columnIndex);
 
@@ -227,6 +256,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		min=0;
 		max=10;
 		verifCombinaisonSecrete=0;
+		propositionSecreteModeDefenseur="";
 		jftfCombinaisonSecreteJoueur.setText("");
 		jftfCombinaisonSecreteJoueur.setEnabled(true);
 		jftfCombinaisonSecreteJoueur.requestFocusInWindow();

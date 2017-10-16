@@ -40,7 +40,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 	private int nbreCases, nbEssais;
 	private int verificationJftf=0,verificationJftfCombinaisonSecreteJoueur=0,verificationJftfPropositionJoueur=0,
 			rowIndex=0,columnIndex=0,min=0,max=10,verifCombinaisonSecrete=0,miseAJourAffichageModeDuel=0;
-	private String combinaisonSecreteOrdinateur="";
+	private String combinaisonSecreteOrdinateur="",reponseAttendue="",propositionSecreteJoueurModeDuel="",propositionOrdinateurModeDuel="";
 	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14);
 	private JTable jtTableau;
 	private ModelTableau modelTableau;
@@ -203,7 +203,8 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 			public void actionPerformed(ActionEvent arg0) {
 				jftfCombinaisonSecreteJoueur.setEnabled(false);
 				jbValiderCombinaisonSecreteJoueur.setEnabled(false);
-				controler.setPropositionSecreteJoueurModeDuel(jftfCombinaisonSecreteJoueur.getText());
+				propositionSecreteJoueurModeDuel=jftfCombinaisonSecreteJoueur.getText();
+				controler.setPropositionSecreteJoueurModeDuel(propositionSecreteJoueurModeDuel);
 				jftfPropositionJoueur.setEnabled(true);
 				jftfPropositionJoueur.requestFocusInWindow();
 			}
@@ -227,11 +228,39 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		
 		jbValiderReponseJoueur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controler.setReponseJoueurModeDuel(jftfReponseJoueur.getText());
-				jftfReponseJoueur.setText("");
-				jftfReponseJoueur.setEnabled(false);
-				jbValiderReponseJoueur.setEnabled(false);
-				if(!finDePartie) {
+				boolean saisieJoueur=true;
+				reponseAttendue="";
+				
+				//On détermine la réponse attendue.
+				for (int i=0;i<combinaisonSecreteOrdinateur.length();i++) {
+					if(propositionOrdinateurModeDuel.charAt(i)==propositionSecreteJoueurModeDuel.charAt(i)) {
+						reponseAttendue+=String.valueOf('=');
+					}
+					else if(propositionOrdinateurModeDuel.charAt(i)<propositionSecreteJoueurModeDuel.charAt(i)) {
+						reponseAttendue+=String.valueOf('+');
+					}
+					else {
+						reponseAttendue+=String.valueOf('-');
+					}
+				}
+				
+				/*On contrôle la réponse de l'utilisateur par rapport à la réponse attendue. L'utilisateur doit impérativement
+				/transmettre une réponse adéquate à l'ordinateur.*/
+				if(!jftfReponseJoueur.getText().equals(reponseAttendue)) {
+					JOptionPane.showMessageDialog(null,"Attention : votre réponse est erronée. Veuillez saisir une autre réponse, svp.", 
+							"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
+					jftfReponseJoueur.setText("");
+					jbValiderReponseJoueur.setEnabled(false);
+					saisieJoueur=false;
+				}
+				else {
+					controler.setReponseJoueurModeDuel(jftfReponseJoueur.getText());
+					jftfReponseJoueur.setText("");
+					jftfReponseJoueur.setEnabled(false);
+					jbValiderReponseJoueur.setEnabled(false);
+				}
+				
+				if(!finDePartie&&saisieJoueur==true) {
 					jftfPropositionJoueur.setEnabled(true);
 					jftfPropositionJoueur.requestFocusInWindow();
 				}		
@@ -259,6 +288,8 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 			((AbstractTableModel)jtTableau.getModel()).fireTableCellUpdated(rowIndex, columnIndex);
 			columnIndex++;
 			miseAJourAffichageModeDuel++;
+			if(rowIndex%2==1)
+				propositionOrdinateurModeDuel=affichage;
 		}
 		else {
 			((AbstractTableModel)jtTableau.getModel()).setValueAt(affichage, rowIndex, columnIndex);
