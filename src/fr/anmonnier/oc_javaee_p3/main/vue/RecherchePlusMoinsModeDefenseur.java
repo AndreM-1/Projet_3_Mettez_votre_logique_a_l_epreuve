@@ -44,6 +44,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	private ModeleDonnees model;
 	private RecherchePlusMoinsControler controler;
 	private BoiteDialogueFinDePartie jdFinDePartie;
+	private boolean finDePartie=false;
 
 	public RecherchePlusMoinsModeDefenseur(int nbCases, int nbEssais,ModeleDonnees model) {
 		this.setPreferredSize(new Dimension(900,600));
@@ -99,23 +100,6 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		this.add(jpContainerTableau);
 
 		// Définition des listeners
-
-		//Gestion du positionnement du curseur
-		jftfCombinaisonSecreteJoueur.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent arg0) {
-				jftfCombinaisonSecreteJoueur.setCaretPosition(0);
-			}
-			public void focusLost(FocusEvent arg0) {}
-		});
-
-
-		jftfReponseJoueur.addFocusListener(new FocusListener(){
-			public void focusGained(FocusEvent arg0) {
-				jftfReponseJoueur.setCaretPosition(0);
-			}
-			public void focusLost(FocusEvent arg0) {}
-		});
-
 
 		//Les boutons Valider ne doivent être accessibles que lorsque tous les champs des JFormattedTextField sont renseignés
 		jftfCombinaisonSecreteJoueur.addKeyListener(new KeyListener() {
@@ -179,6 +163,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 				jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 				controler.setModeDeJeu(1);
 				controler.setPropositionSecreteModeDefenseur(jftfCombinaisonSecreteJoueur.getText());
+				jftfReponseJoueur.requestFocusInWindow();
 				jftfReponseJoueur.setEnabled(true);
 
 			}
@@ -190,12 +175,19 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 				controler.setReponseJoueurModeDefenseur(jftfReponseJoueur.getText());
 				jftfReponseJoueur.setText("");
 				jbValider.setEnabled(false);
+				if(!finDePartie)
+					jftfReponseJoueur.requestFocusInWindow();
+				else
+					finDePartie=false;
 			}
-
 		});
 
 		this.model.addObservateur(this);
 
+	}
+	
+	public JFormattedTextField getJftfCombinaisonSecreteJoueur() {
+		return jftfCombinaisonSecreteJoueur;
 	}
 
 	//Implémentation du pattern Observer
@@ -237,6 +229,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		verifCombinaisonSecrete=0;
 		jftfCombinaisonSecreteJoueur.setText("");
 		jftfCombinaisonSecreteJoueur.setEnabled(true);
+		jftfCombinaisonSecreteJoueur.requestFocusInWindow();
 		jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 		jftfReponseJoueur.setEnabled(false);
 		jbValider.setEnabled(false);
@@ -272,6 +265,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 
 		//En cas de défaîte ou de victoire
 		if(rowIndex==nbEssais||verifCombinaisonSecrete==nbreCases) {
+			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}

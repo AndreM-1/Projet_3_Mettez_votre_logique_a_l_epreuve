@@ -16,6 +16,10 @@ public class ModeleDonnees implements Observable{
 	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
 			reponseOrdinateurModeDuel="",affichage="",reponseJoueurModeDuel="",propositionOrdinateurModeDuel="";
 	
+	/*****************************************
+	 * Méthodes relatives au mode Challenger
+	 *****************************************/
+	
 	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
 		this.propositionJoueurModeChallenger=propositionJoueur;
 		this.analysePropositionJoueurModeChallenger();
@@ -42,6 +46,10 @@ public class ModeleDonnees implements Observable{
 			reponseModeChallenger+=String.valueOf(tabReponse[i]);
 		}
 	}
+	
+	/*****************************************
+	 * Méthodes relatives au mode Défenseur
+	 *****************************************/
 	
 	public void setPropositionSecreteModeDefenseur(String propositionSecrete) {
 		this.propositionSecreteModeDefenseur=propositionSecrete;
@@ -109,6 +117,10 @@ public class ModeleDonnees implements Observable{
 			reponseJoueurModeDefenseur="";
 		}
 	}
+	
+	/*****************************************
+	 * Méthodes relatives au mode Duel
+	 *****************************************/
 	
 	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
 		this.propositionSecreteOrdinateurModeDuel=propositionSecrete;
@@ -203,6 +215,10 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 	
+	
+	/**********************************************
+	 * Méthodes commnunes à tous les modes de jeu
+	 *********************************************/
 	
 	public void setModeDeJeu(int modeDeJeu) {
 		this.modeDeJeu=modeDeJeu;

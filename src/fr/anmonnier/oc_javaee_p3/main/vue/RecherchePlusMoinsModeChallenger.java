@@ -92,15 +92,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		this.add(jpContainerTableau);
 
 		// Définition des listeners
-
-		//Gestion du positionnement du curseur
-		jftfPropositionJoueur.addFocusListener(new FocusListener(){
-			public void focusGained(FocusEvent arg0) {
-				jftfPropositionJoueur.setCaretPosition(0);
-			}
-			public void focusLost(FocusEvent arg0) {}
-		});
-				
+		
 		//Le bouton Valider ne doit être accessible que lorsque tous les chiffres sont renseignés
 		jftfPropositionJoueur.addKeyListener(new KeyListener() {
 
@@ -130,6 +122,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 			public void actionPerformed(ActionEvent arg0) {
 				controler.setPropositionJoueurModeChallenger(jftfPropositionJoueur.getText());
 				jftfPropositionJoueur.setText("");
+				jftfPropositionJoueur.requestFocusInWindow();
 				jbValider.setEnabled(false);
 			}
 
@@ -137,6 +130,10 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 
 		this.model.addObservateur(this);
 
+	}
+	
+	public JFormattedTextField getJftfPropositionJoueur() {
+		return jftfPropositionJoueur;
 	}
 
 	//Implémentation du pattern Observer

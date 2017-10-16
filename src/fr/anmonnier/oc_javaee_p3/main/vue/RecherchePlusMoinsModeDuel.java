@@ -125,29 +125,6 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 
 		// Définition des listeners
 
-		//Gestion du positionnement du curseur
-		jftfCombinaisonSecreteJoueur.addFocusListener(new FocusListener() {
-			public void focusGained(FocusEvent arg0) {
-				jftfCombinaisonSecreteJoueur.setCaretPosition(0);
-			}
-			public void focusLost(FocusEvent arg0) {}
-		});
-		
-		jftfPropositionJoueur.addFocusListener(new FocusListener(){
-			public void focusGained(FocusEvent arg0) {
-				jftfPropositionJoueur.setCaretPosition(0);
-			}
-			public void focusLost(FocusEvent arg0) {}
-		});
-
-		jftfReponseJoueur.addFocusListener(new FocusListener(){
-			public void focusGained(FocusEvent arg0) {
-				jftfReponseJoueur.setCaretPosition(0);
-			}
-			public void focusLost(FocusEvent arg0) {}
-		});
-
-
 		//Les boutons Valider ne doivent être accessibles que lorsque les JFormattedTextField associées sont renseignés
 		jftfCombinaisonSecreteJoueur.addKeyListener(new KeyListener() {
 			public void keyTyped(KeyEvent arg0) {}
@@ -228,6 +205,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 				controler.setPropositionSecreteJoueurModeDuel(jftfCombinaisonSecreteJoueur.getText());
 				jftfPropositionJoueur.setEnabled(true);
+				jftfPropositionJoueur.requestFocusInWindow();
 			}
 
 		});
@@ -238,8 +216,10 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jbValiderPropositionJoueur.setEnabled(false);
 				controler.setPropositionJoueurModeDuel(jftfPropositionJoueur.getText());
 				jftfPropositionJoueur.setText("");
-				if(!finDePartie)
+				if(!finDePartie) {
 					jftfReponseJoueur.setEnabled(true);
+					jftfReponseJoueur.requestFocusInWindow();
+				}	
 				else
 					finDePartie=false;
 			}
@@ -251,8 +231,10 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfReponseJoueur.setText("");
 				jftfReponseJoueur.setEnabled(false);
 				jbValiderReponseJoueur.setEnabled(false);
-				if(!finDePartie)
+				if(!finDePartie) {
 					jftfPropositionJoueur.setEnabled(true);
+					jftfPropositionJoueur.requestFocusInWindow();
+				}		
 				else
 					finDePartie=false;
 			}
@@ -261,6 +243,11 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 
 		this.model.addObservateur(this);
 	}
+	
+	public JFormattedTextField getJftfCombinaisonSecreteJoueur() {
+		return jftfCombinaisonSecreteJoueur;
+	}
+	
 
 	//Implémentation du pattern Observer
 	public void update(String propositionJoueur,String reponse) {}
@@ -308,6 +295,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		combinaisonSecreteOrdinateur="";
 		jftfCombinaisonSecreteJoueur.setText("");
 		jftfCombinaisonSecreteJoueur.setEnabled(true);
+		jftfCombinaisonSecreteJoueur.requestFocusInWindow();
 		jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 		jftfPropositionJoueur.setEnabled(false);
 		jftfPropositionJoueur.setText("");

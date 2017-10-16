@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -42,6 +44,9 @@ public class Fenetre extends JFrame implements Observateur {
 	private JRadioButtonMenuItem[] jrbmiNbcases=new JRadioButtonMenuItem[7],jrbmiNbEssais=new JRadioButtonMenuItem[4];
 	private ButtonGroup bgNbCases=new ButtonGroup(),bgNbEssais=new ButtonGroup();
 	private ModeleDonnees model;
+	private RecherchePlusMoinsModeChallenger jpRecherchePlusMoinsModeChallenger;
+	private RecherchePlusMoinsModeDefenseur jpRecherchePlusMoinsModeDefenseur;
+	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
 
 	//Valeurs nominales
 	private int nbreCases=4, nbEssais=10;
@@ -115,8 +120,16 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpContainer.add(new RecherchePlusMoinsModeChallenger(nbreCases,nbEssais,model));
+				jpRecherchePlusMoinsModeChallenger=new RecherchePlusMoinsModeChallenger(nbreCases,nbEssais,model);
+				jpContainer.add(jpRecherchePlusMoinsModeChallenger);
 				jpContainer.revalidate();
+				
+				/**
+				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
+				 * cette instruction après le .add
+				 */
+				jpRecherchePlusMoinsModeChallenger.getJftfPropositionJoueur().requestFocusInWindow();
+				
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -129,8 +142,16 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpContainer.add(new RecherchePlusMoinsModeDefenseur(nbreCases,nbEssais,model));
+				jpRecherchePlusMoinsModeDefenseur=new RecherchePlusMoinsModeDefenseur(nbreCases,nbEssais,model);
+				jpContainer.add(jpRecherchePlusMoinsModeDefenseur);
 				jpContainer.revalidate();
+				
+				/**
+				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
+				 * cette instruction après le .add
+				 */
+				jpRecherchePlusMoinsModeDefenseur.getJftfCombinaisonSecreteJoueur().requestFocusInWindow();
+				
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -143,8 +164,16 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpContainer.add(new RecherchePlusMoinsModeDuel(nbreCases,nbEssais,model));
+				jpRecherchePlusMoinsModeDuel=new RecherchePlusMoinsModeDuel(nbreCases,nbEssais,model);
+				jpContainer.add(jpRecherchePlusMoinsModeDuel);
 				jpContainer.revalidate();
+				
+				/**
+				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
+				 * cette instruction après le .add
+				 */
+				jpRecherchePlusMoinsModeDuel.getJftfCombinaisonSecreteJoueur().requestFocusInWindow();
+				
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -188,16 +217,14 @@ public class Fenetre extends JFrame implements Observateur {
 
 	public void acceuilObservateur() {
 		jpContainer.removeAll();
-		jpContainer.setBackground(Color.BLACK);
 		jpContainer.setBackground(Color.WHITE);
-		
-		/**********************************************************************
-		 * Obligation d'instancier un nouveau JLabel, sinon ça ne marche pas.
-		 *********************************************************************/
-		this.imageJeu=new JLabel((new ImageIcon("src/fr/anmonnier/oc_javaee_p3/main/resources/MastermindFormatMoyen.jpg")));
 		jpContainer.add(imageJeu);
 		jpContainer.revalidate();
-	
+		
+		/****************************************************************************************************************************
+		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
+		 ****************************************************************************************************************************/
+		jpContainer.repaint();
 	}
 
 	public void relancerPartie() {}
