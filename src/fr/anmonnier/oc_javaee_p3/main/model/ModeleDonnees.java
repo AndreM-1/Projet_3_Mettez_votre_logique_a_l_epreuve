@@ -12,7 +12,7 @@ public class ModeleDonnees implements Observable{
 	private ArrayList<Observateur> listeObservateur=new ArrayList<Observateur>();
 	private String propositionJoueurModeChallenger="", propositionSecreteModeChallenger="",reponseModeChallenger="", choixFinDePartie="";
 	private String propositionSecreteModeDefenseur="",reponseJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="";
-	private int modeDeJeu=0,compteurReponseJoueurModeDefenseur=0;
+	private int modeDeJeu=0,compteurReponseJoueurModeDefenseur=0,nbEssais=0;
 	private int[] bornesMin, bornesMax;
 	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
 			reponseOrdinateurModeDuel="",affichage="",reponseJoueurModeDuel="",propositionOrdinateurModeDuel="";
@@ -69,10 +69,17 @@ public class ModeleDonnees implements Observable{
 	}
 	
 	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
+		int verifReponseJoueurModeDefenseur=0;
 		compteurReponseJoueurModeDefenseur++;
 		this.reponseJoueurModeDefenseur=reponseJoueur;		
 		this.updateObservateur();
-		if(!this.reponseJoueurModeDefenseur.equals("====")&&compteurReponseJoueurModeDefenseur!=10) {
+		for(int i=0;i<propositionSecreteModeDefenseur.length();i++) {
+			if(reponseJoueurModeDefenseur.charAt(i)=='=') {
+				verifReponseJoueurModeDefenseur++;
+			}
+		}
+		
+		if(verifReponseJoueurModeDefenseur!=propositionSecreteModeDefenseur.length()&&compteurReponseJoueurModeDefenseur!=nbEssais) {
 			this.propositionOrdinateurModeDefenseur();
 			this.updateObservateur();
 		}
@@ -139,13 +146,20 @@ public class ModeleDonnees implements Observable{
 	}
 	
 	public void setPropositionJoueurModeDuel(String propositionJoueur) {
+		int verifReponseOrdinateurModeDuel=0;
 		this.propositionJoueurModeDuel=propositionJoueur;
 		affichage=this.propositionJoueurModeDuel;
 		this.updateObservateur();
 		this.analysePropositionJoueurModeDuel();
 		affichage=reponseOrdinateurModeDuel;
 		this.updateObservateur();
-		if(!reponseOrdinateurModeDuel.equals("====")) {
+		
+		for(int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
+			if(reponseOrdinateurModeDuel.charAt(i)=='=') {
+				verifReponseOrdinateurModeDuel++;
+			}
+		}
+		if(verifReponseOrdinateurModeDuel!=propositionSecreteOrdinateurModeDuel.length()) {
 			this.propositionOrdinateurModeDuel();
 			affichage=propositionOrdinateurModeDuel;
 			this.updateObservateur();
@@ -221,6 +235,10 @@ public class ModeleDonnees implements Observable{
 	
 	public void setModeDeJeu(int modeDeJeu) {
 		this.modeDeJeu=modeDeJeu;
+	}
+	
+	public void setNbEssais(int nbEssais) {
+		this.nbEssais=nbEssais;
 	}
 	
 	public void setChoixFinDePartie(String choixFinDePartie) {

@@ -9,6 +9,10 @@ public class RecherchePlusMoinsControler {
 		this.model=model;
 	}
 	
+	/*****************************************
+	 * Méthodes relatives au mode Challenger
+	 *****************************************/
+	
 	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
 		model.setPropositionJoueurModeChallenger(propositionJoueur);
 		
@@ -18,6 +22,9 @@ public class RecherchePlusMoinsControler {
 		model.setPropositionSecreteModeChallenger(propositionSecrete);
 	}
 	
+	/*****************************************
+	 * Méthodes relatives au mode Défenseur
+	 *****************************************/
 	
 	public void setPropositionSecreteModeDefenseur(String propositionSecrete) {
 		model.setPropositionSecreteModeDefenseur(propositionSecrete);
@@ -26,6 +33,10 @@ public class RecherchePlusMoinsControler {
 	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
 		model.setReponseJoueurModeDefenseur(reponseJoueur);
 	}
+	
+	/*****************************************
+	 * Méthodes relatives au mode Duel
+	 *****************************************/
 	
 	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
 		model.setPropositionSecreteOrdinateurModeDuel(propositionSecrete);
@@ -43,8 +54,16 @@ public class RecherchePlusMoinsControler {
 		model.setReponseJoueurModeDuel(reponseJoueur);
 	}
 	
+	/**********************************************
+	 * Méthodes commnunes à tous les modes de jeu
+	 *********************************************/
+	
 	public void setModeDeJeu(int modeDeJeu) {
 		model.setModeDeJeu(modeDeJeu);
+	}
+	
+	public void setNbEssais(int nbEssais) {
+		model.setNbEssais(nbEssais);
 	}
 	
 	public void setChoixFinDePartie(String choixFinDePartie) {

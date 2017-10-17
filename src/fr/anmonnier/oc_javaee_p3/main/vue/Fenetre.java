@@ -35,21 +35,23 @@ public class Fenetre extends JFrame implements Observateur {
 	private JMenuBar jmbMenuBar = new JMenuBar();
 	private JMenu jmFichier = new JMenu("Fichier"), jmInstructions = new JMenu("Instructions");
 	private JMenu jmJeuRecherchePlusMoins = new JMenu("Recherche +/-"), jmJeuMastermind = new JMenu("Mastermind"),
-			jmParametres=new JMenu("Paramètres"),jmNbCases=new JMenu("Nombre de cases/couleurs"),
-			jmNbEssais=new JMenu("Nombre d'essais");
+			jmParametres=new JMenu("Paramètres");
 	private JMenuItem jmiModeChallenger=new JMenuItem("Mode Challenger"), jmiModeDefenseur=new JMenuItem("Mode Défenseur"),
-			jmiModeDuel=new JMenuItem("Mode Duel"),jmi2ModeChallenger=new JMenuItem("Mode Challenger"), jmi2ModeDefenseur=new JMenuItem("Mode Défenseur"),
-			jmi2ModeDuel=new JMenuItem("Mode Duel"),jmiQuitter = new JMenuItem("Quitter"), 
-			jmiJeuRecherchePlusMoins = new JMenuItem("Recherche +/-"),jmiMastermind = new JMenuItem("Mastermind");
-	private JRadioButtonMenuItem[] jrbmiNbcases=new JRadioButtonMenuItem[7],jrbmiNbEssais=new JRadioButtonMenuItem[4];
-	private ButtonGroup bgNbCases=new ButtonGroup(),bgNbEssais=new ButtonGroup();
+			jmiModeDuel=new JMenuItem("Mode Duel"),jmi2ModeChallenger=new JMenuItem("Mode Challenger"), 
+			jmi2ModeDefenseur=new JMenuItem("Mode Défenseur"),jmi2ModeDuel=new JMenuItem("Mode Duel"),
+			jmiQuitter = new JMenuItem("Quitter"), jmiJeuRecherchePlusMoins = new JMenuItem("Recherche +/-"),
+			jmiMastermind = new JMenuItem("Mastermind"),jmiParametres=new JMenuItem("Paramètres");
 	private ModeleDonnees model;
 	private RecherchePlusMoinsModeChallenger jpRecherchePlusMoinsModeChallenger;
 	private RecherchePlusMoinsModeDefenseur jpRecherchePlusMoinsModeDefenseur;
 	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
+	private BoiteDialogueParametrage jdParametrage;
 
 	//Valeurs nominales
-	private int nbreCases=4, nbEssais=10;
+	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10;
+	
+	//Valeurs pour le test
+	private int nbCasesTest=4, nbEssaisTest=10;
 
 	public Fenetre(ModeleDonnees model) {
 		this.setTitle("Mettez votre logique à l'épreuve");
@@ -86,27 +88,11 @@ public class Fenetre extends JFrame implements Observateur {
 		jmJeuMastermind.add(jmi2ModeChallenger);
 		jmJeuMastermind.add(jmi2ModeDefenseur);
 		jmJeuMastermind.add(jmi2ModeDuel);
-
-		for(int i=4;i<=10;i++) {
-			jrbmiNbcases[i-4]=new JRadioButtonMenuItem(String.valueOf(i));
-			bgNbCases.add(jrbmiNbcases[i-4]);
-			jmNbCases.add(jrbmiNbcases[i-4]);
-		}
-		jrbmiNbcases[0].setSelected(true);
-
-		for (int i=0;i<4;i++) {
-			jrbmiNbEssais[i]=new JRadioButtonMenuItem(String.valueOf(5+5*i));
-			bgNbEssais.add(jrbmiNbEssais[i]);
-			jmNbEssais.add(jrbmiNbEssais[i]);
-		}
-
-		jrbmiNbEssais[0].setSelected(true);
 		jmFichier.add(jmJeuRecherchePlusMoins);
 		jmFichier.add(jmJeuMastermind);
 		jmFichier.addSeparator();
 		jmFichier.add(jmiQuitter);
-		jmParametres.add(jmNbCases);
-		jmParametres.add(jmNbEssais);
+		jmParametres.add(jmiParametres);
 		jmInstructions.add(jmiJeuRecherchePlusMoins);
 		jmInstructions.add(jmiMastermind);
 		jmbMenuBar.add(jmFichier);
@@ -114,22 +100,21 @@ public class Fenetre extends JFrame implements Observateur {
 		jmbMenuBar.add(jmInstructions);
 		this.setJMenuBar(jmbMenuBar);
 
-
 		// Définition des listeners
 		jmiModeChallenger.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpRecherchePlusMoinsModeChallenger=new RecherchePlusMoinsModeChallenger(nbreCases,nbEssais,model);
+				jpRecherchePlusMoinsModeChallenger=new RecherchePlusMoinsModeChallenger(nbreCasesRecherchePlusMoins,nbEssaisRecherchePlusMoins,model);
 				jpContainer.add(jpRecherchePlusMoinsModeChallenger);
 				jpContainer.revalidate();
-				
+
 				/**
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
 				 * cette instruction après le .add
 				 */
 				jpRecherchePlusMoinsModeChallenger.getJftfPropositionJoueur().requestFocusInWindow();
-				
+
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -137,21 +122,21 @@ public class Fenetre extends JFrame implements Observateur {
 
 			}
 		});
-		
+
 		jmiModeDefenseur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpRecherchePlusMoinsModeDefenseur=new RecherchePlusMoinsModeDefenseur(nbreCases,nbEssais,model);
+				jpRecherchePlusMoinsModeDefenseur=new RecherchePlusMoinsModeDefenseur(nbreCasesRecherchePlusMoins,nbEssaisRecherchePlusMoins,model);
 				jpContainer.add(jpRecherchePlusMoinsModeDefenseur);
 				jpContainer.revalidate();
-				
+
 				/**
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
 				 * cette instruction après le .add
 				 */
 				jpRecherchePlusMoinsModeDefenseur.getJftfCombinaisonSecreteJoueur().requestFocusInWindow();
-				
+
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -159,21 +144,21 @@ public class Fenetre extends JFrame implements Observateur {
 
 			}
 		});
-		
+
 		jmiModeDuel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpRecherchePlusMoinsModeDuel=new RecherchePlusMoinsModeDuel(nbreCases,nbEssais,model);
+				jpRecherchePlusMoinsModeDuel=new RecherchePlusMoinsModeDuel(nbreCasesRecherchePlusMoins,nbEssaisRecherchePlusMoins,model);
 				jpContainer.add(jpRecherchePlusMoinsModeDuel);
 				jpContainer.revalidate();
-				
+
 				/**
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
 				 * cette instruction après le .add
 				 */
 				jpRecherchePlusMoinsModeDuel.getJftfCombinaisonSecreteJoueur().requestFocusInWindow();
-				
+
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -182,19 +167,35 @@ public class Fenetre extends JFrame implements Observateur {
 			}
 		});
 		
+		jmiParametres.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				jdParametrage=new BoiteDialogueParametrage(null,"Paramètres des Jeux",true,nbEssaisRecherchePlusMoins,
+						nbreCasesRecherchePlusMoins,nbEssaisMastermind,nbreCasesMastermind);
+				System.out.println("Nb essais RecherchePlusMoins :"+jdParametrage.getNbEssaisRecherchePlusMoins());
+				System.out.println("Nb cases RecherchePlusMoins :"+jdParametrage.getNbreCasesRecherchePlusMoins());
+				System.out.println("Nb essais Mastermind :"+jdParametrage.getNbEssaisMastermind());
+				System.out.println("Nb cases Mastermind :"+jdParametrage.getNbreCasesMastermind());
+				nbEssaisRecherchePlusMoins=jdParametrage.getNbEssaisRecherchePlusMoins();
+				nbreCasesRecherchePlusMoins=jdParametrage.getNbreCasesRecherchePlusMoins();
+				nbEssaisMastermind=jdParametrage.getNbEssaisMastermind();
+				nbreCasesMastermind=jdParametrage.getNbreCasesMastermind();		
+			}
+			
+		});
+
 		jmiJeuRecherchePlusMoins.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String strInstructionsJeuRecherchePlusMoins=
 						"Le but de ce jeu est de découvrir la combinaison à x chiffres de l'adversaire (le défenseur)."
-						+ "\nPour ce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque chiffre de "
-						+ "\nla combinaison proposée si le chiffre de sa combinaison est plus grand (+), plus petit (-) "
-						+ "\nou si c'est le bon chiffre (=). Un mode duel où attaquant et défenseur jouent tour à tour "
-						+ "\nest également disponible";
+								+ "\nPour ce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque chiffre de "
+								+ "\nla combinaison proposée si le chiffre de sa combinaison est plus grand (+), plus petit (-) "
+								+ "\nou si c'est le bon chiffre (=). Un mode duel où attaquant et défenseur jouent tour à tour "
+								+ "\nest également disponible";
 				JOptionPane.showMessageDialog(null, strInstructionsJeuRecherchePlusMoins, "Instructions Recherche +/-", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		
-		
+
+
 		jmiQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -220,7 +221,7 @@ public class Fenetre extends JFrame implements Observateur {
 		jpContainer.setBackground(Color.WHITE);
 		jpContainer.add(imageJeu);
 		jpContainer.revalidate();
-		
+
 		/****************************************************************************************************************************
 		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
 		 ****************************************************************************************************************************/

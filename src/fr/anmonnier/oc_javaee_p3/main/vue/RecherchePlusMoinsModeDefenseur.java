@@ -36,8 +36,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	private JFormattedTextField jftfReponseJoueur, jftfCombinaisonSecreteJoueur;
 	private JPanel jpContainer=new JPanel(),jpContainerTableau=new JPanel();
 	private int nbreCases, nbEssais;
-	private int verificationJftf=0,verificationJftfCombinaisonSecreteJoueur=0,rowIndex=0,columnIndex=0,min=0,max=10,
-			verifCombinaisonSecrete=0;
+	private int verificationJftf=0,verificationJftfCombinaisonSecreteJoueur=0,rowIndex=0,columnIndex=0,verifCombinaisonSecrete=0;
 	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14);
 	private JTable jtTableau;
 	private ModelTableau modelTableau;
@@ -63,17 +62,75 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		jlDeuxiemeInstruction.setFont(police);
 		jlReponseJoueur.setHorizontalAlignment(JLabel.CENTER);
 		jlReponseJoueur.setFont(police);
+		
+		//Mise en place des JFormattedTextField suivant le nombre de cases choisies.
 		try {
-			MaskFormatter formatCombinaisonSecreteJoueur=new MaskFormatter("####");
-			MaskFormatter formatReponseJoueur=new MaskFormatter("****");	
-			jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur);
-			jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(50,20));
-			jftfCombinaisonSecreteJoueur.setFont(police);	
-			jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur);
-			jftfReponseJoueur.setPreferredSize(new Dimension(50,20));
-			jftfReponseJoueur.setFont(police);		
-			jftfReponseJoueur.setEnabled(false);
+			switch(this.nbreCases) {
+			case 4:
+				MaskFormatter formatCombinaisonSecreteJoueur1=new MaskFormatter("####");
+				MaskFormatter formatReponseJoueur1=new MaskFormatter("****");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur1);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(50,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur1);
+				jftfReponseJoueur.setPreferredSize(new Dimension(50,20));
+				break;
+			case 5:
+				MaskFormatter formatCombinaisonSecreteJoueur2=new MaskFormatter("#####");
+				MaskFormatter formatReponseJoueur2=new MaskFormatter("*****");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur2);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(55,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur2);
+				jftfReponseJoueur.setPreferredSize(new Dimension(55,20));
+				break;
+			case 6:
+				MaskFormatter formatCombinaisonSecreteJoueur3=new MaskFormatter("######");
+				MaskFormatter formatReponseJoueur3=new MaskFormatter("******");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur3);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(60,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur3);
+				jftfReponseJoueur.setPreferredSize(new Dimension(60,20));
+				break;
+			case 7:
+				MaskFormatter formatCombinaisonSecreteJoueur4=new MaskFormatter("#######");
+				MaskFormatter formatReponseJoueur4=new MaskFormatter("*******");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur4);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(65,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur4);
+				jftfReponseJoueur.setPreferredSize(new Dimension(65,20));
+				break;
+			case 8:
+				MaskFormatter formatCombinaisonSecreteJoueur5=new MaskFormatter("########");
+				MaskFormatter formatReponseJoueur5=new MaskFormatter("********");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur5);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(70,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur5);
+				jftfReponseJoueur.setPreferredSize(new Dimension(70,20));
+				break;
+			case 9:
+				MaskFormatter formatCombinaisonSecreteJoueur6=new MaskFormatter("#########");
+				MaskFormatter formatReponseJoueur6=new MaskFormatter("*********");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur6);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(75,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur6);
+				jftfReponseJoueur.setPreferredSize(new Dimension(75,20));
+				break;
+			case 10:
+				MaskFormatter formatCombinaisonSecreteJoueur7=new MaskFormatter("##########");
+				MaskFormatter formatReponseJoueur7=new MaskFormatter("**********");	
+				jftfCombinaisonSecreteJoueur=new JFormattedTextField(formatCombinaisonSecreteJoueur7);
+				jftfCombinaisonSecreteJoueur.setPreferredSize(new Dimension(80,20));
+				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur7);
+				jftfReponseJoueur.setPreferredSize(new Dimension(80,20));
+				break;
+			default:
+				System.out.println("Erreur d'initialisation des JFormattedTextField");
+			}
+					
 		} catch (ParseException e) {e.printStackTrace();}
+		
+		jftfCombinaisonSecreteJoueur.setFont(police);	
+		jftfReponseJoueur.setFont(police);	
+		jftfReponseJoueur.setEnabled(false);
 
 		//Mise en place d'un tableau à partir d'un modèle de données
 		String[] title= {"Proposition de l'ordinateur","Réponse"};
@@ -90,7 +147,17 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 		jpContainer.add(jbValider);
 		jpContainerTableau.setBackground(Color.WHITE);
-		jpContainerTableau.setPreferredSize(new Dimension(350,183));
+		
+		//La taille du tableau varie suivant le nombre d'essais
+		if(this.nbEssais==5)
+			jpContainerTableau.setPreferredSize(new Dimension(350,103));
+		else if (this.nbEssais==10)
+			jpContainerTableau.setPreferredSize(new Dimension(350,183));
+		else if (this.nbEssais==15)
+			jpContainerTableau.setPreferredSize(new Dimension(350,263));
+		else
+			jpContainerTableau.setPreferredSize(new Dimension(350,343));
+		
 		jpContainerTableau.setLayout(new BorderLayout());
 		jpContainerTableau.add(new JScrollPane(jtTableau),BorderLayout.CENTER);
 		this.add(jlPremiereInstruction);
@@ -164,12 +231,11 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 				jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 				propositionSecreteModeDefenseur=jftfCombinaisonSecreteJoueur.getText();
 				controler.setModeDeJeu(1);
+				controler.setNbEssais(nbEssais);
 				controler.setPropositionSecreteModeDefenseur(propositionSecreteModeDefenseur);
 				jftfReponseJoueur.requestFocusInWindow();
 				jftfReponseJoueur.setEnabled(true);
-
 			}
-
 		});
 
 		jbValider.addActionListener(new ActionListener() {
@@ -253,8 +319,6 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		verificationJftfCombinaisonSecreteJoueur=0;
 		rowIndex=0;
 		columnIndex=0;
-		min=0;
-		max=10;
 		verifCombinaisonSecrete=0;
 		propositionSecreteModeDefenseur="";
 		jftfCombinaisonSecreteJoueur.setText("");

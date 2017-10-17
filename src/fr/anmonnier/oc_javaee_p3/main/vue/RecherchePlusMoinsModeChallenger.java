@@ -62,13 +62,54 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		jlDeuxiemeInstruction.setFont(police);
 		jlPropositionJoueur.setHorizontalAlignment(JLabel.CENTER);
 		jlPropositionJoueur.setFont(police);
+		
+		//Mise en place du JFormattedTextField suivant le nombre de cases choisies.
 		try {
-			MaskFormatter formatPropositionJoueur=new MaskFormatter("####");
-			jftfPropositionJoueur=new JFormattedTextField(formatPropositionJoueur);
-			jftfPropositionJoueur.setPreferredSize(new Dimension(50,20));
-			jftfPropositionJoueur.setFont(police);	
+			switch (this.nbreCases) {
+			case 4:
+				MaskFormatter formatPropositionJoueur1 = new MaskFormatter("####");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur1);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(50, 20));
+				break;
+			case 5:
+				MaskFormatter formatPropositionJoueur2 = new MaskFormatter("#####");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur2);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(55, 20));
+				break;
+			case 6:
+				MaskFormatter formatPropositionJoueur3 = new MaskFormatter("######");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur3);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(60, 20));
+				break;
+			case 7:
+				MaskFormatter formatPropositionJoueur4 = new MaskFormatter("#######");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur4);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(65, 20));
+				break;
+			case 8:
+				MaskFormatter formatPropositionJoueur5 = new MaskFormatter("########");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur5);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(70, 20));
+				break;
+			case 9:
+				MaskFormatter formatPropositionJoueur6 = new MaskFormatter("#########");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur6);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(75, 20));
+				break;
+			case 10:
+				MaskFormatter formatPropositionJoueur7 = new MaskFormatter("##########");
+				jftfPropositionJoueur = new JFormattedTextField(formatPropositionJoueur7);
+				jftfPropositionJoueur.setPreferredSize(new Dimension(80, 20));
+				break;
+			default:
+				System.out.println("Erreur d'initialisation pour le JFormattedTextField");
+			}
+
+
 		} catch (ParseException e) {e.printStackTrace();}
 
+		jftfPropositionJoueur.setFont(police);
+		
 		//Mise en place d'un tableau à partir d'un modèle de données
 		String[] title= {"Proposition du joueur","Réponse"};
 		Object[][] data= new Object[this.nbEssais][2];
@@ -83,7 +124,17 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		jbValider.setEnabled(false);
 		jpContainer.add(jbValider);
 		jpContainerTableau.setBackground(Color.WHITE);
-		jpContainerTableau.setPreferredSize(new Dimension(350,183));
+		
+		//La taille du tableau varie suivant le nombre d'essais
+		if(this.nbEssais==5)
+			jpContainerTableau.setPreferredSize(new Dimension(350,103));
+		else if(this.nbEssais==10)
+			jpContainerTableau.setPreferredSize(new Dimension(350,183));
+		else if(this.nbEssais==15)
+			jpContainerTableau.setPreferredSize(new Dimension(350,263));
+		else
+			jpContainerTableau.setPreferredSize(new Dimension(350,343));
+		
 		jpContainerTableau.setLayout(new BorderLayout());
 		jpContainerTableau.add(new JScrollPane(jtTableau),BorderLayout.CENTER);
 		this.add(jlPremiereInstruction);
@@ -92,7 +143,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		this.add(jpContainerTableau);
 
 		// Définition des listeners
-		
+
 		//Le bouton Valider ne doit être accessible que lorsque tous les chiffres sont renseignés
 		jftfPropositionJoueur.addKeyListener(new KeyListener() {
 
@@ -131,7 +182,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		this.model.addObservateur(this);
 
 	}
-	
+
 	public JFormattedTextField getJftfPropositionJoueur() {
 		return jftfPropositionJoueur;
 	}
@@ -147,7 +198,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		columnIndex=0;
 		this.gestionFinDePartie(reponse);
 	}
-	
+
 	public void updateDuel(String affichage) {}
 
 	public void relancerPartie() {
@@ -166,10 +217,10 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		combinaisonSecrete="";
 		this.generationCombinaisonSecrete();
 	}
-	
+
 	public void quitterApplication() {}
 	public void acceuilObservateur() {}
-	
+
 	//Génération de la combinaison secrète par l'ordinateur
 	public void generationCombinaisonSecrete(){
 		int nbreAleatoire;
@@ -180,39 +231,39 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		controler.setModeDeJeu(0);
 		controler.setPropositionSecreteModeChallenger(combinaisonSecrete);
 		System.out.println("COMBINAISON SECRETE :"+combinaisonSecrete);
-		
+
 
 	}
-    
+
 	//Gestion de la fin de la partie
 	public void gestionFinDePartie(String reponse) {
-		
+
 		verifCombinaisonSecrete=0;
-		
+
 		for (int i=0;i<reponse.length();i++) {
 			if (reponse.charAt(i)=='=') {
 				verifCombinaisonSecrete++;
 			}
 		}
-		
+
 		//En cas de victoire
 		if(verifCombinaisonSecrete==nbreCases) {
 			JOptionPane.showMessageDialog(null, "Félicitations!!! Vous avez trouvé la combinaison secrète en moins de "+nbEssais+" essais.", 
 					"Fin de Partie",JOptionPane.INFORMATION_MESSAGE);	
-			
+
 		}
-		
+
 		//En cas de défaîte
 		if (rowIndex==nbEssais && verifCombinaisonSecrete!=nbreCases) {
 			JOptionPane.showMessageDialog(null, "Vous avez perdu! La combinaison secrète était : "+combinaisonSecrete, "Fin de Partie",
 					JOptionPane.INFORMATION_MESSAGE);
 		}
-		
+
 		//En cas de défaîte ou de victoire
 		if(rowIndex==nbEssais||verifCombinaisonSecrete==nbreCases) {
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 	}
-	
+
 }
