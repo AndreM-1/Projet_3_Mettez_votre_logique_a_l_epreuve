@@ -6,12 +6,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -32,11 +31,13 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 	private static final long serialVersionUID = 1L;
 	private JLabel jlPremiereInstruction=new JLabel("La combinaison secrète a été générée par l'ordinateur."),
 			jlDeuxiemeInstruction=new JLabel("Veuillez saisir votre combinaison secrète :"),jlPropositionJoueur=new JLabel("Votre proposition :"),
-			jlReponseJoueur=new JLabel("Votre réponse (+,-,=) :");
+			jlReponseJoueur=new JLabel("Votre réponse (+,-,=) :"),jlLegendeJoueur=new JLabel("Le joueur est en vert."),
+			jlLegendeOrdinateur=new JLabel ("L'ordinateur est en rouge.");
 	private JButton jbValiderCombinaisonSecreteJoueur=new JButton("Valider"),jbValiderPropositionJoueur=new JButton("Valider"),
 			jbValiderReponseJoueur=new JButton("Valider");
 	private JFormattedTextField jftfCombinaisonSecreteJoueur,jftfPropositionJoueur,jftfReponseJoueur;
-	private JPanel jpContainerCombinaisonSecreteJoueur=new JPanel(),jpContainerTableau=new JPanel(),jpContainerPropositionReponseJoueur=new JPanel();
+	private JPanel jpContainerCombinaisonSecreteJoueur=new JPanel(),jpContainerTableau=new JPanel(),
+			jpContainerPropositionReponseJoueur=new JPanel(),jpContainerLegendes=new JPanel();
 	private int nbreCases, nbEssais;
 	private int verificationJftf=0,verificationJftfCombinaisonSecreteJoueur=0,verificationJftfPropositionJoueur=0,
 			rowIndex=0,columnIndex=0,min=0,max=10,verifCombinaisonSecrete=0,miseAJourAffichageModeDuel=0;
@@ -48,16 +49,21 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 	private RecherchePlusMoinsControler controler;
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private LabelRenderer labelRenderer=new LabelRenderer();
-	private boolean finDePartie=false;
+	private boolean finDePartie=false,modeDeveloppeurActive;
 
-	public RecherchePlusMoinsModeDuel(int nbCases, int nbEssais,ModeleDonnees model) {
+	public RecherchePlusMoinsModeDuel(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
 		this.setPreferredSize(new Dimension(900,600));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
 		this.nbEssais=nbEssais;
+		this.modeDeveloppeurActive=modeDeveloppeurActive;
 		this.model=model;
 		controler=new RecherchePlusMoinsControler(model);
 		this.generationCombinaisonSecrete();
+		if(this.modeDeveloppeurActive==true) {
+			jlPremiereInstruction.setText("La combinaison secrète a été générée par l'ordinateur (Solution : "
+					+combinaisonSecreteOrdinateur+")");
+		}
 		jlPremiereInstruction.setPreferredSize(new Dimension(900,40));
 		jlPremiereInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlPremiereInstruction.setFont(police);
@@ -68,6 +74,12 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		jlPropositionJoueur.setFont(police);
 		jlReponseJoueur.setHorizontalAlignment(JLabel.CENTER);
 		jlReponseJoueur.setFont(police);
+		jlLegendeJoueur.setHorizontalAlignment(JLabel.CENTER);
+		jlLegendeJoueur.setFont(police);
+		jlLegendeJoueur.setForeground(Color.GREEN);
+		jlLegendeOrdinateur.setHorizontalAlignment(JLabel.CENTER);
+		jlLegendeOrdinateur.setFont(police);
+		jlLegendeOrdinateur.setForeground(Color.RED);
 
 		//Mise en place des JFormattedTextField suivant le nombre de cases choisies.
 		try {	
@@ -103,7 +115,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfPropositionJoueur=new JFormattedTextField(formatPropositionJoueur3);
 				jftfPropositionJoueur.setPreferredSize(new Dimension(60,20));
 				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur3);
-				jftfReponseJoueur.setPreferredSize(new Dimension(60,20));
+				jftfReponseJoueur.setPreferredSize(new Dimension(80,20));
 				break;
 			case 7 :
 				MaskFormatter formatCombinaisonSecreteJoueur4=new MaskFormatter("#######");
@@ -114,7 +126,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfPropositionJoueur=new JFormattedTextField(formatPropositionJoueur4);
 				jftfPropositionJoueur.setPreferredSize(new Dimension(65,20));
 				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur4);
-				jftfReponseJoueur.setPreferredSize(new Dimension(65,20));
+				jftfReponseJoueur.setPreferredSize(new Dimension(85,20));
 				break;
 			case 8 :
 				MaskFormatter formatCombinaisonSecreteJoueur5=new MaskFormatter("########");
@@ -125,7 +137,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfPropositionJoueur=new JFormattedTextField(formatPropositionJoueur5);
 				jftfPropositionJoueur.setPreferredSize(new Dimension(70,20));
 				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur5);
-				jftfReponseJoueur.setPreferredSize(new Dimension(70,20));
+				jftfReponseJoueur.setPreferredSize(new Dimension(90,20));
 				break;
 			case 9 :
 				MaskFormatter formatCombinaisonSecreteJoueur6=new MaskFormatter("#########");
@@ -136,7 +148,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfPropositionJoueur=new JFormattedTextField(formatPropositionJoueur6);
 				jftfPropositionJoueur.setPreferredSize(new Dimension(75,20));
 				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur6);
-				jftfReponseJoueur.setPreferredSize(new Dimension(75,20));
+				jftfReponseJoueur.setPreferredSize(new Dimension(95,20));
 				break;
 			case 10 :
 				MaskFormatter formatCombinaisonSecreteJoueur7=new MaskFormatter("##########");
@@ -147,7 +159,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfPropositionJoueur=new JFormattedTextField(formatPropositionJoueur7);
 				jftfPropositionJoueur.setPreferredSize(new Dimension(80,20));
 				jftfReponseJoueur=new JFormattedTextField(formatReponseJoueur7);
-				jftfReponseJoueur.setPreferredSize(new Dimension(80,20));
+				jftfReponseJoueur.setPreferredSize(new Dimension(100,20));
 				break;
 			default:
 				System.out.println("Erreur d'initialisation des JFormattedTextField");
@@ -170,12 +182,13 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		jtTableau.getColumn("Réponse").setCellRenderer(labelRenderer);
 		jpContainerCombinaisonSecreteJoueur.setPreferredSize(new Dimension(900,40));
 		jpContainerPropositionReponseJoueur.setPreferredSize(new Dimension(900,40));
+		jpContainerLegendes.setPreferredSize(new Dimension(900,40));
 
 		jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 		jbValiderPropositionJoueur.setEnabled(false);
 		jbValiderReponseJoueur.setEnabled(false);
 		jpContainerTableau.setBackground(Color.WHITE);
-		
+
 		//La taille du tableau varie suivant le nombre d'essais
 		if(this.nbEssais==5)
 			jpContainerTableau.setPreferredSize(new Dimension(350,183));
@@ -185,8 +198,8 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 			jpContainerTableau.setPreferredSize(new Dimension(350,343));
 		else
 			jpContainerTableau.setPreferredSize(new Dimension(350,343));
-		
-		
+
+
 		jpContainerTableau.setLayout(new BorderLayout());
 		jpContainerTableau.add(new JScrollPane(jtTableau),BorderLayout.CENTER);
 
@@ -202,12 +215,17 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		jpContainerPropositionReponseJoueur.add(jlReponseJoueur);
 		jpContainerPropositionReponseJoueur.add(jftfReponseJoueur);
 		jpContainerPropositionReponseJoueur.add(jbValiderReponseJoueur);
+		
+		jpContainerLegendes.setBackground(Color.WHITE);
+		jpContainerLegendes.add(jlLegendeJoueur);
+		jpContainerLegendes.add(jlLegendeOrdinateur);
 
 		this.add(jlPremiereInstruction);
 		this.add(jpContainerCombinaisonSecreteJoueur);
 		this.add(jpContainerPropositionReponseJoueur);
 		this.add(jpContainerTableau);
-
+		this.add(jpContainerLegendes);
+		
 		// Définition des listeners
 
 		//Les boutons Valider ne doivent être accessibles que lorsque les JFormattedTextField associées sont renseignés
@@ -420,6 +438,10 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		jftfReponseJoueur.setText("");
 		jbValiderReponseJoueur.setEnabled(false);
 		this.generationCombinaisonSecrete();
+		if(this.modeDeveloppeurActive==true) {
+			jlPremiereInstruction.setText("La combinaison secrète a été générée par l'ordinateur (Solution : "
+					+combinaisonSecreteOrdinateur+")");
+		}
 	}
 
 	public void quitterApplication() {}

@@ -44,25 +44,31 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 	private ModeleDonnees model;
 	private RecherchePlusMoinsControler controler;
 	private BoiteDialogueFinDePartie jdFinDePartie;
+	private boolean modeDeveloppeurActive;
 
-	public RecherchePlusMoinsModeChallenger(int nbCases, int nbEssais,ModeleDonnees model) {
+	public RecherchePlusMoinsModeChallenger(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
 		this.setPreferredSize(new Dimension(900,600));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
 		this.nbEssais=nbEssais;
+		this.modeDeveloppeurActive=modeDeveloppeurActive;
 		this.model=model;
 		controler=new RecherchePlusMoinsControler(model);
 		this.generationCombinaisonSecrete();
-		jlDeuxiemeInstruction=new JLabel("Vous avez "+this.nbEssais+" essais pour trouver la combinaison secrète de "+this.nbreCases+" cases.");
+		if(this.modeDeveloppeurActive==true) {
+			jlPremiereInstruction.setText("La combinaison secrète a été générée par l'ordinateur (Solution : "+combinaisonSecrete+")");
+		}
+
 		jlPremiereInstruction.setPreferredSize(new Dimension(900,40));
 		jlPremiereInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlPremiereInstruction.setFont(police);
+		jlDeuxiemeInstruction=new JLabel("Vous avez "+this.nbEssais+" essais pour trouver la combinaison secrète de "+this.nbreCases+" cases.");
 		jlDeuxiemeInstruction.setPreferredSize(new Dimension(900,40));
 		jlDeuxiemeInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlDeuxiemeInstruction.setFont(police);
 		jlPropositionJoueur.setHorizontalAlignment(JLabel.CENTER);
 		jlPropositionJoueur.setFont(police);
-		
+
 		//Mise en place du JFormattedTextField suivant le nombre de cases choisies.
 		try {
 			switch (this.nbreCases) {
@@ -109,7 +115,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		} catch (ParseException e) {e.printStackTrace();}
 
 		jftfPropositionJoueur.setFont(police);
-		
+
 		//Mise en place d'un tableau à partir d'un modèle de données
 		String[] title= {"Proposition du joueur","Réponse"};
 		Object[][] data= new Object[this.nbEssais][2];
@@ -124,7 +130,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		jbValider.setEnabled(false);
 		jpContainer.add(jbValider);
 		jpContainerTableau.setBackground(Color.WHITE);
-		
+
 		//La taille du tableau varie suivant le nombre d'essais
 		if(this.nbEssais==5)
 			jpContainerTableau.setPreferredSize(new Dimension(350,103));
@@ -134,7 +140,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 			jpContainerTableau.setPreferredSize(new Dimension(350,263));
 		else
 			jpContainerTableau.setPreferredSize(new Dimension(350,343));
-		
+
 		jpContainerTableau.setLayout(new BorderLayout());
 		jpContainerTableau.add(new JScrollPane(jtTableau),BorderLayout.CENTER);
 		this.add(jlPremiereInstruction);
@@ -216,6 +222,9 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 		verifCombinaisonSecrete=0;
 		combinaisonSecrete="";
 		this.generationCombinaisonSecrete();
+		if(this.modeDeveloppeurActive==true) {
+			jlPremiereInstruction.setText("La combinaison secrète a été générée par l'ordinateur (Solution : "+combinaisonSecrete+")");
+		}
 	}
 
 	public void quitterApplication() {}

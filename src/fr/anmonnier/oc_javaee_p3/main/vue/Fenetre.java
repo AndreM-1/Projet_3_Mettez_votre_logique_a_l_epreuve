@@ -49,9 +49,8 @@ public class Fenetre extends JFrame implements Observateur {
 
 	//Valeurs nominales
 	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10;
-	
-	//Valeurs pour le test
-	private int nbCasesTest=4, nbEssaisTest=10;
+	private boolean modeDeveloppeurActive=false;
+
 
 	public Fenetre(ModeleDonnees model) {
 		this.setTitle("Mettez votre logique à l'épreuve");
@@ -80,6 +79,7 @@ public class Fenetre extends JFrame implements Observateur {
 
 		// Définition des accélérateurs
 		jmiQuitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
+		jmiParametres.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
 
 		// Construction du menu
 		jmJeuRecherchePlusMoins.add(jmiModeChallenger);
@@ -105,9 +105,11 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpRecherchePlusMoinsModeChallenger=new RecherchePlusMoinsModeChallenger(nbreCasesRecherchePlusMoins,nbEssaisRecherchePlusMoins,model);
+				jpRecherchePlusMoinsModeChallenger=new RecherchePlusMoinsModeChallenger(nbreCasesRecherchePlusMoins,
+						nbEssaisRecherchePlusMoins,modeDeveloppeurActive,model);
 				jpContainer.add(jpRecherchePlusMoinsModeChallenger);
 				jpContainer.revalidate();
+				jmParametres.setEnabled(false);
 
 				/**
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
@@ -127,9 +129,11 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpRecherchePlusMoinsModeDefenseur=new RecherchePlusMoinsModeDefenseur(nbreCasesRecherchePlusMoins,nbEssaisRecherchePlusMoins,model);
+				jpRecherchePlusMoinsModeDefenseur=new RecherchePlusMoinsModeDefenseur(nbreCasesRecherchePlusMoins,
+						nbEssaisRecherchePlusMoins,modeDeveloppeurActive,model);
 				jpContainer.add(jpRecherchePlusMoinsModeDefenseur);
 				jpContainer.revalidate();
+				jmParametres.setEnabled(false);
 
 				/**
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
@@ -149,9 +153,11 @@ public class Fenetre extends JFrame implements Observateur {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpRecherchePlusMoinsModeDuel=new RecherchePlusMoinsModeDuel(nbreCasesRecherchePlusMoins,nbEssaisRecherchePlusMoins,model);
+				jpRecherchePlusMoinsModeDuel=new RecherchePlusMoinsModeDuel(nbreCasesRecherchePlusMoins,
+						nbEssaisRecherchePlusMoins,modeDeveloppeurActive,model);
 				jpContainer.add(jpRecherchePlusMoinsModeDuel);
 				jpContainer.revalidate();
+				jmParametres.setEnabled(false);
 
 				/**
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
@@ -166,21 +172,23 @@ public class Fenetre extends JFrame implements Observateur {
 
 			}
 		});
-		
+
 		jmiParametres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				jdParametrage=new BoiteDialogueParametrage(null,"Paramètres des Jeux",true,nbEssaisRecherchePlusMoins,
-						nbreCasesRecherchePlusMoins,nbEssaisMastermind,nbreCasesMastermind);
+						nbreCasesRecherchePlusMoins,nbEssaisMastermind,nbreCasesMastermind,modeDeveloppeurActive);
 				System.out.println("Nb essais RecherchePlusMoins :"+jdParametrage.getNbEssaisRecherchePlusMoins());
 				System.out.println("Nb cases RecherchePlusMoins :"+jdParametrage.getNbreCasesRecherchePlusMoins());
 				System.out.println("Nb essais Mastermind :"+jdParametrage.getNbEssaisMastermind());
 				System.out.println("Nb cases Mastermind :"+jdParametrage.getNbreCasesMastermind());
+				System.out.println("Etat du mode développeur :"+jdParametrage.getModeDeveloppeurActive());
 				nbEssaisRecherchePlusMoins=jdParametrage.getNbEssaisRecherchePlusMoins();
 				nbreCasesRecherchePlusMoins=jdParametrage.getNbreCasesRecherchePlusMoins();
 				nbEssaisMastermind=jdParametrage.getNbEssaisMastermind();
 				nbreCasesMastermind=jdParametrage.getNbreCasesMastermind();		
+				modeDeveloppeurActive=jdParametrage.getModeDeveloppeurActive();
 			}
-			
+
 		});
 
 		jmiJeuRecherchePlusMoins.addActionListener(new ActionListener() {
@@ -217,6 +225,7 @@ public class Fenetre extends JFrame implements Observateur {
 	}
 
 	public void acceuilObservateur() {
+		jmParametres.setEnabled(true);
 		jpContainer.removeAll();
 		jpContainer.setBackground(Color.WHITE);
 		jpContainer.add(imageJeu);
