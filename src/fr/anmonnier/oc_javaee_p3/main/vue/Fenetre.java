@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -22,12 +23,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 
+import fr.anmonnier.oc_javaee_p3.main.Main;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
 
 public class Fenetre extends JFrame implements Observateur {
-
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jpContainer = new JPanel();
@@ -51,7 +55,7 @@ public class Fenetre extends JFrame implements Observateur {
 	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10;
 	private boolean modeDeveloppeurActive=false;
 
-
+	
 	public Fenetre(ModeleDonnees model) {
 		this.setTitle("Mettez votre logique à l'épreuve");
 		this.setSize(900, 600);
@@ -66,6 +70,21 @@ public class Fenetre extends JFrame implements Observateur {
 		this.model=model;
 		this.model.addObservateur(this);
 		this.initMenu();
+		
+		//Tests logs de données
+		Logger logger=LogManager.getLogger(Fenetre.class);
+		LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+		File file = new File("src/fr/anmonnier/oc_javaee_p3/main/resources/log4j2.xml");              
+		context.setConfigLocation(file.toURI());
+		//System.out.println(file.toURI());
+		logger.trace("This is TRACE");
+		logger.debug("This is DEBUG");
+		logger.info("This is INFO");
+		logger.warn("This is WARNING");
+		logger.error("This is ERROR");
+		logger.fatal("This is FATAL");
+		LogManager.shutdown();
+		
 		this.setVisible(true);
 	}
 
