@@ -3,15 +3,15 @@ package fr.anmonnier.oc_javaee_p3.main.vue;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,14 +20,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
-import fr.anmonnier.oc_javaee_p3.main.Main;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
 
@@ -35,7 +33,7 @@ public class Fenetre extends JFrame implements Observateur {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jpContainer = new JPanel();
-	private JLabel imageJeu = new JLabel(new ImageIcon("src/fr/anmonnier/oc_javaee_p3/main/resources/MastermindFormatMoyen.jpg"));
+	private JLabel imageJeu = new JLabel(new ImageIcon("resources/MastermindFormatMoyen.jpg"));
 	private JMenuBar jmbMenuBar = new JMenuBar();
 	private JMenu jmFichier = new JMenu("Fichier"), jmInstructions = new JMenu("Instructions");
 	private JMenu jmJeuRecherchePlusMoins = new JMenu("Recherche +/-"), jmJeuMastermind = new JMenu("Mastermind"),
@@ -50,6 +48,8 @@ public class Fenetre extends JFrame implements Observateur {
 	private RecherchePlusMoinsModeDefenseur jpRecherchePlusMoinsModeDefenseur;
 	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
 	private BoiteDialogueParametrage jdParametrage;
+	private InputStream input;
+	private Properties prop;
 
 	//Valeurs nominales
 	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10;
@@ -69,14 +69,40 @@ public class Fenetre extends JFrame implements Observateur {
 		this.setContentPane(jpContainer);
 		this.model=model;
 		this.model.addObservateur(this);
+		
+		//On récupère les données enregistrées dans le fichier config.properties
+		prop=new Properties();
+		input=null;
+		
+		try {
+			input=new FileInputStream("resources/config.properties");
+			prop.load(input);
+			nbEssaisRecherchePlusMoins=Integer.valueOf(prop.getProperty("param.nbEssaisActifRecherchePlusMoins"));
+			nbreCasesRecherchePlusMoins=Integer.valueOf(prop.getProperty("param.nbreCasesActifRecherchePlusMoins"));
+			nbEssaisMastermind=Integer.valueOf(prop.getProperty("param.nbEssaisActifMastermind"));
+			nbreCasesMastermind=Integer.valueOf(prop.getProperty("param.nbreCasesActifMastermind"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(input!=null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}	
+			}
+		}
+		
 		this.initMenu();
 		
 		//Tests logs de données
-		Logger logger=LogManager.getLogger(Fenetre.class);
+		Logger logger=(Logger)LogManager.getLogger(Fenetre.class);
 		LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-		File file = new File("src/fr/anmonnier/oc_javaee_p3/main/resources/log4j2.xml");              
+		File file = new File("resources/log4j2.xml");              
 		context.setConfigLocation(file.toURI());
-		//System.out.println(file.toURI());
+		
+		System.out.println(file.toURI());
 		logger.trace("This is TRACE");
 		logger.debug("This is DEBUG");
 		logger.info("This is INFO");

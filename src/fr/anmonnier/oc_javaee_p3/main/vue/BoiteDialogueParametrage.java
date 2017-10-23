@@ -4,8 +4,10 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 import javax.swing.BorderFactory;
@@ -30,6 +32,7 @@ public class BoiteDialogueParametrage extends JDialog {
 	private JButton jbOK=new JButton("OK"), jbAnnuler=new JButton("Annuler");
 	private Properties prop;
 	private InputStream input;
+	private OutputStream output;
 	private String strNbEssais="",strNbCases="";
 	private String [] tabNbEssais, tabNbCases;
 	private int choixNombreEssaisFichierConfig=4, choixNombreCasesFichierConfig=7;
@@ -86,13 +89,11 @@ public class BoiteDialogueParametrage extends JDialog {
 		this.setContentPane(jpContainer);
 
 		//Import des données du fichier config.properties
-
 		prop=new Properties();
 		input=null;
 
-
 		try {
-			input=new FileInputStream("src/fr/anmonnier/oc_javaee_p3/main/resources/config.properties");
+			input=new FileInputStream("resources/config.properties");
 			prop.load(input);
 			strNbEssais=prop.getProperty("param.nbEssais");
 			tabNbEssais=strNbEssais.split(",");
@@ -107,7 +108,11 @@ public class BoiteDialogueParametrage extends JDialog {
 				jcbNbCasesRecherchePlusMoins.addItem(tabNbCases[i]);
 				jcbNbCasesMastermind.addItem(tabNbCases[i]);
 			}
-
+			
+			jcbNbEssaisRecherchePlusMoins.setSelectedItem(prop.getProperty("param.nbEssaisActifRecherchePlusMoins"));
+			jcbNbCasesRecherchePlusMoins.setSelectedItem(prop.getProperty("param.nbreCasesActifRecherchePlusMoins"));	
+			jcbNbEssaisMastermind.setSelectedItem(prop.getProperty("param.nbEssaisActifMastermind"));
+			jcbNbCasesMastermind.setSelectedItem(prop.getProperty("param.nbreCasesActifMastermind"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -122,11 +127,6 @@ public class BoiteDialogueParametrage extends JDialog {
 			}
 		}
 
-		jcbNbEssaisRecherchePlusMoins.setSelectedItem(String.valueOf(nbEssaisRecherchePlusMoins));
-		jcbNbCasesRecherchePlusMoins.setSelectedItem(String.valueOf(nbreCasesRecherchePlusMoins));
-
-		jcbNbEssaisMastermind.setSelectedItem(String.valueOf(nbEssaisMastermind));
-		jcbNbCasesMastermind.setSelectedItem(String.valueOf(nbreCasesMastermind));
 
 		if(modeDeveloppeurActive==false)
 			jcbModeDeveloppeur.setSelected(false);
@@ -134,15 +134,46 @@ public class BoiteDialogueParametrage extends JDialog {
 			jcbModeDeveloppeur.setSelected(true);
 
 		//Définition des listeners
+		
+		//Lors de la validation, on enregistre les paramètres du joueur dans le fichier config.properties
 		jbOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Traitement pour le jeu RecherchePlusMoins
-				nbreCasesRecherchePlusMoins=Integer.valueOf((String)jcbNbCasesRecherchePlusMoins.getSelectedItem());
-				nbEssaisRecherchePlusMoins=Integer.valueOf((String)jcbNbEssaisRecherchePlusMoins.getSelectedItem());
+				
+				prop=new Properties();
+				input=null;
+				output=null;
+				
+				try {
+					input=new FileInputStream("resources/config.properties");
+					prop.load(input);
+					
+					//Traitement pour le jeu RecherchePlusMoins
+					nbreCasesRecherchePlusMoins=Integer.valueOf((String)jcbNbCasesRecherchePlusMoins.getSelectedItem());
+					nbEssaisRecherchePlusMoins=Integer.valueOf((String)jcbNbEssaisRecherchePlusMoins.getSelectedItem());
+					prop.setProperty("param.nbreCasesActifRecherchePlusMoins", (String)jcbNbCasesRecherchePlusMoins.getSelectedItem());
+					prop.setProperty("param.nbEssaisActifRecherchePlusMoins", (String)jcbNbEssaisRecherchePlusMoins.getSelectedItem());
 
-				//Traitement pour le jeu Mastermind
-				nbreCasesMastermind=Integer.valueOf((String)jcbNbCasesMastermind.getSelectedItem());
-				nbEssaisMastermind=Integer.valueOf((String)jcbNbEssaisMastermind.getSelectedItem());
+					//Traitement pour le jeu Mastermind
+					nbreCasesMastermind=Integer.valueOf((String)jcbNbCasesMastermind.getSelectedItem());
+					nbEssaisMastermind=Integer.valueOf((String)jcbNbEssaisMastermind.getSelectedItem());
+					prop.setProperty("param.nbreCasesActifMastermind", (String)jcbNbCasesMastermind.getSelectedItem());
+					prop.setProperty("param.nbEssaisActifMastermind", (String)jcbNbEssaisMastermind.getSelectedItem());
+					output=new FileOutputStream("resources/config.properties");
+					prop.store(output, "Fichier de configuration config.properties");
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					if (input != null) {
+						try {
+							output.close();
+							input.close();
+						} catch (IOException e2) {
+							e2.printStackTrace();
+						}
+					}
+
+				}
 
 				//Traitement pour l'option Mode Développeur
 				if(jcbModeDeveloppeur.isSelected()) {
