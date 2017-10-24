@@ -5,7 +5,7 @@ import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
 public class RecherchePlusMoinsControler {
 	private ModeleDonnees model;
 
-	public  RecherchePlusMoinsControler(ModeleDonnees model) {
+	public RecherchePlusMoinsControler(ModeleDonnees model) {
 		this.model=model;
 	}
 
@@ -55,7 +55,7 @@ public class RecherchePlusMoinsControler {
 	}
 
 	/**********************************************
-	 * Méthodes commnunes à tous les modes de jeu
+	 * Méthodes communes à tous les modes de jeu
 	 *********************************************/
 
 	public void setModeDeJeu(int modeDeJeu) {

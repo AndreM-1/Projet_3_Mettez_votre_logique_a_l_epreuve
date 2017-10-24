@@ -230,7 +230,7 @@ public class ModeleDonnees implements Observable{
 	
 	
 	/**********************************************
-	 * Méthodes commnunes à tous les modes de jeu
+	 * Méthodes communes à tous les modes de jeu
 	 *********************************************/
 	
 	public void setModeDeJeu(int modeDeJeu) {

@@ -27,9 +27,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
+import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonneesMastermind;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
+import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 
-public class Fenetre extends JFrame implements Observateur {
+public class Fenetre extends JFrame implements Observateur,ObservateurMastermind {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jpContainer = new JPanel();
@@ -44,9 +46,11 @@ public class Fenetre extends JFrame implements Observateur {
 			jmiQuitter = new JMenuItem("Quitter"), jmiJeuRecherchePlusMoins = new JMenuItem("Recherche +/-"),
 			jmiMastermind = new JMenuItem("Mastermind"),jmiParametres=new JMenuItem("Paramètres");
 	private ModeleDonnees model;
+	private ModeleDonneesMastermind modelMastermind;
 	private RecherchePlusMoinsModeChallenger jpRecherchePlusMoinsModeChallenger;
 	private RecherchePlusMoinsModeDefenseur jpRecherchePlusMoinsModeDefenseur;
 	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
+	private MastermindModeChallenger jpMastermindModeChallenger;
 	private BoiteDialogueParametrage jdParametrage;
 	private InputStream input;
 	private Properties prop;
@@ -56,7 +60,7 @@ public class Fenetre extends JFrame implements Observateur {
 	private boolean modeDeveloppeurActive=false;
 
 	
-	public Fenetre(ModeleDonnees model) {
+	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind) {
 		this.setTitle("Mettez votre logique à l'épreuve");
 		this.setSize(900, 600);
 		this.setLocationRelativeTo(null);
@@ -69,6 +73,8 @@ public class Fenetre extends JFrame implements Observateur {
 		this.setContentPane(jpContainer);
 		this.model=model;
 		this.model.addObservateur(this);
+		this.modelMastermind=modelMastermind;
+		this.modelMastermind.addObservateurMastermind(this);
 		
 		//On récupère les données enregistrées dans le fichier config.properties
 		prop=new Properties();
@@ -217,6 +223,26 @@ public class Fenetre extends JFrame implements Observateur {
 
 			}
 		});
+		
+		jmi2ModeChallenger.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jpContainer.removeAll();
+				jpContainer.setBackground(Color.WHITE);
+				jpMastermindModeChallenger=new MastermindModeChallenger(nbreCasesMastermind,nbEssaisMastermind,modeDeveloppeurActive,modelMastermind);
+				jpContainer.add(jpMastermindModeChallenger);
+				jpContainer.revalidate();
+				jmParametres.setEnabled(false);
+
+
+				/*********************************************************************************************************
+				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
+				 *********************************************************************************************************/
+				initModel();
+
+			}
+		});
+		
+		
 
 		jmiParametres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -259,9 +285,11 @@ public class Fenetre extends JFrame implements Observateur {
 	private void initModel() {
 		this.model=new ModeleDonnees();
 		this.model.addObservateur(this);	
+		this.modelMastermind=new ModeleDonneesMastermind();
+		this.modelMastermind.addObservateurMastermind(this);
 	}
 
-	//Implémentation du pattern Observer
+	//Implémentation du pattern Observer pour le jeu RecherchePlusMoins
 	public void update(String propositionJoueur, String reponse) {}
 	public void updateDuel(String affichage) {}
 
@@ -283,4 +311,27 @@ public class Fenetre extends JFrame implements Observateur {
 	}
 
 	public void relancerPartie() {}
+
+	//Implémentation du pattern Observer pour le jeu Mastermind
+	public void updateMastermind(String reponse) {}
+
+
+	public void quitterApplicationMastermind() {
+		System.exit(0);
+	}
+
+	public void acceuilObservateurMastermind() {
+		jmParametres.setEnabled(true);
+		jpContainer.removeAll();
+		jpContainer.setBackground(Color.WHITE);
+		jpContainer.add(imageJeu);
+		jpContainer.revalidate();
+
+		/****************************************************************************************************************************
+		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
+		 ****************************************************************************************************************************/
+		jpContainer.repaint();
+	}
+
+	public void relancerPartieMastermind() {}
 }
