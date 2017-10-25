@@ -233,7 +233,6 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.revalidate();
 				jmParametres.setEnabled(false);
 
-
 				/*********************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
@@ -241,7 +240,6 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 			}
 		});
-		
 		
 
 		jmiParametres.addActionListener(new ActionListener() {

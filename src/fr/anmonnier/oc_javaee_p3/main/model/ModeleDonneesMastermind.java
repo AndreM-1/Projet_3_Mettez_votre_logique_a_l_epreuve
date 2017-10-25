@@ -134,7 +134,9 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 
 
 	public void relancerPartieObservateurMastermind() {
-
+		for (ObservateurMastermind obs : listeObservateurMastermind) {
+			obs.relancerPartieMastermind();
+		}
 	}
 
 }

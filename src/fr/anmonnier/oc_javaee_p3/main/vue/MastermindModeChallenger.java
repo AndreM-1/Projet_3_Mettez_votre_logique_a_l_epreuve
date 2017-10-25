@@ -21,10 +21,11 @@ import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 public class MastermindModeChallenger extends JPanel implements ObservateurMastermind {
 
 	private static final long serialVersionUID = 1L;
-	private int nbreCases, nbEssais,ligne=0,colonne=1,nbCouleursUtilisables=6;
+	private int nbreCases, nbEssais,ligne=0,colonne=1,nbCouleursUtilisables=6,verifCombinaisonSecrete=0;
 	private boolean modeDeveloppeurActive;
 	private GridLayout gl,glSolution;
-	private JPanel jpContainerGrilleDeJeu=new JPanel(),jpContainerButtonEffacerValider=new JPanel(),jpContainerButtonCouleur=new JPanel();
+	private JPanel jpContainerGrilleDeJeu=new JPanel(),jpContainerButtonEffacerValider=new JPanel(),jpContainerButtonCouleur=new JPanel(),
+			jPanelContainerSolutionCombinaisonSecreteOrdinateur=new JPanel();
 	private JPanel[] jpContainerSolution;
 	private ImageIcon imgIconMastermindEmplacementVide=new ImageIcon("resources/MastermindEmplacementVide.png"),
 			imgIconMastermindEmplacementVideSolution=new ImageIcon("resources/MastermindEmplacementVideSolution.png"),
@@ -32,18 +33,21 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 			imgIconCouleurOrange=new ImageIcon("resources/imgCouleurOrange.png"),imgIconCouleurRouge=new ImageIcon("resources/imgCouleurRouge.png"),
 			imgIconCouleurJaune=new ImageIcon("resources/imgCouleurJaune.png"),imgIconCouleurViolet=new ImageIcon("resources/imgCouleurViolet.png"),
 			imgIconMastermindPionRougeSolution=new ImageIcon("resources/MastermindPionRougeSolution.png"),
-			imgIconMastermindPionBlancSolution=new ImageIcon("resources/MastermindPionBlancSolution.png");
+			imgIconMastermindPionBlancSolution=new ImageIcon("resources/MastermindPionBlancSolution.png"),
+			imgIconMastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur=new ImageIcon("resources/MastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur.png");
 	private JLabel [][] tabJLabelGrilleDeJeu;
-	private JLabel [] tabJLabelSolution;
-	private JLabel jlPremiereInstruction=new JLabel("La combinaison secrète a été générée par l'ordinateur.");
+	private JLabel [] tabJLabelSolution,tabJLabelSolutionCombinaisonSecreteOrdinateur;
+	private JLabel jlPremiereInstruction=new JLabel("La combinaison secrète a été générée par l'ordinateur."),jlSolution=new JLabel("Solution :");
 	private JButton jbEffacer=new JButton("Effacer la ligne"), jbValider=new JButton("Valider"),
 			jbCouleurVerte=new JButton(imgIconCouleurVerte),jbCouleurBleu=new JButton(imgIconCouleurBleu),
 			jbCouleurOrange=new JButton(imgIconCouleurOrange),jbCouleurRouge=new JButton(imgIconCouleurRouge),
 			jbCouleurJaune=new JButton(imgIconCouleurJaune),jbCouleurViolet=new JButton(imgIconCouleurViolet);
-	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14);
+	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14),policeSolution=new Font("Segoe UI Semilight",Font.BOLD,14);
 	private String combinaisonSecreteOrdinateur="",propositionJoueurModeChallenger="";
 	private ModeleDonneesMastermind modelMastermind;
 	private MastermindControler controlerMastermind;
+	private BoiteDialogueFinDePartie jdFinDePartie;
+	private boolean finDePartie=false;
 
 
 	public MastermindModeChallenger(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
@@ -80,15 +84,35 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 		jpContainerButtonCouleur.add(jbCouleurVerte);
 		jpContainerButtonCouleur.add(jbCouleurViolet);
 
+		jlSolution.setFont(policeSolution);
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.setPreferredSize(new Dimension(900,40));
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.setBackground(Color.WHITE);
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(jlSolution);
+		tabJLabelSolutionCombinaisonSecreteOrdinateur=new JLabel[this.nbreCases];
+		if(modeDeveloppeurActive==false) {
+			for (int i=0;i<this.nbreCases;i++) {
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel();
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setPreferredSize(new Dimension(27,27));
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setIcon(imgIconMastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur);
+				jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(tabJLabelSolutionCombinaisonSecreteOrdinateur[i]);
+			}
+		}
+		else {
+			this.affichageSolution();
+		}
+
+
 		this.add(jlPremiereInstruction);
 		this.add(jpContainerButtonEffacerValider);
 		this.add(jpContainerButtonCouleur);
 		this.InitialisationGrilleJeu();
 		this.add(jpContainerGrilleDeJeu);
-		
+
+		this.add(jPanelContainerSolutionCombinaisonSecreteOrdinateur);
+
 		this.modelMastermind.addObservateurMastermind(this);
 
-		
+
 		// Définition des listeners
 
 		jbCouleurBleu.addActionListener(new ActionListener() {
@@ -136,10 +160,14 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 		jbValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlerMastermind.setPropositionJoueurModeChallenger(propositionJoueurModeChallenger);
-				propositionJoueurModeChallenger="";
-				ligne++;
-				colonne=1;
-				jbValider.setEnabled(false);
+				if(!finDePartie) {
+					propositionJoueurModeChallenger="";
+					ligne++;
+					colonne=1;
+					jbValider.setEnabled(false);
+				}
+				else
+					finDePartie=false;
 			}	
 		});
 
@@ -187,6 +215,7 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 
 		for (int i=0;i<this.nbEssais;i++) {
 			jpContainerSolution[i]=new JPanel();
+			jpContainerSolution[i].removeAll();
 			jpContainerSolution[i].setPreferredSize(new Dimension(30,29));
 			jpContainerSolution[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			jpContainerSolution[i].setLayout(glSolution);
@@ -194,9 +223,12 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 				tabJLabelSolution[k]=new JLabel(imgIconMastermindEmplacementVideSolution);
 				jpContainerSolution[i].add(tabJLabelSolution[k]);
 			}
+			jpContainerSolution[i].revalidate();
+			jpContainerSolution[i].repaint();
 		}
 
 		//L'organisation en GridLayout impose un remplissage ligne par ligne
+		jpContainerGrilleDeJeu.removeAll();
 		for (int i=0;i<this.nbEssais;i++) {
 			int j=0;
 			for (j=0;j<this.nbreCases+1;j++) {
@@ -204,6 +236,8 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 			}
 			jpContainerGrilleDeJeu.add(jpContainerSolution[i]);
 		}
+		jpContainerGrilleDeJeu.revalidate();
+		jpContainerGrilleDeJeu.repaint();
 	}
 
 	/********************************************************
@@ -245,8 +279,7 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 		//L'organisation en GridLayout impose un remplissage ligne par ligne
 		jpContainerGrilleDeJeu.removeAll();
 		for (int i=0;i<this.nbEssais;i++) {
-			int j=0;
-			for (j=0;j<this.nbreCases+1;j++) {
+			for (int j=0;j<this.nbreCases+1;j++) {
 				jpContainerGrilleDeJeu.add(tabJLabelGrilleDeJeu[i][j]);
 			}
 			jpContainerGrilleDeJeu.add(jpContainerSolution[i]);
@@ -267,27 +300,27 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 			nbreAleatoire=(int)(Math.random()*nbCouleursUtilisables);
 			combinaisonSecreteOrdinateur+=String.valueOf(nbreAleatoire);	
 		}
-		
+
 		System.out.println("COMBINAISON SECRETE VUE :"+combinaisonSecreteOrdinateur);
 		controlerMastermind.setModeDeJeu(0);
 		controlerMastermind.setNbEssais(this.nbEssais);
 		controlerMastermind.setNbreCases(this.nbreCases);
 		controlerMastermind.setPropositionSecreteOrdinateurModeChallenger(combinaisonSecreteOrdinateur);
-		
+
 	}
 
 	//Implémentation du pattern Observer
 	public void quitterApplicationMastermind() {}
 	public void acceuilObservateurMastermind() {}
-	
+
 	public void updateMastermind(String reponse) {
 		System.out.println("reponse Ordinateur ModeChallenger Vue :"+reponse);
-		
+
 		/*Pour une ligne donnée, on met à jour le JPanel jpContainerSolution en suivant les étapes habituelles pour un JPanel :
 		On supprime les anciens composants, on ajoute les nouveaux, on revalide et on fait appel à la méthode repaint()*/
-		
+
 		jpContainerSolution[ligne].removeAll();
-		
+
 		for (int i=0;i<this.nbreCases;i++) {
 			if(reponse.charAt(i)=='R') {
 				tabJLabelSolution[i]=new JLabel(imgIconMastermindPionRougeSolution);
@@ -302,10 +335,10 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 				jpContainerSolution[ligne].add(tabJLabelSolution[i]);
 			}
 		}
-		
+
 		jpContainerSolution[ligne].revalidate();
 		jpContainerSolution[ligne].repaint();
-		
+
 		//L'organisation en GridLayout impose un remplissage ligne par ligne
 		jpContainerGrilleDeJeu.removeAll();
 		for (int i=0;i<this.nbEssais;i++) {
@@ -316,10 +349,102 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 		}
 		jpContainerGrilleDeJeu.revalidate();
 		jpContainerGrilleDeJeu.repaint();
+		this.gestionFinDePartie(reponse);
 	}
 
+	/*On réinitialise l'IHM de la grille de jeu et de la solution en bas de page ainsi que toutes les variables
+	et on regénère une nouvelle combinaison secrète*/
 	public void relancerPartieMastermind() {
+		//Réinitialisation de l'IHM : on refait appel à la fonction InitialisationGrilleJeu() et on réinitialise la solution en bas de page
+		this.InitialisationGrilleJeu();
+		if(modeDeveloppeurActive==false) {
+			jPanelContainerSolutionCombinaisonSecreteOrdinateur.removeAll();
+			jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(jlSolution);
+			for (int i=0;i<this.nbreCases;i++) {
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel();
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setPreferredSize(new Dimension(27,27));
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setIcon(imgIconMastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur);
+				jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(tabJLabelSolutionCombinaisonSecreteOrdinateur[i]);
+			}
+			jPanelContainerSolutionCombinaisonSecreteOrdinateur.revalidate();
+			jPanelContainerSolutionCombinaisonSecreteOrdinateur.repaint();
+		}
 
+		ligne=0;
+		colonne=1;
+		verifCombinaisonSecrete=0;
+		jbValider.setEnabled(false);
+		propositionJoueurModeChallenger="";
+		combinaisonSecreteOrdinateur="";
+		this.generationCombinaisonSecreteOrdinateur();
+		if(modeDeveloppeurActive==true)
+			this.affichageSolution();
+	}
+
+	//Gestion de la fin de la partie
+	private void gestionFinDePartie(String reponse) {
+
+		verifCombinaisonSecrete=0;
+		for (int i=0;i<reponse.length();i++) {
+			if(reponse.charAt(i)=='R')
+				verifCombinaisonSecrete++;
+		}
+
+		//En cas de victoire
+		if(verifCombinaisonSecrete==nbreCases) {
+			JOptionPane.showMessageDialog(null, "Félicitations!!! Vous avez trouvé la combinaison secrète en moins de "+nbEssais+" essais.", 
+					"Fin de Partie",JOptionPane.INFORMATION_MESSAGE);
+			this.affichageSolution();
+		}
+
+		//En cas de défaîte
+		if (ligne==nbEssais-1 && verifCombinaisonSecrete!=nbreCases) {
+			this.affichageSolution();
+			JOptionPane.showMessageDialog(null, "Vous avez perdu! Pour information, la combinaison secrète est affichée en bas de la page.", "Fin de Partie",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+
+		//En cas de défaîte ou de victoire
+		if(ligne==nbEssais-1||verifCombinaisonSecrete==nbreCases) {
+			finDePartie=true;
+			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
+			controlerMastermind.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
+		}
+
+	}
+
+	private void affichageSolution() {
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.removeAll();
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(jlSolution);
+		for (int i=0;i<nbreCases;i++) {
+			switch(combinaisonSecreteOrdinateur.charAt(i)) {
+			case '0':
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurBleu);
+				break;
+			case '1':
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurJaune);
+				break;
+			case '2':
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurOrange);
+				break;
+			case '3':
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurRouge);
+				break;
+			case '4':
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurVerte);
+				break;
+			case '5':
+				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurViolet);
+				break;
+			default :
+				System.out.println("Erreur de correspondantce entre la combinaison secrète et les couleurs");
+			}
+
+			tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(tabJLabelSolutionCombinaisonSecreteOrdinateur[i]);
+		}
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.revalidate();
+		jPanelContainerSolutionCombinaisonSecreteOrdinateur.repaint();
 	}
 
 
