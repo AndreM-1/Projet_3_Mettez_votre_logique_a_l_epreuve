@@ -21,6 +21,18 @@ public class MastermindControler {
 		this.modelMastermind.setPropositionJoueurModeChallenger(propositionJoueur);
 	}
 	
+	/*****************************************
+	 * Méthodes relatives au mode Défenseur
+	 *****************************************/
+	
+	public void setPropositionSecreteJoueurModeDefenseur(String propositionSecrete) {
+		this.modelMastermind.setPropositionSecreteJoueurModeDefenseur(propositionSecrete);
+	}
+	
+	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
+		this.modelMastermind.setReponseJoueurModeDefenseur(reponseJoueur);
+	}
+	
 	/**********************************************
 	 * Méthodes commnunes à tous les modes de jeu
 	 *********************************************/
@@ -35,6 +47,10 @@ public class MastermindControler {
 	
 	public void setNbreCases(int nbreCases) {
 		this.modelMastermind.setNbreCases(nbreCases);
+	}
+	
+	public void setNbCouleursUtilisables(int nbCouleursUtilisables) {
+		this.modelMastermind.setNbCouleursUtilisables(nbCouleursUtilisables);
 	}
 
 	public void setChoixFinDePartie(String choixFinDePartie) {

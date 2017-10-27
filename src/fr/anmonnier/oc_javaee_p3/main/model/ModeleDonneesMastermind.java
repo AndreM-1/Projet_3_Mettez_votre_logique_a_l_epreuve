@@ -2,15 +2,19 @@ package fr.anmonnier.oc_javaee_p3.main.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservableMastermind;
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 
 public class ModeleDonneesMastermind implements ObservableMastermind  {
 	private ArrayList<ObservateurMastermind> listeObservateurMastermind=new ArrayList<ObservateurMastermind>();
+	private LinkedList<String> listePossibilitees;
 	private String propositionSecreteOrdinateurModeChallenger="",propositionJoueurModeChallenger="",choixFinDePartieMastermind="",
 			reponseOrdinateurModeChallenger="";
-	private int modeDeJeuMastermind,nbEssaisMastermind,nbreCasesMastermind;
+	private String propositionSecreteJoueurModeDefenseur="",reponseJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="";
+	private int modeDeJeuMastermind,nbEssaisMastermind,nbreCasesMastermind,nbCouleursUtilisablesMastermind;
 
 	/*****************************************
 	 * Méthodes relatives au mode Challenger
@@ -18,12 +22,10 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 
 	public void setPropositionSecreteOrdinateurModeChallenger(String propositionSecrete) {
 		this.propositionSecreteOrdinateurModeChallenger=propositionSecrete;
-		System.out.println("COMBINAISON SECRETE Modele Données Mastermind :"+this.propositionSecreteOrdinateurModeChallenger);
 	}
 
 	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
 		this.propositionJoueurModeChallenger=propositionJoueur;
-		System.out.println("Proposition joueur en mode challenger :"+this.propositionJoueurModeChallenger);
 		this.analysePropositionJoueurModeChallenger();
 		this.updateObservateurMastermind();
 	}
@@ -65,10 +67,90 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 			else
 				reponseOrdinateurModeChallenger+="V";
 		}
-
-		System.out.println("reponseOrdinateurModeChallenger :"+reponseOrdinateurModeChallenger);
-
 	}
+
+	/*****************************************
+	 * Méthodes relatives au mode Défenseur
+	 *****************************************/
+	public void setPropositionSecreteJoueurModeDefenseur(String propositionSecrete) {
+		this.propositionSecreteJoueurModeDefenseur=propositionSecrete;
+		System.out.println("Combinaison secrète joueur Modèle de données :"+this.propositionSecreteJoueurModeDefenseur);
+
+		/*On crée un objet LinkedList avec l'ensemble des possibilités. Dans le cas où on a 4 cases et 6 couleurs utilisables, 
+		 l'objet LinkedList contiendra 1296 éléments. On s'assure bien que cette liste est initialisée à chaque début de partie*/
+		listePossibilitees=new LinkedList<String>();
+		for(int i=0;i<this.nbCouleursUtilisablesMastermind;i++) {
+			for(int j=0;j<this.nbCouleursUtilisablesMastermind;j++) {
+				for(int k=0;k<this.nbCouleursUtilisablesMastermind;k++) {
+					for(int l=0;l<this.nbCouleursUtilisablesMastermind;l++) {
+						listePossibilitees.add(String.valueOf(i)+String.valueOf(j)+String.valueOf(k)+String.valueOf(l));
+					}
+
+				}
+			}
+		}
+		System.out.println(listePossibilitees.size());
+		this.propositionOrdinateurModeDefenseur();
+		this.updateObservateurMastermind();
+	}
+
+	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
+		this.reponseJoueurModeDefenseur=reponseJoueur;
+		this.propositionOrdinateurModeDefenseur();
+		this.updateObservateurMastermind();
+	}
+
+	public void propositionOrdinateurModeDefenseur() {
+		if(reponseJoueurModeDefenseur.equals("")) {
+			propositionOrdinateurModeDefenseur=listePossibilitees.getFirst();
+			System.out.println(propositionOrdinateurModeDefenseur);
+		}
+		else {
+			System.out.println("Modele de données réponse du joueur :"+reponseJoueurModeDefenseur);
+			Iterator<String> itParcoursListe=listePossibilitees.iterator();
+			String premierElementListe=this.listePossibilitees.getFirst();
+			while(itParcoursListe.hasNext()) {
+				String strElementListe=itParcoursListe.next();
+				String resultatComparaison="";
+				int[] tabComparaison=new int[this.nbreCasesMastermind];
+				for (int i=0;i<this.nbreCasesMastermind;i++) {
+					tabComparaison[i]=3;
+				}
+				for (int i=0;i<this.nbreCasesMastermind;i++) {
+					if(premierElementListe.charAt(i)==strElementListe.charAt(i)) {
+						tabComparaison[i]=1;
+					}
+				}
+				for (int i=0;i<this.nbreCasesMastermind;i++) {
+					for(int j=0;j<this.nbreCasesMastermind;j++) {
+						if(premierElementListe.charAt(i)==strElementListe.charAt(j)&&(i!=j)
+								&&tabComparaison[j]!=1&&tabComparaison[i]!=1) {
+							tabComparaison[i]=2;
+						}
+					}
+				}
+				
+				Arrays.sort(tabComparaison);
+				for (int i=0;i<this.nbreCasesMastermind;i++) {
+					if(tabComparaison[i]==1)
+						resultatComparaison+="R";
+					else if(tabComparaison[i]==2)
+						resultatComparaison+="B";
+					else
+						resultatComparaison+="V";
+				}
+				if(!resultatComparaison.equals(reponseJoueurModeDefenseur)) {
+					itParcoursListe.remove();
+				}
+				
+			}
+			System.out.println("Taille liste réactualisé :"+listePossibilitees.size());
+			System.out.println("Premier élément réactualisé :"+listePossibilitees.getFirst());
+			reponseJoueurModeDefenseur="";
+			propositionOrdinateurModeDefenseur=listePossibilitees.getFirst();
+		}
+	}
+
 
 	/**********************************************
 	 * Méthodes commnunes à tous les modes de jeu
@@ -84,6 +166,10 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 
 	public void setNbreCases(int nbreCases) {
 		this.nbreCasesMastermind=nbreCases;
+	}
+
+	public void setNbCouleursUtilisables(int nbCouleursUtilisables) {
+		this.nbCouleursUtilisablesMastermind=nbCouleursUtilisables;
 	}
 
 	public void setChoixFinDePartie(String choixFinDePartie) {
@@ -111,6 +197,8 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 		for(ObservateurMastermind obs:listeObservateurMastermind) {
 			if(modeDeJeuMastermind==0)
 				obs.updateMastermind(reponseOrdinateurModeChallenger);
+			else if(modeDeJeuMastermind==1)
+				obs.updateMastermind(propositionOrdinateurModeDefenseur);
 		}
 	}
 

@@ -314,7 +314,6 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 	public void acceuilObservateurMastermind() {}
 
 	public void updateMastermind(String reponse) {
-		System.out.println("reponse Ordinateur ModeChallenger Vue :"+reponse);
 
 		/*Pour une ligne donnée, on met à jour le JPanel jpContainerSolution en suivant les étapes habituelles pour un JPanel :
 		On supprime les anciens composants, on ajoute les nouveaux, on revalide et on fait appel à la méthode repaint()*/
@@ -437,7 +436,7 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurViolet);
 				break;
 			default :
-				System.out.println("Erreur de correspondantce entre la combinaison secrète et les couleurs");
+				System.out.println("Erreur de correspondance entre la combinaison secrète et les couleurs");
 			}
 
 			tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -446,6 +445,4 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 		jPanelContainerSolutionCombinaisonSecreteOrdinateur.revalidate();
 		jPanelContainerSolutionCombinaisonSecreteOrdinateur.repaint();
 	}
-
-
 }

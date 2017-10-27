@@ -51,6 +51,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 	private RecherchePlusMoinsModeDefenseur jpRecherchePlusMoinsModeDefenseur;
 	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
 	private MastermindModeChallenger jpMastermindModeChallenger;
+	private MastermindModeDefenseur jpMastermindModeDefenseur;
 	private BoiteDialogueParametrage jdParametrage;
 	private InputStream input;
 	private Properties prop;
@@ -160,6 +161,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 						nbEssaisRecherchePlusMoins,modeDeveloppeurActive,model);
 				jpContainer.add(jpRecherchePlusMoinsModeChallenger);
 				jpContainer.revalidate();
+				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
 				/**
@@ -184,6 +186,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 						nbEssaisRecherchePlusMoins,modeDeveloppeurActive,model);
 				jpContainer.add(jpRecherchePlusMoinsModeDefenseur);
 				jpContainer.revalidate();
+				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
 				/**
@@ -208,6 +211,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 						nbEssaisRecherchePlusMoins,modeDeveloppeurActive,model);
 				jpContainer.add(jpRecherchePlusMoinsModeDuel);
 				jpContainer.revalidate();
+				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
 				/**
@@ -231,6 +235,25 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpMastermindModeChallenger=new MastermindModeChallenger(nbreCasesMastermind,nbEssaisMastermind,modeDeveloppeurActive,modelMastermind);
 				jpContainer.add(jpMastermindModeChallenger);
 				jpContainer.revalidate();
+				jpContainer.repaint();
+				jmParametres.setEnabled(false);
+
+				/*********************************************************************************************************
+				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
+				 *********************************************************************************************************/
+				initModel();
+
+			}
+		});
+		
+		jmi2ModeDefenseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jpContainer.removeAll();
+				jpContainer.setBackground(Color.WHITE);
+				jpMastermindModeDefenseur=new MastermindModeDefenseur(nbreCasesMastermind,nbEssaisMastermind,modeDeveloppeurActive,modelMastermind);
+				jpContainer.add(jpMastermindModeDefenseur);
+				jpContainer.revalidate();
+				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
 				/*********************************************************************************************************
