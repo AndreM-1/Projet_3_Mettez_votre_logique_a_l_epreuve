@@ -544,22 +544,26 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		//Analyse des boules bien placées (pions rouges) et mal placées (pions blancs). Pour faciliter le traitement, on va dire 
 		//que pions rouges équivaut à 1, pions blancs à 2 et emplacement vide à 3.
 		int[] tabReponseAttendue=new int[this.nbreCases];
+		char[] tabAnalyse=new char[this.nbreCases];
+		tabAnalyse=this.propositionSecreteJoueurModeDefenseur.toCharArray();
 		for (int i=0;i<this.nbreCases;i++) {
 			tabReponseAttendue[i]=3;
 		}
 		reponseAttendue="";
 
 		for (int i=0;i<this.nbreCases;i++) {
-			if(this.propositionOrdinateurModeDefenseur.charAt(i)==this.propositionSecreteJoueurModeDefenseur.charAt(i)) {
+			if(this.propositionOrdinateurModeDefenseur.charAt(i)==tabAnalyse[i]) {
 				tabReponseAttendue[i]=1;
+				tabAnalyse[i]=' ';
 			}
 		}
 
 		for (int i=0;i<this.nbreCases;i++) {
 			for(int j=0;j<this.nbreCases;j++) {
-				if(this.propositionOrdinateurModeDefenseur.charAt(i)==this.propositionSecreteJoueurModeDefenseur.charAt(j)&&(i!=j)
-						&&tabReponseAttendue[j]!=1&&tabReponseAttendue[i]!=1) {
+				if(this.propositionOrdinateurModeDefenseur.charAt(i)==tabAnalyse[j]&&tabReponseAttendue[i]!=1) {
 					tabReponseAttendue[i]=2;
+					tabAnalyse[j]=' ';
+					break;
 				}
 			}
 		}

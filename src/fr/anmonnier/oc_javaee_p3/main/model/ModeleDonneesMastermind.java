@@ -35,25 +35,30 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 		//Analyse des boules bien placées (pions rouges) et mal placées (pions blancs). Pour faciliter le traitement, on va dire 
 		//que pions rouges équivaut à 1, pions blancs à 2 et emplacement vide à 3.
 		int[] tabReponse=new int[this.nbreCasesMastermind];
+		char []tabAnalyse=new char[this.nbreCasesMastermind];
+		tabAnalyse=propositionSecreteOrdinateurModeChallenger.toCharArray();
 		for (int i=0;i<this.nbreCasesMastermind;i++) {
 			tabReponse[i]=3;
 		}
 		reponseOrdinateurModeChallenger="";
 
 		for (int i=0;i<this.nbreCasesMastermind;i++) {
-			if(this.propositionJoueurModeChallenger.charAt(i)==this.propositionSecreteOrdinateurModeChallenger.charAt(i)) {
+			if(this.propositionJoueurModeChallenger.charAt(i)==tabAnalyse[i]) {
 				tabReponse[i]=1;
+				tabAnalyse[i]=' ';
 			}
 		}
 
 		for (int i=0;i<this.nbreCasesMastermind;i++) {
 			for(int j=0;j<this.nbreCasesMastermind;j++) {
-				if(this.propositionJoueurModeChallenger.charAt(i)==this.propositionSecreteOrdinateurModeChallenger.charAt(j)&&(i!=j)
-						&&tabReponse[j]!=1&&tabReponse[i]!=1) {
+				if(this.propositionJoueurModeChallenger.charAt(i)==tabAnalyse[j]&&tabReponse[i]!=1) {
 					tabReponse[i]=2;
+					tabAnalyse[j]=' ';
+					break;
 				}
 			}
 		}
+		
 
 		//On réordonne le tableau d'entiers dans l'ordre numérique puis on effectue la correspondance avec les couleurs dans l'ordre suivant :
 		//pions rouges (si présents), pions blancs (si présents), et emplacement vide
@@ -113,19 +118,24 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 				String strElementListe=itParcoursListe.next();
 				String resultatComparaison="";
 				int[] tabComparaison=new int[this.nbreCasesMastermind];
+				char []tabAnalyseListe=new char[this.nbreCasesMastermind];
+				tabAnalyseListe=strElementListe.toCharArray();
 				for (int i=0;i<this.nbreCasesMastermind;i++) {
 					tabComparaison[i]=3;
 				}
+				
 				for (int i=0;i<this.nbreCasesMastermind;i++) {
-					if(premierElementListe.charAt(i)==strElementListe.charAt(i)) {
+					if(premierElementListe.charAt(i)==tabAnalyseListe[i]) {
 						tabComparaison[i]=1;
+						tabAnalyseListe[i]=' ';
 					}
 				}
 				for (int i=0;i<this.nbreCasesMastermind;i++) {
 					for(int j=0;j<this.nbreCasesMastermind;j++) {
-						if(premierElementListe.charAt(i)==strElementListe.charAt(j)&&(i!=j)
-								&&tabComparaison[j]!=1&&tabComparaison[i]!=1) {
+						if(premierElementListe.charAt(i)==tabAnalyseListe[j]&&tabComparaison[i]!=1) {
 							tabComparaison[i]=2;
+							tabAnalyseListe[j]=' ';
+							break;
 						}
 					}
 				}
