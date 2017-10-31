@@ -58,7 +58,7 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 				}
 			}
 		}
-		
+
 
 		//On réordonne le tableau d'entiers dans l'ordre numérique puis on effectue la correspondance avec les couleurs dans l'ordre suivant :
 		//pions rouges (si présents), pions blancs (si présents), et emplacement vide
@@ -84,16 +84,48 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 		/*On crée un objet LinkedList avec l'ensemble des possibilités. Dans le cas où on a 4 cases et 6 couleurs utilisables, 
 		 l'objet LinkedList contiendra 1296 éléments. On s'assure bien que cette liste est initialisée à chaque début de partie*/
 		listePossibilitees=new LinkedList<String>();
-		for(int i=0;i<this.nbCouleursUtilisablesMastermind;i++) {
-			for(int j=0;j<this.nbCouleursUtilisablesMastermind;j++) {
-				for(int k=0;k<this.nbCouleursUtilisablesMastermind;k++) {
-					for(int l=0;l<this.nbCouleursUtilisablesMastermind;l++) {
-						listePossibilitees.add(String.valueOf(i)+String.valueOf(j)+String.valueOf(k)+String.valueOf(l));
-					}
+		if(nbreCasesMastermind==4) {
+			for(int i=0;i<this.nbCouleursUtilisablesMastermind;i++) {
+				for(int j=0;j<this.nbCouleursUtilisablesMastermind;j++) {
+					for(int k=0;k<this.nbCouleursUtilisablesMastermind;k++) {
+						for(int l=0;l<this.nbCouleursUtilisablesMastermind;l++) {
+							listePossibilitees.add(String.valueOf(i)+String.valueOf(j)+String.valueOf(k)+String.valueOf(l));
+						}
 
+					}
 				}
 			}
 		}
+		else if(nbreCasesMastermind==5) {
+			for(int i=0;i<this.nbCouleursUtilisablesMastermind;i++) {
+				for(int j=0;j<this.nbCouleursUtilisablesMastermind;j++) {
+					for(int k=0;k<this.nbCouleursUtilisablesMastermind;k++) {
+						for(int l=0;l<this.nbCouleursUtilisablesMastermind;l++) {
+							for(int m=0;m<this.nbCouleursUtilisablesMastermind;m++) {
+								listePossibilitees.add(String.valueOf(i)+String.valueOf(j)+String.valueOf(k)+String.valueOf(l)+String.valueOf(m));
+							}
+						}
+
+					}
+				}
+			}
+		}
+		else {
+			for(int i=0;i<this.nbCouleursUtilisablesMastermind;i++) {
+				for(int j=0;j<this.nbCouleursUtilisablesMastermind;j++) {
+					for(int k=0;k<this.nbCouleursUtilisablesMastermind;k++) {
+						for(int l=0;l<this.nbCouleursUtilisablesMastermind;l++) {
+							for(int m=0;m<this.nbCouleursUtilisablesMastermind;m++) {
+								for(int n=0;n<this.nbCouleursUtilisablesMastermind;n++) {
+									listePossibilitees.add(String.valueOf(i)+String.valueOf(j)+String.valueOf(k)+String.valueOf(l)+String.valueOf(m)+String.valueOf(n));
+								}		
+							}
+						}
+					}
+				}
+			}
+		}
+
 		System.out.println(listePossibilitees.size());
 		this.propositionOrdinateurModeDefenseur();
 		this.updateObservateurMastermind();
@@ -123,7 +155,7 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 				for (int i=0;i<this.nbreCasesMastermind;i++) {
 					tabComparaison[i]=3;
 				}
-				
+
 				for (int i=0;i<this.nbreCasesMastermind;i++) {
 					if(premierElementListe.charAt(i)==tabAnalyseListe[i]) {
 						tabComparaison[i]=1;
@@ -139,7 +171,7 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 						}
 					}
 				}
-				
+
 				Arrays.sort(tabComparaison);
 				for (int i=0;i<this.nbreCasesMastermind;i++) {
 					if(tabComparaison[i]==1)
@@ -152,7 +184,7 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 				if(!resultatComparaison.equals(reponseJoueurModeDefenseur)) {
 					itParcoursListe.remove();
 				}
-				
+
 			}
 			System.out.println("Taille liste réactualisé :"+listePossibilitees.size());
 			System.out.println("Premier élément réactualisé :"+listePossibilitees.getFirst());

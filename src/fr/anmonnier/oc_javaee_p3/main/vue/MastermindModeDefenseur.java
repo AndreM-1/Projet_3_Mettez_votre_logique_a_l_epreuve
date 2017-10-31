@@ -22,7 +22,7 @@ import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 public class MastermindModeDefenseur extends JPanel implements ObservateurMastermind {
 
 	private static final long serialVersionUID = 1L;
-	private int nbreCases, nbEssais,ligne=0,colonne=1,nbCouleursUtilisables=6,colonneCombinaisonSecrete=0,remplissageSolution=0,
+	private int nbreCases, nbEssais,nbCouleursUtilisables,ligne=0,colonne=1,colonneCombinaisonSecrete=0,remplissageSolution=0,
 			verifCombinaisonSecrete=0;
 	private int [] tabReponseJoueur;
 	private GridLayout gl,glSolution;
@@ -36,18 +36,21 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 			imgIconCouleurJaune=new ImageIcon("resources/imgCouleurJaune.png"),imgIconCouleurViolet=new ImageIcon("resources/imgCouleurViolet.png"),
 			imgIconMastermindPionRougeSolution=new ImageIcon("resources/MastermindPionRougeSolution.png"),
 			imgIconMastermindPionBlancSolution=new ImageIcon("resources/MastermindPionBlancSolution.png"),
-			imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur=new ImageIcon("resources/MastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur.png");
+			imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur=new ImageIcon("resources/MastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur.png"),
+			imgIconCouleurGris=new ImageIcon("resources/imgCouleurGris.png"),imgIconCouleurBleuFonce=new ImageIcon("resources/imgCouleurBleuFonce.png"),
+			imgIconCouleurNoir=new ImageIcon("resources/imgCouleurNoir.png"),imgIconCouleurMarron=new ImageIcon("resources/imgCouleurMarron.png");
 	private JLabel [][] tabJLabelGrilleDeJeu;
 	private JLabel [] tabJLabelSolution,tabJLabelSolutionCombinaisonSecreteJoueur;
 	private JLabel jlPremiereInstruction=new JLabel("Veuillez choisir une combinaison secrète."),jlReponseJoueur=new JLabel("Votre réponse :"),
-			jlSolution=new JLabel("Combinaison Secrète :"),jlPionRougeSolution=new JLabel(imgIconMastermindPionRougeSolution),
-			jlPionBlancSolution=new JLabel(imgIconMastermindPionBlancSolution);
+			jlSolution=new JLabel("Combinaison Secrète :");
 	private JButton jbEffacerCombinaisonSecrete=new JButton("Effacer"), jbValiderCombinaisonSecrete=new JButton("Valider"),
 			jbCouleurVerte=new JButton(imgIconCouleurVerte),jbCouleurBleu=new JButton(imgIconCouleurBleu),
 			jbCouleurOrange=new JButton(imgIconCouleurOrange),jbCouleurRouge=new JButton(imgIconCouleurRouge),
 			jbCouleurJaune=new JButton(imgIconCouleurJaune),jbCouleurViolet=new JButton(imgIconCouleurViolet),
 			jbValiderReponseJoueur=new JButton("Valider"),jbEffacerReponseJoueur=new JButton("Effacer"),
-			jbPionRougeSolution=new JButton(imgIconMastermindPionRougeSolution),jbPionBlancSolution=new JButton(imgIconMastermindPionBlancSolution);	
+			jbPionRougeSolution=new JButton(imgIconMastermindPionRougeSolution),jbPionBlancSolution=new JButton(imgIconMastermindPionBlancSolution),
+			jbCouleurGris=new JButton(imgIconCouleurGris),jbCouleurBleuFonce=new JButton(imgIconCouleurBleuFonce),
+			jbCouleurNoir=new JButton(imgIconCouleurNoir),jbCouleurMarron=new JButton(imgIconCouleurMarron);	
 	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14),policeSolution=new Font("Segoe UI Semilight",Font.BOLD,14);
 	private String propositionSecreteJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="",
 			reponseJoueurModeDefenseur="",reponseAttendue="";
@@ -57,11 +60,12 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 	private boolean finDePartie=false;
 
 
-	public MastermindModeDefenseur(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
-		this.setPreferredSize(new Dimension(900,600));
+	public MastermindModeDefenseur(int nbCases, int nbEssais,int nbCouleursUtilisables,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
+		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
 		this.nbEssais=nbEssais;
+		this.nbCouleursUtilisables=nbCouleursUtilisables;
 		this.modelMastermind=modelMastermind;
 		this.controlerMastermind=new MastermindControler(this.modelMastermind);
 
@@ -72,25 +76,93 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 			reponseJoueurModeDefenseur+="V";
 		}
 
-		jlPremiereInstruction.setPreferredSize(new Dimension(900,40));
+		jlPremiereInstruction.setPreferredSize(new Dimension(1000,40));
 		jlPremiereInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlPremiereInstruction.setFont(police);
 
-		jbCouleurBleu.setPreferredSize(new Dimension(27,27));
-		jbCouleurJaune.setPreferredSize(new Dimension(27,27));
-		jbCouleurOrange.setPreferredSize(new Dimension(27,27));
-		jbCouleurRouge.setPreferredSize(new Dimension(27,27));
-		jbCouleurVerte.setPreferredSize(new Dimension(27,27));
-		jbCouleurViolet.setPreferredSize(new Dimension(27,27));
+		jbCouleurBleu.setPreferredSize(new Dimension(29,29));
+		jbCouleurJaune.setPreferredSize(new Dimension(29,29));
+		jbCouleurOrange.setPreferredSize(new Dimension(29,29));
+		jbCouleurRouge.setPreferredSize(new Dimension(29,29));
+		jbCouleurVerte.setPreferredSize(new Dimension(29,29));
+		jbCouleurViolet.setPreferredSize(new Dimension(29,29));
+		jbCouleurGris.setPreferredSize(new Dimension(29,29));
+		jbCouleurBleuFonce.setPreferredSize(new Dimension(29,29));
+		jbCouleurMarron.setPreferredSize(new Dimension(29,29));
+		jbCouleurNoir.setPreferredSize(new Dimension(29,29));
 		jbValiderCombinaisonSecrete.setEnabled(false);
-		jpContainerButtonCouleur.setPreferredSize(new Dimension(900,40));
+		jpContainerButtonCouleur.setPreferredSize(new Dimension(1000,40));
 		jpContainerButtonCouleur.setBackground(Color.WHITE);
-		jpContainerButtonCouleur.add(jbCouleurBleu);
-		jpContainerButtonCouleur.add(jbCouleurJaune);
-		jpContainerButtonCouleur.add(jbCouleurOrange);
-		jpContainerButtonCouleur.add(jbCouleurRouge);
-		jpContainerButtonCouleur.add(jbCouleurVerte);
-		jpContainerButtonCouleur.add(jbCouleurViolet);
+		
+		
+		switch(this.nbCouleursUtilisables) {
+		case 4 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			break;
+		case 5 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			jpContainerButtonCouleur.add(jbCouleurVerte);
+			break;
+		case 6 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			jpContainerButtonCouleur.add(jbCouleurVerte);
+			jpContainerButtonCouleur.add(jbCouleurViolet);
+			break;
+		case 7 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			jpContainerButtonCouleur.add(jbCouleurVerte);
+			jpContainerButtonCouleur.add(jbCouleurViolet);
+			jpContainerButtonCouleur.add(jbCouleurGris);
+			break;
+		case 8 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			jpContainerButtonCouleur.add(jbCouleurVerte);
+			jpContainerButtonCouleur.add(jbCouleurViolet);
+			jpContainerButtonCouleur.add(jbCouleurGris);
+			jpContainerButtonCouleur.add(jbCouleurBleuFonce);
+			break;
+		case 9 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			jpContainerButtonCouleur.add(jbCouleurVerte);
+			jpContainerButtonCouleur.add(jbCouleurViolet);
+			jpContainerButtonCouleur.add(jbCouleurGris);
+			jpContainerButtonCouleur.add(jbCouleurBleuFonce);
+			jpContainerButtonCouleur.add(jbCouleurMarron);
+			break;
+		case 10 :
+			jpContainerButtonCouleur.add(jbCouleurBleu);
+			jpContainerButtonCouleur.add(jbCouleurJaune);
+			jpContainerButtonCouleur.add(jbCouleurOrange);
+			jpContainerButtonCouleur.add(jbCouleurRouge);
+			jpContainerButtonCouleur.add(jbCouleurVerte);
+			jpContainerButtonCouleur.add(jbCouleurViolet);
+			jpContainerButtonCouleur.add(jbCouleurGris);
+			jpContainerButtonCouleur.add(jbCouleurBleuFonce);
+			jpContainerButtonCouleur.add(jbCouleurMarron);
+			jpContainerButtonCouleur.add(jbCouleurNoir);
+			break;
+		default :
+			System.out.println("Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
+		}
+		
 		jpContainerButtonCouleur.add(jbValiderCombinaisonSecrete);
 		jpContainerButtonCouleur.add(jbEffacerCombinaisonSecrete);
 
@@ -102,7 +174,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jbPionBlancSolution.setEnabled(false);
 		jbValiderReponseJoueur.setEnabled(false);
 		jbEffacerReponseJoueur.setEnabled(false);
-		jpContainerReponseJoueur.setPreferredSize(new Dimension(900,40));
+		jpContainerReponseJoueur.setPreferredSize(new Dimension(1000,40));
 		jpContainerReponseJoueur.setBackground(Color.WHITE);
 		jpContainerReponseJoueur.add(jlReponseJoueur);
 		jpContainerReponseJoueur.add(jbPionRougeSolution);
@@ -111,13 +183,13 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jpContainerReponseJoueur.add(jbEffacerReponseJoueur);
 
 		jlSolution.setFont(policeSolution);
-		jPanelContainerSolutionCombinaisonSecreteJoueur.setPreferredSize(new Dimension(900,40));
+		jPanelContainerSolutionCombinaisonSecreteJoueur.setPreferredSize(new Dimension(1000,40));
 		jPanelContainerSolutionCombinaisonSecreteJoueur.setBackground(Color.WHITE);
 		jPanelContainerSolutionCombinaisonSecreteJoueur.add(jlSolution);
 		tabJLabelSolutionCombinaisonSecreteJoueur=new JLabel[this.nbreCases];
 		for (int i=0;i<this.nbreCases;i++) {
 			tabJLabelSolutionCombinaisonSecreteJoueur[i]=new JLabel();
-			tabJLabelSolutionCombinaisonSecreteJoueur[i].setPreferredSize(new Dimension(27,27));
+			tabJLabelSolutionCombinaisonSecreteJoueur[i].setPreferredSize(new Dimension(29,29));
 			tabJLabelSolutionCombinaisonSecreteJoueur[i].setIcon(imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
 			jPanelContainerSolutionCombinaisonSecreteJoueur.add(tabJLabelSolutionCombinaisonSecreteJoueur[i]);
 		}
@@ -175,7 +247,35 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				colonneCombinaisonSecrete++;
 			}	
 		});
-
+		
+		jbCouleurGris.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurGris,"6");
+				colonneCombinaisonSecrete++;
+			}	
+		});
+		
+		jbCouleurBleuFonce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleuFonce,"7");
+				colonneCombinaisonSecrete++;
+			}	
+		});
+		
+		jbCouleurMarron.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurMarron,"8");
+				colonneCombinaisonSecrete++;
+			}	
+		});
+		
+		jbCouleurNoir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurNoir,"9");
+				colonneCombinaisonSecrete++;
+			}	
+		});
+		
 		jbValiderCombinaisonSecrete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				jbCouleurBleu.setEnabled(false);
@@ -184,6 +284,10 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				jbCouleurRouge.setEnabled(false);
 				jbCouleurVerte.setEnabled(false);
 				jbCouleurViolet.setEnabled(false);
+				jbCouleurGris.setEnabled(false);
+				jbCouleurBleuFonce.setEnabled(false);
+				jbCouleurMarron.setEnabled(false);
+				jbCouleurNoir.setEnabled(false);
 				jbValiderCombinaisonSecrete.setEnabled(false);
 				jbEffacerCombinaisonSecrete.setEnabled(false);
 				jbPionRougeSolution.setEnabled(true);
@@ -263,7 +367,13 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jpContainerGrilleDeJeu.setLayout(gl);
 		jpContainerGrilleDeJeu.setPreferredSize(new Dimension(30*(this.nbreCases+2),29*this.nbEssais));
 		tabJLabelGrilleDeJeu=new JLabel[this.nbEssais][this.nbreCases+1];
-		glSolution=new GridLayout(this.nbreCases/2,this.nbreCases/2);
+		if(this.nbreCases==4)
+			glSolution=new GridLayout(this.nbreCases/2,this.nbreCases/2);
+		else if(this.nbreCases==5)
+			glSolution=new GridLayout(this.nbreCases/2,this.nbreCases/2+1);
+		else
+			glSolution=new GridLayout(this.nbreCases/2-1,this.nbreCases/2);
+
 		tabJLabelSolution= new JLabel[this.nbreCases];
 		jpContainerSolution=new JPanel[this.nbEssais];
 
@@ -305,8 +415,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		//L'organisation en GridLayout impose un remplissage ligne par ligne
 		jpContainerGrilleDeJeu.removeAll();
 		for (int i=0;i<this.nbEssais;i++) {
-			int j=0;
-			for (j=0;j<this.nbreCases+1;j++) {
+			for (int j=0;j<this.nbreCases+1;j++) {
 				jpContainerGrilleDeJeu.add(tabJLabelGrilleDeJeu[i][j]);
 			}
 			jpContainerGrilleDeJeu.add(jpContainerSolution[i]);
@@ -393,6 +502,22 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				tabJLabelGrilleDeJeu[ligne][i+1]=new JLabel(imgIconCouleurViolet);
 				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				break;
+			case '6':
+				tabJLabelGrilleDeJeu[ligne][i+1]=new JLabel(imgIconCouleurGris);
+				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				break;
+			case '7':
+				tabJLabelGrilleDeJeu[ligne][i+1]=new JLabel(imgIconCouleurBleuFonce);
+				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				break;
+			case '8':
+				tabJLabelGrilleDeJeu[ligne][i+1]=new JLabel(imgIconCouleurMarron);
+				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				break;
+			case '9':
+				tabJLabelGrilleDeJeu[ligne][i+1]=new JLabel(imgIconCouleurNoir);
+				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				break;
 			default :
 				System.out.println("Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
 			}
@@ -414,7 +539,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jPanelContainerSolutionCombinaisonSecreteJoueur.add(jlSolution);
 		for (int i=0;i<this.nbreCases;i++) {
 			tabJLabelSolutionCombinaisonSecreteJoueur[i]=new JLabel();
-			tabJLabelSolutionCombinaisonSecreteJoueur[i].setPreferredSize(new Dimension(27,27));
+			tabJLabelSolutionCombinaisonSecreteJoueur[i].setPreferredSize(new Dimension(29,29));
 			tabJLabelSolutionCombinaisonSecreteJoueur[i].setIcon(imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
 			jPanelContainerSolutionCombinaisonSecreteJoueur.add(tabJLabelSolutionCombinaisonSecreteJoueur[i]);
 		}
@@ -426,6 +551,10 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jbCouleurRouge.setEnabled(true);
 		jbCouleurVerte.setEnabled(true);
 		jbCouleurViolet.setEnabled(true);
+		jbCouleurGris.setEnabled(true);
+		jbCouleurBleuFonce.setEnabled(true);
+		jbCouleurMarron.setEnabled(true);
+		jbCouleurNoir.setEnabled(true);
 		jbValiderCombinaisonSecrete.setEnabled(false);
 		jbEffacerCombinaisonSecrete.setEnabled(true);
 		jbPionRougeSolution.setEnabled(false);

@@ -52,7 +52,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 	private boolean finDePartie=false,modeDeveloppeurActive;
 
 	public RecherchePlusMoinsModeDuel(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
-		this.setPreferredSize(new Dimension(900,600));
+		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
 		this.nbEssais=nbEssais;
@@ -64,7 +64,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 			jlPremiereInstruction.setText("La combinaison secrète a été générée par l'ordinateur (Solution : "
 					+combinaisonSecreteOrdinateur+")");
 		}
-		jlPremiereInstruction.setPreferredSize(new Dimension(900,40));
+		jlPremiereInstruction.setPreferredSize(new Dimension(1000,40));
 		jlPremiereInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlPremiereInstruction.setFont(police);
 		jlDeuxiemeInstruction.setPreferredSize(new Dimension(250,40));
@@ -180,9 +180,9 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		labelRenderer.setModeDeJeu(2);
 		jtTableau.getColumn("Proposition").setCellRenderer(labelRenderer);
 		jtTableau.getColumn("Réponse").setCellRenderer(labelRenderer);
-		jpContainerCombinaisonSecreteJoueur.setPreferredSize(new Dimension(900,40));
-		jpContainerPropositionReponseJoueur.setPreferredSize(new Dimension(900,40));
-		jpContainerLegendes.setPreferredSize(new Dimension(900,40));
+		jpContainerCombinaisonSecreteJoueur.setPreferredSize(new Dimension(1000,40));
+		jpContainerPropositionReponseJoueur.setPreferredSize(new Dimension(1000,40));
+		jpContainerLegendes.setPreferredSize(new Dimension(1000,40));
 
 		jbValiderCombinaisonSecreteJoueur.setEnabled(false);
 		jbValiderPropositionJoueur.setEnabled(false);

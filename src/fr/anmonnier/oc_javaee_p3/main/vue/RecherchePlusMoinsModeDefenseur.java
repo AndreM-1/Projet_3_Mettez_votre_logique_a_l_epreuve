@@ -47,7 +47,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	private String propositionSecreteModeDefenseur="",propositionOrdinateurModeDefenseur="",reponseAttendue="";
 
 	public RecherchePlusMoinsModeDefenseur(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
-		this.setPreferredSize(new Dimension(900,600));
+		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
 		this.nbEssais=nbEssais;
@@ -57,7 +57,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		jlPremiereInstruction.setPreferredSize(new Dimension(230,40));
 		jlPremiereInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlPremiereInstruction.setFont(police);
-		jlDeuxiemeInstruction.setPreferredSize(new Dimension(900,40));
+		jlDeuxiemeInstruction.setPreferredSize(new Dimension(1000,40));
 		jlDeuxiemeInstruction.setHorizontalAlignment(JLabel.CENTER);
 		jlDeuxiemeInstruction.setFont(police);
 		jlReponseJoueur.setHorizontalAlignment(JLabel.CENTER);
@@ -139,7 +139,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 		jtTableau=new JTable(modelTableau);
 		jtTableau.getColumn("Proposition de l'ordinateur").setCellRenderer(new LabelRenderer());
 		jtTableau.getColumn("Réponse").setCellRenderer(new LabelRenderer());
-		jpContainer.setPreferredSize(new Dimension(900,40));
+		jpContainer.setPreferredSize(new Dimension(1000,40));
 		jpContainer.setBackground(Color.WHITE);
 		jpContainer.add(jlReponseJoueur);
 		jpContainer.add(jftfReponseJoueur);

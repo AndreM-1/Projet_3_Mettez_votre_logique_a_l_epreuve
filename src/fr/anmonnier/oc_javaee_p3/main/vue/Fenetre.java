@@ -35,7 +35,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jpContainer = new JPanel();
-	private JLabel imageJeu = new JLabel(new ImageIcon("resources/MastermindFormatMoyen.jpg"));
+	private JLabel imageJeu = new JLabel(new ImageIcon("resources/Mastermind.jpg"));
 	private JMenuBar jmbMenuBar = new JMenuBar();
 	private JMenu jmFichier = new JMenu("Fichier"), jmInstructions = new JMenu("Instructions");
 	private JMenu jmJeuRecherchePlusMoins = new JMenu("Recherche +/-"), jmJeuMastermind = new JMenu("Mastermind"),
@@ -57,18 +57,20 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 	private Properties prop;
 
 	//Valeurs nominales
-	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10;
+	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10,
+			nbCouleursUtilisablesMastermind=6;
 	private boolean modeDeveloppeurActive=false;
 
-	
+
 	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind) {
 		this.setTitle("Mettez votre logique à l'épreuve");
-		this.setSize(900, 600);
+		this.setSize(1000, 740);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-		imageJeu.setPreferredSize(new Dimension(452,480));
-		jpContainer.setPreferredSize(new Dimension(900,600));
+		this.setIconImage(new ImageIcon("resources/MastermindFormatIcone.png").getImage());
+		imageJeu.setPreferredSize(new Dimension(600,637));
+		jpContainer.setPreferredSize(new Dimension(1000,800));
 		jpContainer.add(imageJeu);
 		jpContainer.setBackground(Color.WHITE);
 		this.setContentPane(jpContainer);
@@ -76,11 +78,11 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.model.addObservateur(this);
 		this.modelMastermind=modelMastermind;
 		this.modelMastermind.addObservateurMastermind(this);
-		
+
 		//On récupère les données enregistrées dans le fichier config.properties
 		prop=new Properties();
 		input=null;
-		
+
 		try {
 			input=new FileInputStream("resources/config.properties");
 			prop.load(input);
@@ -88,6 +90,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 			nbreCasesRecherchePlusMoins=Integer.valueOf(prop.getProperty("param.nbreCasesActifRecherchePlusMoins"));
 			nbEssaisMastermind=Integer.valueOf(prop.getProperty("param.nbEssaisActifMastermind"));
 			nbreCasesMastermind=Integer.valueOf(prop.getProperty("param.nbreCasesActifMastermind"));
+			nbCouleursUtilisablesMastermind=Integer.valueOf(prop.getProperty("param.nbCouleursUtilisablesActifMastermind"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -100,15 +103,15 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				}	
 			}
 		}
-		
+
 		this.initMenu();
-		
+
 		//Tests logs de données
 		Logger logger=(Logger)LogManager.getLogger(Fenetre.class);
 		LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
 		File file = new File("resources/log4j2.xml");              
 		context.setConfigLocation(file.toURI());
-		
+
 		System.out.println(file.toURI());
 		logger.trace("This is TRACE");
 		logger.debug("This is DEBUG");
@@ -117,7 +120,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		logger.error("This is ERROR");
 		logger.fatal("This is FATAL");
 		LogManager.shutdown();
-		
+
 		this.setVisible(true);
 	}
 
@@ -227,12 +230,13 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 			}
 		});
-		
+
 		jmi2ModeChallenger.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpMastermindModeChallenger=new MastermindModeChallenger(nbreCasesMastermind,nbEssaisMastermind,modeDeveloppeurActive,modelMastermind);
+				jpMastermindModeChallenger=new MastermindModeChallenger(nbreCasesMastermind,nbEssaisMastermind,
+						nbCouleursUtilisablesMastermind,modeDeveloppeurActive,modelMastermind);
 				jpContainer.add(jpMastermindModeChallenger);
 				jpContainer.revalidate();
 				jpContainer.repaint();
@@ -245,12 +249,13 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 			}
 		});
-		
+
 		jmi2ModeDefenseur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
 				jpContainer.setBackground(Color.WHITE);
-				jpMastermindModeDefenseur=new MastermindModeDefenseur(nbreCasesMastermind,nbEssaisMastermind,modeDeveloppeurActive,modelMastermind);
+				jpMastermindModeDefenseur=new MastermindModeDefenseur(nbreCasesMastermind,nbEssaisMastermind,
+						nbCouleursUtilisablesMastermind,modeDeveloppeurActive,modelMastermind);
 				jpContainer.add(jpMastermindModeDefenseur);
 				jpContainer.revalidate();
 				jpContainer.repaint();
@@ -263,12 +268,13 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 			}
 		});
-		
+
 
 		jmiParametres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				jdParametrage=new BoiteDialogueParametrage(null,"Paramètres des Jeux",true,nbEssaisRecherchePlusMoins,
-						nbreCasesRecherchePlusMoins,nbEssaisMastermind,nbreCasesMastermind,modeDeveloppeurActive);
+						nbreCasesRecherchePlusMoins,nbEssaisMastermind,nbreCasesMastermind,nbCouleursUtilisablesMastermind,
+						modeDeveloppeurActive);
 				System.out.println("Nb essais RecherchePlusMoins :"+jdParametrage.getNbEssaisRecherchePlusMoins());
 				System.out.println("Nb cases RecherchePlusMoins :"+jdParametrage.getNbreCasesRecherchePlusMoins());
 				System.out.println("Nb essais Mastermind :"+jdParametrage.getNbEssaisMastermind());
@@ -279,6 +285,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				nbEssaisMastermind=jdParametrage.getNbEssaisMastermind();
 				nbreCasesMastermind=jdParametrage.getNbreCasesMastermind();		
 				modeDeveloppeurActive=jdParametrage.getModeDeveloppeurActive();
+				nbCouleursUtilisablesMastermind=jdParametrage.getNbCouleursUtilisablesMastermind();
 			}
 
 		});
@@ -290,8 +297,20 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 								+ "\nPour ce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque chiffre de "
 								+ "\nla combinaison proposée si le chiffre de sa combinaison est plus grand (+), plus petit (-) "
 								+ "\nou si c'est le bon chiffre (=). Un mode duel où attaquant et défenseur jouent tour à tour "
-								+ "\nest également disponible";
+								+ "\nest également disponible.";
 				JOptionPane.showMessageDialog(null, strInstructionsJeuRecherchePlusMoins, "Instructions Recherche +/-", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		
+		jmiMastermind.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String strInstructionsJeuMastermind=
+						"Le but de ce jeu est de découvrir la combinaison à x couleurs de l'adversaire (le défenseur)."
+								+ "\nPour ce faire, l'attaquant fait une proposition. Le défenseur indique pour chaque proposition"
+								+ "\nle nombre de couleurs de la proposition qui apparaissent à la bonne place (à l'aide de pions rouges)"
+								+ "\net à la mauvaise place (à l'aide de pions blancs) dans la combinaison secrète.Un mode duel où "
+								+ "\nattaquant et défenseur jouent tour à tour est également disponible."; 				
+				JOptionPane.showMessageDialog(null, strInstructionsJeuMastermind, "Instructions Mastermind", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
