@@ -493,7 +493,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 
-		//En cas de défaîte ou de victoire
+		//En cas de victoire
 		if(verifCombinaisonSecrete==nbreCases) {
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);

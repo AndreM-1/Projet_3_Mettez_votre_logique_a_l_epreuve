@@ -33,8 +33,28 @@ public class MastermindControler {
 		this.modelMastermind.setReponseJoueurModeDefenseur(reponseJoueur);
 	}
 	
+	/*****************************************
+	 * Méthodes relatives au mode Duel
+	 *****************************************/
+	
+	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
+		this.modelMastermind.setPropositionSecreteOrdinateurModeDuel(propositionSecrete);
+	}
+	
+	public void setPropositionSecreteJoueurModeDuel(String propositionSecrete) {
+		this.modelMastermind.setPropositionSecreteJoueurModeDuel(propositionSecrete);
+	}
+	
+	public void setPropositionJoueurModeDuel(String propositionJoueur) {
+		this.modelMastermind.setPropositionJoueurModeDuel(propositionJoueur);
+	}
+	
+	public void setReponseJoueurModeDuel(String reponseJoueur) {
+		this.modelMastermind.setReponseJoueurModeDuel(reponseJoueur);
+	}
+	
 	/**********************************************
-	 * Méthodes commnunes à tous les modes de jeu
+	 * Méthodes communes à tous les modes de jeu
 	 *********************************************/
 
 	public void setModeDeJeu(int modeDeJeu) {

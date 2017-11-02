@@ -52,6 +52,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
 	private MastermindModeChallenger jpMastermindModeChallenger;
 	private MastermindModeDefenseur jpMastermindModeDefenseur;
+	private MastermindModeDuel jpMastermindModeDuel;
 	private BoiteDialogueParametrage jdParametrage;
 	private InputStream input;
 	private Properties prop;
@@ -257,6 +258,25 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpMastermindModeDefenseur=new MastermindModeDefenseur(nbreCasesMastermind,nbEssaisMastermind,
 						nbCouleursUtilisablesMastermind,modeDeveloppeurActive,modelMastermind);
 				jpContainer.add(jpMastermindModeDefenseur);
+				jpContainer.revalidate();
+				jpContainer.repaint();
+				jmParametres.setEnabled(false);
+
+				/*********************************************************************************************************
+				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
+				 *********************************************************************************************************/
+				initModel();
+
+			}
+		});
+		
+		jmi2ModeDuel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jpContainer.removeAll();
+				jpContainer.setBackground(Color.WHITE);
+				jpMastermindModeDuel=new MastermindModeDuel(nbreCasesMastermind,nbEssaisMastermind,
+						nbCouleursUtilisablesMastermind,modeDeveloppeurActive,modelMastermind);
+				jpContainer.add(jpMastermindModeDuel);
 				jpContainer.revalidate();
 				jpContainer.repaint();
 				jmParametres.setEnabled(false);

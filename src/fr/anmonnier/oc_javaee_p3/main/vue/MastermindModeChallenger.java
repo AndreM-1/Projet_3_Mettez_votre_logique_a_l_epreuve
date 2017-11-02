@@ -179,7 +179,6 @@ public class MastermindModeChallenger extends JPanel implements ObservateurMaste
 		this.add(jpContainerButtonCouleur);
 		this.InitialisationGrilleJeu();
 		this.add(jpContainerGrilleDeJeu);
-
 		this.add(jPanelContainerSolutionCombinaisonSecreteOrdinateur);
 
 		this.modelMastermind.addObservateurMastermind(this);
