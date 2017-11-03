@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Arrays;
 
 import javax.swing.BorderFactory;
@@ -15,6 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.MastermindControler;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonneesMastermind;
@@ -66,9 +71,14 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 	private MastermindControler controlerMastermind;
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private boolean finDePartie=false, combinaisonSecreteJoueurValide=false,miseAJourAffichageModeDuel=false,modeDeveloppeurActive;
+	private Logger logger=(Logger)LogManager.getLogger(MastermindModeDuel.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml"); 
 
 
 	public MastermindModeDuel(int nbCases, int nbEssais,int nbCouleursUtilisables,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
+		context.setConfigLocation(file.toURI());
+		logger.trace("Instanciation du jeu Mastermind en mode Duel");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -172,7 +182,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 			jpContainerButtonCouleur.add(jbCouleurNoir);
 			break;
 		default :
-			System.out.println("Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
+			logger.error("Jeu Mastermind en mode Duel - Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
 		}
 
 		jpContainerButtonCouleur.add(jbValiderCombinaisonSecreteEtPropositionJoueur);
@@ -459,9 +469,9 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 
 		jbValiderReponseJoueur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("reponseJoueurModeDuel :"+reponseJoueurModeDuel);
+				logger.debug("Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :"+reponseJoueurModeDuel);
 				calculReponseAttendue();
-				System.out.println("Reponse attendue :"+reponseAttendue);
+				logger.debug("Jeu Mastermind en mode Duel - Reponse attendue :" + reponseAttendue);
 				if(!reponseJoueurModeDuel.equals(reponseAttendue)) {
 					JOptionPane.showMessageDialog(null,"Attention : votre réponse est erronée. Veuillez saisir une autre réponse, svp.", 
 							"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
@@ -903,9 +913,8 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurNoir);
 				break;		
 			default :
-				System.out.println("Erreur de correspondance entre la combinaison secrète et les couleurs");
+				logger.error("Jeu Mastermind en mode Duel - Erreur de correspondance entre la combinaison secrète de l'ordinateur et les couleurs");
 			}
-
 			tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(tabJLabelSolutionCombinaisonSecreteOrdinateur[i]);
 		}
@@ -1031,7 +1040,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 					tabJLabelGrilleDeJeuDroite[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 					break;
 				default :
-					System.out.println("Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
+					logger.error("Jeu Mastermind en mode Duel - Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
 				}
 			}
 			for (int i=0;i<this.nbEssais;i++) {
@@ -1049,6 +1058,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 	/*On réinitialise l'IHM des grilles de jeu et des combinaisons secrètes en bas de page ainsi que toutes les variables,
 	et on regénère une nouvelle combinaison secrète pour l'ordinateur.*/
 	public void relancerPartieMastermind() {
+		logger.trace("Jeu Mastermind en mode Duel - Partie relancée");
 		//Réinitialisation de l'IHM des grilles de jeu
 		this.InitialisationGrilleJeuGauche();
 		this.InitialisationGrilleJeuDroite();

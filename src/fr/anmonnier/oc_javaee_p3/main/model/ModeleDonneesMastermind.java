@@ -1,9 +1,14 @@
 package fr.anmonnier.oc_javaee_p3.main.model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservableMastermind;
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
@@ -17,6 +22,9 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
 			propositionOrdinateurModeDuel="",reponseJoueurModeDuel="",reponseOrdinateurModeDuel="",affichage="";
 	private int modeDeJeuMastermind,nbEssaisMastermind,nbreCasesMastermind,nbCouleursUtilisablesMastermind;
+	private Logger logger=(Logger)LogManager.getLogger(ModeleDonneesMastermind.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml");
 
 	/*****************************************
 	 * Méthodes relatives au mode Challenger
@@ -81,9 +89,10 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 	 *****************************************/
 	public void setPropositionSecreteJoueurModeDefenseur(String propositionSecrete) {
 		this.propositionSecreteJoueurModeDefenseur=propositionSecrete;
-		System.out.println("Combinaison secrète joueur Modèle de données :"+this.propositionSecreteJoueurModeDefenseur);
+		context.setConfigLocation(file.toURI());
+		logger.debug("Jeu Mastermind en mode Défenseur - Combinaison secrète joueur Modèle de données :"+this.propositionSecreteJoueurModeDefenseur);
 		this.initListePossibilitees();
-		System.out.println(listePossibilitees.size());
+		logger.debug("Jeu Mastermind en mode Défenseur - Taille de la liste chaînée :"+listePossibilitees.size());
 		this.propositionOrdinateurModeDefenseur();
 		this.updateObservateurMastermind();
 	}
@@ -97,10 +106,10 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 	private void propositionOrdinateurModeDefenseur() {
 		if(reponseJoueurModeDefenseur.equals("")) {
 			propositionOrdinateurModeDefenseur=listePossibilitees.getFirst();
-			System.out.println(propositionOrdinateurModeDefenseur);
+			logger.debug("Jeu Mastermind en mode Défenseur - Proposition de l'ordinateur en mode défenseur :"+propositionOrdinateurModeDefenseur);
 		}
 		else {
-			System.out.println("Modele de données réponse du joueur :"+reponseJoueurModeDefenseur);
+			logger.debug("Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :"+reponseJoueurModeDefenseur);
 			Iterator<String> itParcoursListe=listePossibilitees.iterator();
 			String premierElementListe=this.listePossibilitees.getFirst();
 			while(itParcoursListe.hasNext()) {
@@ -143,8 +152,8 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 				}
 
 			}
-			System.out.println("Taille liste réactualisé :"+listePossibilitees.size());
-			System.out.println("Premier élément réactualisé :"+listePossibilitees.getFirst());
+			logger.debug("Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :"+listePossibilitees.size());
+			logger.debug("Jeu Mastermind en mode Défenseur - Premier élément réactualisé :"+listePossibilitees.getFirst());
 			reponseJoueurModeDefenseur="";
 			propositionOrdinateurModeDefenseur=listePossibilitees.getFirst();
 		}
@@ -156,25 +165,26 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 	 *****************************************/
 	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
 		this.propositionSecreteOrdinateurModeDuel=propositionSecrete;
-		System.out.println("Combinaison Secrète Ordinateur Modèle de données :"+this.propositionSecreteOrdinateurModeDuel);
+		context.setConfigLocation(file.toURI());
+		logger.debug("Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : "+this.propositionSecreteOrdinateurModeDuel);
 	}
 
 	public void setPropositionSecreteJoueurModeDuel(String propositionSecrete) {
 		this.propositionSecreteJoueurModeDuel=propositionSecrete;
-		System.out.println("Proposition Secrète Joueur Modèle de données :"+this.propositionSecreteJoueurModeDuel);
+		logger.debug("Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :"+this.propositionSecreteJoueurModeDuel);
 		this.initListePossibilitees();
-		System.out.println(listePossibilitees.size());
+		logger.debug("Jeu Mastermind en mode Duel - Taille de la liste chaînée :"+listePossibilitees.size());
 	}
 
 	public void setPropositionJoueurModeDuel(String propositionJoueur) {
 		int verifReponseOrdinateurModeDuel=0;
 		this.propositionJoueurModeDuel=propositionJoueur;
-		System.out.println("Proposition Joueur Modèle de données :"+this.propositionJoueurModeDuel);
+		logger.debug("Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :"+this.propositionJoueurModeDuel);
 		this.analysePropositionJoueurModeDuel();
 		affichage=reponseOrdinateurModeDuel;
-		System.out.println("reponseOrdinateurModeDuel :"+affichage);
+		logger.debug("Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :"+affichage);
 		this.updateObservateurMastermind();
-		
+
 		for(int i=0;i<this.nbreCasesMastermind;i++) {
 			if(reponseOrdinateurModeDuel.charAt(i)=='R') {
 				verifReponseOrdinateurModeDuel++;
@@ -186,7 +196,7 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 			this.updateObservateurMastermind();
 		}
 	}
-	
+
 	public void setReponseJoueurModeDuel(String reponseJoueur) {
 		this.reponseJoueurModeDuel=reponseJoueur;
 	}
@@ -234,15 +244,15 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 		}
 
 	}
-	
+
 	public void propositionOrdinateurModeDuel() {
-		
+
 		if(reponseJoueurModeDuel.equals("")) {
 			propositionOrdinateurModeDuel=listePossibilitees.getFirst();
-			System.out.println(propositionOrdinateurModeDuel);
+			logger.debug("Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :"+propositionOrdinateurModeDuel);
 		}
 		else {
-			System.out.println("Modele de données réponse du joueur :"+reponseJoueurModeDuel);
+			logger.debug("Jeu Mastermind en mode Duel - Modele de données réponse du joueur :"+reponseJoueurModeDuel);
 			Iterator<String> itParcoursListe=listePossibilitees.iterator();
 			String premierElementListe=this.listePossibilitees.getFirst();
 			while(itParcoursListe.hasNext()) {
@@ -285,8 +295,8 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 				}
 
 			}
-			System.out.println("Taille liste réactualisé :"+listePossibilitees.size());
-			System.out.println("Premier élément réactualisé :"+listePossibilitees.getFirst());
+			logger.debug("Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :"+listePossibilitees.size());
+			logger.debug("Jeu Mastermind en mode Duel - Premier élément réactualisé :"+listePossibilitees.getFirst());
 			reponseJoueurModeDuel="";
 			propositionOrdinateurModeDuel=listePossibilitees.getFirst();
 		}
@@ -323,7 +333,7 @@ public class ModeleDonneesMastermind implements ObservableMastermind  {
 			this.relancerPartieObservateurMastermind();
 		}
 	}
-	
+
 	public void initListePossibilitees() {
 		/*On crée un objet LinkedList avec l'ensemble des possibilités. Dans le cas où on a 4 cases et 6 couleurs utilisables, 
 		 l'objet LinkedList contiendra 1296 éléments. On s'assure bien que cette liste est initialisée à chaque début de partie*/

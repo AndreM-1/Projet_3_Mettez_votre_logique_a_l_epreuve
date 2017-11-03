@@ -56,14 +56,18 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 	private BoiteDialogueParametrage jdParametrage;
 	private InputStream input;
 	private Properties prop;
+	private Logger logger=(Logger)LogManager.getLogger(Fenetre.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml");  
 
 	//Valeurs nominales
 	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10,
 			nbCouleursUtilisablesMastermind=6;
 	private boolean modeDeveloppeurActive=false;
 
-
-	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind) {
+	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind) {      
+		context.setConfigLocation(file.toURI());
+		logger.trace("Instanciation de la fenêtre principale");
 		this.setTitle("Mettez votre logique à l'épreuve");
 		this.setSize(1000, 740);
 		this.setLocationRelativeTo(null);
@@ -79,6 +83,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.model.addObservateur(this);
 		this.modelMastermind=modelMastermind;
 		this.modelMastermind.addObservateurMastermind(this);
+		logger.trace("Initialisation des modèles de données");
 
 		//On récupère les données enregistrées dans le fichier config.properties
 		prop=new Properties();
@@ -106,27 +111,12 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		}
 
 		this.initMenu();
-
-		//Tests logs de données
-		Logger logger=(Logger)LogManager.getLogger(Fenetre.class);
-		LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-		File file = new File("resources/log4j2.xml");              
-		context.setConfigLocation(file.toURI());
-
-		System.out.println(file.toURI());
-		logger.trace("This is TRACE");
-		logger.debug("This is DEBUG");
-		logger.info("This is INFO");
-		logger.warn("This is WARNING");
-		logger.error("This is ERROR");
-		logger.fatal("This is FATAL");
-		LogManager.shutdown();
-
 		this.setVisible(true);
 	}
 
 
 	public void initMenu() {
+		logger.trace("Initialisation du menu");
 
 		// Définition des mnémoniques
 		jmFichier.setMnemonic('F');
@@ -191,6 +181,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.add(jpRecherchePlusMoinsModeDefenseur);
 				jpContainer.revalidate();
 				jpContainer.repaint();
+
 				jmParametres.setEnabled(false);
 
 				/**
@@ -269,7 +260,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 			}
 		});
-		
+
 		jmi2ModeDuel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jpContainer.removeAll();
@@ -295,19 +286,19 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jdParametrage=new BoiteDialogueParametrage(null,"Paramètres des Jeux",true,nbEssaisRecherchePlusMoins,
 						nbreCasesRecherchePlusMoins,nbEssaisMastermind,nbreCasesMastermind,nbCouleursUtilisablesMastermind,
 						modeDeveloppeurActive);
-				System.out.println("Nb essais RecherchePlusMoins :"+jdParametrage.getNbEssaisRecherchePlusMoins());
-				System.out.println("Nb cases RecherchePlusMoins :"+jdParametrage.getNbreCasesRecherchePlusMoins());
-				System.out.println("Nb essais Mastermind :"+jdParametrage.getNbEssaisMastermind());
-				System.out.println("Nb cases Mastermind :"+jdParametrage.getNbreCasesMastermind());
-				System.out.println("Etat du mode développeur :"+jdParametrage.getModeDeveloppeurActive());
 				nbEssaisRecherchePlusMoins=jdParametrage.getNbEssaisRecherchePlusMoins();
 				nbreCasesRecherchePlusMoins=jdParametrage.getNbreCasesRecherchePlusMoins();
 				nbEssaisMastermind=jdParametrage.getNbEssaisMastermind();
 				nbreCasesMastermind=jdParametrage.getNbreCasesMastermind();		
 				modeDeveloppeurActive=jdParametrage.getModeDeveloppeurActive();
 				nbCouleursUtilisablesMastermind=jdParametrage.getNbCouleursUtilisablesMastermind();
+				logger.debug("Menu Paramètres - Nb essais RecherchePlusMoins :"+nbEssaisRecherchePlusMoins);
+				logger.debug("Menu Paramètres - Nb cases RecherchePlusMoins :"+nbreCasesRecherchePlusMoins);
+				logger.debug("Menu Paramètres - Nb essais Mastermind :"+nbEssaisMastermind);
+				logger.debug("Menu Paramètres - Nb cases Mastermind :"+nbreCasesMastermind);
+				logger.debug("Menu Paramètres - Etat du mode développeur :"+modeDeveloppeurActive);
+				logger.debug("Menu Paramètres - Etat du mode développeur :"+nbCouleursUtilisablesMastermind);
 			}
-
 		});
 
 		jmiJeuRecherchePlusMoins.addActionListener(new ActionListener() {
@@ -321,7 +312,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				JOptionPane.showMessageDialog(null, strInstructionsJeuRecherchePlusMoins, "Instructions Recherche +/-", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		
+
 		jmiMastermind.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String strInstructionsJeuMastermind=
@@ -337,6 +328,8 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 		jmiQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				logger.trace("Fin de l'application");
+				LogManager.shutdown();
 				System.exit(0);
 			}
 		});
@@ -347,6 +340,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.model.addObservateur(this);	
 		this.modelMastermind=new ModeleDonneesMastermind();
 		this.modelMastermind.addObservateurMastermind(this);
+		logger.trace("Réinitialisation des modèles de données");
 	}
 
 	//Implémentation du pattern Observer pour le jeu RecherchePlusMoins
@@ -354,6 +348,8 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 	public void updateDuel(String affichage) {}
 
 	public void quitterApplication() {
+		logger.trace("Fin de l'application");
+		LogManager.shutdown();
 		System.exit(0);
 	}
 
@@ -368,6 +364,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
 		 ****************************************************************************************************************************/
 		jpContainer.repaint();
+		logger.trace("Retour à l'accueil");
 	}
 
 	public void relancerPartie() {}
@@ -377,6 +374,8 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 
 	public void quitterApplicationMastermind() {
+		logger.trace("Fin de l'application");
+		LogManager.shutdown();
 		System.exit(0);
 	}
 
@@ -391,6 +390,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
 		 ****************************************************************************************************************************/
 		jpContainer.repaint();
+		logger.trace("Retour à l'accueil");
 	}
 
 	public void relancerPartieMastermind() {}

@@ -16,21 +16,21 @@ public class ModeleDonnees implements Observable{
 	private int[] bornesMin, bornesMax;
 	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
 			reponseOrdinateurModeDuel="",affichage="",reponseJoueurModeDuel="",propositionOrdinateurModeDuel="";
-	
+
 	/*****************************************
 	 * Méthodes relatives au mode Challenger
 	 *****************************************/
-	
+
 	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
 		this.propositionJoueurModeChallenger=propositionJoueur;
 		this.analysePropositionJoueurModeChallenger();
 		this.updateObservateur();
 	}
-	
+
 	public void setPropositionSecreteModeChallenger(String propositionSecrete) {
 		this.propositionSecreteModeChallenger=propositionSecrete;
 	}
-	
+
 	public void analysePropositionJoueurModeChallenger() {
 		char[] tabReponse=new char [this.propositionSecreteModeChallenger.length()];
 		reponseModeChallenger="";
@@ -47,11 +47,11 @@ public class ModeleDonnees implements Observable{
 			reponseModeChallenger+=String.valueOf(tabReponse[i]);
 		}
 	}
-	
+
 	/*****************************************
 	 * Méthodes relatives au mode Défenseur
 	 *****************************************/
-	
+
 	public void setPropositionSecreteModeDefenseur(String propositionSecrete) {
 		this.propositionSecreteModeDefenseur=propositionSecrete;
 		//En cas de relance d'une partie
@@ -67,7 +67,7 @@ public class ModeleDonnees implements Observable{
 		this.propositionOrdinateurModeDefenseur();
 		this.updateObservateur();
 	}
-	
+
 	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
 		int verifReponseJoueurModeDefenseur=0;
 		compteurReponseJoueurModeDefenseur++;
@@ -78,18 +78,18 @@ public class ModeleDonnees implements Observable{
 				verifReponseJoueurModeDefenseur++;
 			}
 		}
-		
+
 		if(verifReponseJoueurModeDefenseur!=propositionSecreteModeDefenseur.length()&&compteurReponseJoueurModeDefenseur!=nbEssais) {
 			this.propositionOrdinateurModeDefenseur();
 			this.updateObservateur();
 		}
-		
+
 	}
-	
+
 	public void propositionOrdinateurModeDefenseur() {
 		int tabAnalyse[]=new int[this.propositionSecreteModeDefenseur.length()];
 		int tabReponse[]=new int[this.propositionSecreteModeDefenseur.length()];
-		
+
 		if (reponseJoueurModeDefenseur.equals("")){
 			for (int i=0;i<propositionSecreteModeDefenseur.length();i++) {
 				propositionOrdinateurModeDefenseur+=String.valueOf((int)(Math.random()*10));
@@ -109,26 +109,26 @@ public class ModeleDonnees implements Observable{
 					else {
 						tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2;
 					}
-							
+
 				}
 				else {
 					tabReponse[i]=tabAnalyse[i];
 				}	
 			}
-			
+
 			propositionOrdinateurModeDefenseur="";
-			
+
 			for(int i=0;i<this.propositionSecreteModeDefenseur.length();i++) {
 				propositionOrdinateurModeDefenseur+=String.valueOf(tabReponse[i]);
 			}
 			reponseJoueurModeDefenseur="";
 		}
 	}
-	
+
 	/*****************************************
 	 * Méthodes relatives au mode Duel
 	 *****************************************/
-	
+
 	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
 		this.propositionSecreteOrdinateurModeDuel=propositionSecrete;
 		bornesMin=new int[propositionSecreteOrdinateurModeDuel.length()];
@@ -137,14 +137,12 @@ public class ModeleDonnees implements Observable{
 			bornesMin[i]=0;
 			bornesMax[i]=9;
 		}
-		System.out.println("COMBINAISON SECRETE ORDINATEUR MODE DUEL - Modèle Données:"+this.propositionSecreteOrdinateurModeDuel);
 	}
-	
+
 	public void setPropositionSecreteJoueurModeDuel(String propositionSecrete) {
 		this.propositionSecreteJoueurModeDuel=propositionSecrete;
-		System.out.println("COMBINAISON SECRETE JOUEUR MODE DUEL - Modèle Données:"+this.propositionSecreteJoueurModeDuel);
 	}
-	
+
 	public void setPropositionJoueurModeDuel(String propositionJoueur) {
 		int verifReponseOrdinateurModeDuel=0;
 		this.propositionJoueurModeDuel=propositionJoueur;
@@ -153,7 +151,7 @@ public class ModeleDonnees implements Observable{
 		this.analysePropositionJoueurModeDuel();
 		affichage=reponseOrdinateurModeDuel;
 		this.updateObservateur();
-		
+
 		for(int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
 			if(reponseOrdinateurModeDuel.charAt(i)=='=') {
 				verifReponseOrdinateurModeDuel++;
@@ -165,13 +163,13 @@ public class ModeleDonnees implements Observable{
 			this.updateObservateur();
 		}
 	}
-	
+
 	public void setReponseJoueurModeDuel(String reponseJoueur) {
 		this.reponseJoueurModeDuel=reponseJoueur;
 		affichage=this.reponseJoueurModeDuel;
 		this.updateObservateur();
 	}
-	
+
 	public void analysePropositionJoueurModeDuel() {
 		char[] tabReponse=new char [this.propositionSecreteOrdinateurModeDuel.length()];
 		reponseOrdinateurModeDuel="";
@@ -188,11 +186,11 @@ public class ModeleDonnees implements Observable{
 			reponseOrdinateurModeDuel+=String.valueOf(tabReponse[i]);
 		}
 	}
-	
+
 	public void propositionOrdinateurModeDuel() {
 		int tabAnalyse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
 		int tabReponse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
-		
+
 		if (reponseJoueurModeDuel.equals("")){
 			for (int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
 				propositionOrdinateurModeDuel+=String.valueOf((int)(Math.random()*10));
@@ -204,7 +202,7 @@ public class ModeleDonnees implements Observable{
 				if(reponseJoueurModeDuel.charAt(i)=='-') {
 					bornesMax[i]=tabAnalyse[i]-1;
 					tabReponse[i]=(int)(bornesMin[i]+bornesMax[i])/2;
-						
+
 				}
 				else if(reponseJoueurModeDuel.charAt(i)=='+') {
 					bornesMin[i]=tabAnalyse[i]+1;
@@ -218,29 +216,29 @@ public class ModeleDonnees implements Observable{
 					tabReponse[i]=tabAnalyse[i];
 				}	
 			}
-			
+
 			propositionOrdinateurModeDuel="";
-			
+
 			for(int i=0;i<propositionSecreteOrdinateurModeDuel.length();i++) {
 				propositionOrdinateurModeDuel+=String.valueOf(tabReponse[i]);
 			}
 			reponseJoueurModeDuel="";
 		}
 	}
-	
-	
+
+
 	/**********************************************
 	 * Méthodes communes à tous les modes de jeu
 	 *********************************************/
-	
+
 	public void setModeDeJeu(int modeDeJeu) {
 		this.modeDeJeu=modeDeJeu;
 	}
-	
+
 	public void setNbEssais(int nbEssais) {
 		this.nbEssais=nbEssais;
 	}
-	
+
 	public void setChoixFinDePartie(String choixFinDePartie) {
 		this.choixFinDePartie=choixFinDePartie;
 		if(this.choixFinDePartie.equals("Quitter l'application"))
@@ -251,8 +249,8 @@ public class ModeleDonnees implements Observable{
 			this.relancerPartieObservateur();
 		}
 	}
-	
-	
+
+
 	/**********************************
 	 * Mise à jour des observateurs
 	 **********************************/
@@ -272,7 +270,7 @@ public class ModeleDonnees implements Observable{
 				obs.updateDuel(affichage);
 		}
 	}
-	
+
 
 	public void delObservateur() {
 		listeObservateur=new ArrayList<Observateur>();
@@ -282,14 +280,14 @@ public class ModeleDonnees implements Observable{
 		for (Observateur obs : listeObservateur) {
 			obs.quitterApplication();
 		}
-		
+
 	}
 
 	public void acceuilObservateur() {
 		for (Observateur obs : listeObservateur) {
 			obs.acceuilObservateur();
 		}
-		
+
 	}
 	public void relancerPartieObservateur() {
 		for (Observateur obs : listeObservateur) {

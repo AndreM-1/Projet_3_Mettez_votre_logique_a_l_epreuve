@@ -8,9 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.text.ParseException;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -19,6 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.text.MaskFormatter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+
 import javax.swing.table.AbstractTableModel;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.RecherchePlusMoinsControler;
@@ -50,8 +55,13 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private LabelRenderer labelRenderer=new LabelRenderer();
 	private boolean finDePartie=false,modeDeveloppeurActive;
+	private Logger logger=(Logger)LogManager.getLogger(RecherchePlusMoinsModeDuel.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml"); 
 
 	public RecherchePlusMoinsModeDuel(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
+		context.setConfigLocation(file.toURI());
+		logger.trace("Instanciation du jeu RecherchePlusMoins en mode Duel");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -162,9 +172,11 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfReponseJoueur.setPreferredSize(new Dimension(100,20));
 				break;
 			default:
-				System.out.println("Erreur d'initialisation des JFormattedTextField");
+				logger.error("Jeu RecherchePlusMoins en mode Duel - Erreur d'initialisation des JFormattedTextField");
 			}	
-		} catch (ParseException e) {e.printStackTrace();}
+		} catch (ParseException e) {
+			logger.error("Jeu RecherchePlusMoins en mode Duel -"+e.getMessage());
+		}
 
 		jftfCombinaisonSecreteJoueur.setFont(police);
 		jftfPropositionJoueur.setFont(police);	
@@ -215,7 +227,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		jpContainerPropositionReponseJoueur.add(jlReponseJoueur);
 		jpContainerPropositionReponseJoueur.add(jftfReponseJoueur);
 		jpContainerPropositionReponseJoueur.add(jbValiderReponseJoueur);
-		
+
 		jpContainerLegendes.setBackground(Color.WHITE);
 		jpContainerLegendes.add(jlLegendeJoueur);
 		jpContainerLegendes.add(jlLegendeOrdinateur);
@@ -225,7 +237,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		this.add(jpContainerPropositionReponseJoueur);
 		this.add(jpContainerTableau);
 		this.add(jpContainerLegendes);
-		
+
 		// Définition des listeners
 
 		//Les boutons Valider ne doivent être accessibles que lorsque les JFormattedTextField associées sont renseignés
@@ -412,6 +424,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 	}
 
 	public void relancerPartie() {
+		logger.trace("Jeu RecherchePlusMoins en mode Duel - Partie relancée");
 		for(int i=0;i<=rowIndex;i++) {
 			for (int j=0;j<2;j++) {
 				((AbstractTableModel)jtTableau.getModel()).setValueAt("", i, j);
@@ -455,6 +468,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 			nbreAleatoire=(int)(Math.random()*(max-min));
 			combinaisonSecreteOrdinateur+=String.valueOf(nbreAleatoire);	
 		}
+		logger.debug("Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:"+combinaisonSecreteOrdinateur);
 		controler.setModeDeJeu(2);
 		controler.setNbEssais(nbEssais);
 		controler.setPropositionSecreteOrdinateurModeDuel(combinaisonSecreteOrdinateur);
@@ -488,13 +502,15 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		if(verifCombinaisonSecrete!=nbreCases&&rowIndex==2*nbEssais-1) {
 			JOptionPane.showMessageDialog(null, "Match nul. Le nombre d'essai maximal a été dépassé.",
 					"Fin de Partie",JOptionPane.INFORMATION_MESSAGE);	
+			logger.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 
-		//En cas de victoire
+		//En cas de défaîte ou de victoire 
 		if(verifCombinaisonSecrete==nbreCases) {
+			logger.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());

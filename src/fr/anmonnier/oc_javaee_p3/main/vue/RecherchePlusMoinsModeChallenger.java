@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -18,6 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.text.MaskFormatter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+
 import javax.swing.table.AbstractTableModel;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.RecherchePlusMoinsControler;
@@ -43,8 +49,13 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 	private RecherchePlusMoinsControler controler;
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private boolean modeDeveloppeurActive;
+	private Logger logger=(Logger)LogManager.getLogger(RecherchePlusMoinsModeChallenger.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml"); 
 
 	public RecherchePlusMoinsModeChallenger(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
+		context.setConfigLocation(file.toURI());
+		logger.trace("Instanciation du jeu RecherchePlusMoins en mode Challenger");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -106,11 +117,12 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 				jftfPropositionJoueur.setPreferredSize(new Dimension(80, 20));
 				break;
 			default:
-				System.out.println("Erreur d'initialisation pour le JFormattedTextField");
+				logger.error("Jeu RecherchePlusMoins en mode Challenger - Erreur d'initialisation pour le JFormattedTextField");
 			}
 
-
-		} catch (ParseException e) {e.printStackTrace();}
+		} catch (ParseException e) {
+			logger.error("Jeu RecherchePlusMoins en mode Challenger -"+e.getMessage());
+		}
 
 		jftfPropositionJoueur.setFont(police);
 
@@ -206,6 +218,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 	public void updateDuel(String affichage) {}
 
 	public void relancerPartie() {
+		logger.trace("Jeu RecherchePlusMoins en mode Challenger - Partie relancée");
 		for(int i=0;i<rowIndex;i++) {
 			for (int j=0;j<2;j++) {
 				((AbstractTableModel)jtTableau.getModel()).setValueAt("", i, j);
@@ -235,11 +248,9 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 			nbreAleatoire=(int)(Math.random()*(max-min));
 			combinaisonSecrete+=String.valueOf(nbreAleatoire);	
 		}
+		logger.debug("Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:"+combinaisonSecrete);
 		controler.setModeDeJeu(0);
 		controler.setPropositionSecreteModeChallenger(combinaisonSecrete);
-		System.out.println("COMBINAISON SECRETE :"+combinaisonSecrete);
-
-
 	}
 
 	//Gestion de la fin de la partie
@@ -268,6 +279,7 @@ public class RecherchePlusMoinsModeChallenger extends JPanel implements Observat
 
 		//En cas de défaîte ou de victoire
 		if(rowIndex==nbEssais||verifCombinaisonSecrete==nbreCases) {
+			logger.trace("Jeu RecherchePlusMoins en mode Challenger - Fin de partie");
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}

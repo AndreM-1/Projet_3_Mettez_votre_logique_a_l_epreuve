@@ -6,10 +6,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -20,6 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.text.MaskFormatter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+
 import javax.swing.table.AbstractTableModel;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.RecherchePlusMoinsControler;
@@ -45,8 +49,13 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private boolean finDePartie=false;
 	private String propositionSecreteModeDefenseur="",propositionOrdinateurModeDefenseur="",reponseAttendue="";
+	private Logger logger=(Logger)LogManager.getLogger(RecherchePlusMoinsModeDefenseur.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml"); 
 
 	public RecherchePlusMoinsModeDefenseur(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
+		context.setConfigLocation(file.toURI());
+		logger.trace("Instanciation du jeu RecherchePlusMoins en mode Défenseur");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -123,10 +132,12 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 				jftfReponseJoueur.setPreferredSize(new Dimension(100,20));
 				break;
 			default:
-				System.out.println("Erreur d'initialisation des JFormattedTextField");
+				logger.error("Jeu RecherchePlusMoins en mode Défenseur - Erreur d'initialisation des JFormattedTextField");
 			}
 
-		} catch (ParseException e) {e.printStackTrace();}
+		} catch (ParseException e) {
+			logger.error("Jeu RecherchePlusMoins en mode Défenseur -"+e.getMessage());
+		}
 
 		jftfCombinaisonSecreteJoueur.setFont(police);	
 		jftfReponseJoueur.setFont(police);	
@@ -309,6 +320,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 	public void updateDuel(String affichage) {}
 
 	public void relancerPartie() {
+		logger.trace("Jeu RecherchePlusMoins en mode Défenseur - Partie relancée");
 		for(int i=0;i<rowIndex;i++) {
 			for (int j=0;j<2;j++) {
 				((AbstractTableModel)jtTableau.getModel()).setValueAt("", i, j);
@@ -359,6 +371,7 @@ public class RecherchePlusMoinsModeDefenseur extends JPanel implements Observate
 
 		//En cas de défaîte ou de victoire
 		if(rowIndex==nbEssais||verifCombinaisonSecrete==nbreCases) {
+			logger.trace("Jeu RecherchePlusMoins en mode Défenseur - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());

@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Arrays;
 
 import javax.swing.BorderFactory;
@@ -14,6 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.MastermindControler;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonneesMastermind;
@@ -58,9 +63,14 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 	private MastermindControler controlerMastermind;
 	private BoiteDialogueFinDePartie jdFinDePartie;
 	private boolean finDePartie=false;
+	private Logger logger=(Logger)LogManager.getLogger(MastermindModeDefenseur.class);
+	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
+	private File file = new File("resources/log4j2.xml"); 
 
 
 	public MastermindModeDefenseur(int nbCases, int nbEssais,int nbCouleursUtilisables,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
+		context.setConfigLocation(file.toURI());
+		logger.trace("Instanciation du jeu Mastermind en mode Défenseur");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -93,8 +103,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jbValiderCombinaisonSecrete.setEnabled(false);
 		jpContainerButtonCouleur.setPreferredSize(new Dimension(1000,40));
 		jpContainerButtonCouleur.setBackground(Color.WHITE);
-		
-		
+
 		switch(this.nbCouleursUtilisables) {
 		case 4 :
 			jpContainerButtonCouleur.add(jbCouleurBleu);
@@ -160,9 +169,9 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 			jpContainerButtonCouleur.add(jbCouleurNoir);
 			break;
 		default :
-			System.out.println("Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
+			logger.error("Jeu Mastermind en mode Défenseur - Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
 		}
-		
+
 		jpContainerButtonCouleur.add(jbValiderCombinaisonSecrete);
 		jpContainerButtonCouleur.add(jbEffacerCombinaisonSecrete);
 
@@ -247,35 +256,35 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				colonneCombinaisonSecrete++;
 			}	
 		});
-		
+
 		jbCouleurGris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurGris,"6");
 				colonneCombinaisonSecrete++;
 			}	
 		});
-		
+
 		jbCouleurBleuFonce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleuFonce,"7");
 				colonneCombinaisonSecrete++;
 			}	
 		});
-		
+
 		jbCouleurMarron.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurMarron,"8");
 				colonneCombinaisonSecrete++;
 			}	
 		});
-		
+
 		jbCouleurNoir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurNoir,"9");
 				colonneCombinaisonSecrete++;
 			}	
 		});
-		
+
 		jbValiderCombinaisonSecrete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				jbCouleurBleu.setEnabled(false);
@@ -324,9 +333,9 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 		jbValiderReponseJoueur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("reponseJoueurModeDefenseur :"+reponseJoueurModeDefenseur);
+				logger.debug("Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :"+reponseJoueurModeDefenseur);
 				calculReponseAttendue();
-				System.out.println("Reponse attendue :"+reponseAttendue);
+				logger.debug("Jeu Mastermind en mode Défenseur - Reponse attendue :"+reponseAttendue);
 				if(!reponseJoueurModeDefenseur.equals(reponseAttendue)) {
 					JOptionPane.showMessageDialog(null,"Attention : votre réponse est erronée. Veuillez saisir une autre réponse, svp.", 
 							"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
@@ -519,7 +528,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				break;
 			default :
-				System.out.println("Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
+				logger.error("Jeu Mastermind en mode Défenseur - Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
 			}
 		}
 		for (int i=0;i<this.nbEssais;i++) {
@@ -534,6 +543,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 	//On réinitialise l'IHM de la grille de jeu et de la combinaison secrète en bas de page ainsi que toutes les variables.
 	public void relancerPartieMastermind() {
+		logger.trace("Jeu Mastermind en mode Défenseur - Partie relancée");
 		this.InitialisationGrilleJeu();
 		jPanelContainerSolutionCombinaisonSecreteJoueur.removeAll();
 		jPanelContainerSolutionCombinaisonSecreteJoueur.add(jlSolution);
@@ -597,11 +607,11 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 		//En cas de défaîte ou de victoire
 		if (ligne==nbEssais||verifCombinaisonSecrete==nbreCases) {
+			logger.trace("Jeu Mastermind en mode Défenseur - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controlerMastermind.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
-
 	}
 
 	private void effacerReponseJoueur() {

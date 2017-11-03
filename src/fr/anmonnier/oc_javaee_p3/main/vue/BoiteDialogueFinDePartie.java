@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 public class BoiteDialogueFinDePartie extends JDialog {
-	
+
 	private static final long serialVersionUID = 1L;
 	private String choixFinDePartie= "";
 	private JRadioButton jrbChoixRejouer=new JRadioButton("Rejouer au même jeu"),
@@ -33,27 +33,27 @@ public class BoiteDialogueFinDePartie extends JDialog {
 		this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		this.initComponent();
 		this.showDialog(true);
-		
+
 	}
 
 	private void initComponent() {
-		
+
 		bgChoix.add(jrbChoixRejouer);
 		bgChoix.add(jrbRetourPageAccueil);
 		bgChoix.add(jrbQuitterApplication);
-		
+
 		jrbChoixRejouer.setSelected(true);
-		
+
 		jpContainer.add(jlMessageInformatif);
 		jpContainer.add(jrbChoixRejouer);
 		jpContainer.add(jrbRetourPageAccueil);
 		jpContainer.add(jrbQuitterApplication);
 		jpButton.add(jbOk);
-		
-		
+
+
 		this.getContentPane().add(jpContainer,BorderLayout.CENTER);
 		this.getContentPane().add(jpButton,BorderLayout.SOUTH);
-		
+
 		//Définition des listeners
 		jbOk.addActionListener(new ActionListener() {
 			String strChoix="";
@@ -71,21 +71,18 @@ public class BoiteDialogueFinDePartie extends JDialog {
 				showDialog(false);	
 			}	
 		});
-		
+
 	}
-	
+
 	private void showDialog(boolean affichage) {
 		this.setVisible(affichage);
 	}
-	
+
 	public void setChoixFinDePartie(String choixFinDePartie) {
 		this.choixFinDePartie=choixFinDePartie;
 	}
-	
+
 	public String getChoixFinDePartie() {
 		return this.choixFinDePartie;
 	}
-	
-	
-
 }
