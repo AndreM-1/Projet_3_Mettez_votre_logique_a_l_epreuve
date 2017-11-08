@@ -19,33 +19,130 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/***********************************************************************************************************************
+ * Classe relative à la boite de dialogue permettant d'accéder aux paramètres des jeux RecherchePlusMoins et Mastermind
+ * tels que le nombre d'essais, le nombre de cases et l'option mode développeur pour les 2 jeux, et également le nombre
+ * de couleurs utilisables pour le Mastermind.
+ * @author André Monnier
+ ***********************************************************************************************************************/
 public class BoiteDialogueParametrage extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel jpContainer=new JPanel(),jpContainerRecherchePlusMoins=new JPanel(), jpContainerMastermind=new JPanel(),
-			jpContainerModeDeveloppeur=new JPanel(),jpContainerButton=new JPanel();
+
+	/**
+	 * JPanel principal de la classe.
+	 */
+	private JPanel jpContainer=new JPanel();
+
+	/**
+	 * JPanel contenant les composants relatifs aux paramètres du jeu RecherchePlusMoins.
+	 */
+	private JPanel jpContainerRecherchePlusMoins=new JPanel();
+
+	/**
+	 * JPanel contenant les composants relatifs aux paramètres du jeu Mastermind.
+	 */
+	private JPanel jpContainerMastermind=new JPanel();
+
+	/**
+	 * JPanel contenant le composant relatif au mode développeur commun aux jeux RecherchePlusMoins et Mastermind.
+	 */
+	private JPanel jpContainerModeDeveloppeur=new JPanel();
+
+	/**
+	 * JPanel contenant les JButton de validation ou d'annulation.
+	 */
+	private JPanel jpContainerButton=new JPanel();
+
+	/**
+	 * JLabel de type informatif.
+	 */
 	private JLabel jlNbEssaisRecherchePlusMoins=new JLabel("Nombre d'essais :"),jlNbCasesRecherchePlusMoins=new JLabel("Nombre de cases :"),
 			jlNbEssaisMastermind=new JLabel("Nombre d'essais :"),jlNbCasesMastermind=new JLabel("Nombre de cases :"),
 			jlNbCouleursUtilisablesMastermind=new JLabel("Nombre de couleurs utilisables :");
+
+	/**
+	 * JComboBox contenant une plage de valeurs pour un paramètre donné.
+	 */
 	private JComboBox jcbNbEssaisRecherchePlusMoins=new JComboBox(),jcbNbCasesRecherchePlusMoins=new JComboBox(),
 			jcbNbEssaisMastermind=new JComboBox(),jcbNbCasesMastermind=new JComboBox(),
 			jcbNbCouleursUtilisablesMastermind=new JComboBox();
+	/**
+	 * JCheckBox permettant de sélectionner le mode développeur.
+	 */
 	private JCheckBox jcbModeDeveloppeur=new JCheckBox("Mode développeur");
-	private JButton jbOK=new JButton("OK"), jbAnnuler=new JButton("Annuler");
+
+	/**
+	 * JButton de validation.
+	 */
+	private JButton jbOK=new JButton("OK");
+
+	/**
+	 * JButton d'annulation.
+	 */
+	private JButton jbAnnuler=new JButton("Annuler");
+
+	/**
+	 * Objet permettant de charger le fichier resources/config.properties et également d'enregistrer dans ce fichier.
+	 */
 	private Properties prop;
+
+	/**
+	 * Flux d'entrée permettant de lire le fichier resources/config.properties.
+	 */
 	private InputStream input;
+
+	/**
+	 * Flux de sortie permettant d'écrire dans le fichier resources/config.properties.
+	 */
 	private OutputStream output;
+
+	/**
+	 * Variable de type chaine de caractères permettant de manipuler le fichier resources/config.properties.
+	 */
 	private String strNbEssaisRecherchePlusMoins="",strNbCasesRecherchePlusMoins="",strNbEssaisMastermind="",
 			strNbCasesMastermind="",strNbCouleursUtilisablesMastermind="";
+
+	/**
+	 * Variable de type tableau de chaine de caractères permettant de manipuler le fichier resources/config.properties.
+	 */
 	private String [] tabNbEssaisRecherchePlusMoins, tabNbCasesRecherchePlusMoins,tabNbEssaisMastermind, 
-			tabNbCasesMastermind,tabNbCouleursUtilisablesMastermind;
+	tabNbCasesMastermind,tabNbCouleursUtilisablesMastermind;
+
+	/**
+	 * Nombre de valeurs possibles dans le fichier resources/config.properties pour le paramètre correspondant.
+	 */
 	private int choixNombreEssaisFichierConfigRecherchePlusMoins=4, choixNombreCasesFichierConfigRecherchePlusMoins=7,
 			choixNombreCouleursUtilisablesFichierConfig=7;
-	private int nbreCasesRecherchePlusMoins, nbEssaisRecherchePlusMoins,nbreCasesMastermind,nbEssaisMastermind,
-			nbCouleursUtilisablesMastermind;
+
+	/**
+	 * Paramètre du jeu RecherchePlusMoins.
+	 */
+	private int nbreCasesRecherchePlusMoins, nbEssaisRecherchePlusMoins;
+
+	/**
+	 * Paramètre du jeu Mastermind.
+	 */
+	private int nbreCasesMastermind,nbEssaisMastermind,nbCouleursUtilisablesMastermind;
+
+	/**
+	 * Paramètre relatif aux jeux RecherchePlusMoins et Mastermind. Par défaut, le mode développeur est désactivé.
+	 */
 	private boolean modeDeveloppeurActive;
 
-
+	/**
+	 * Constructeur de la classe BoiteDialogueParametrage.
+	 * @param parent Composant parent. Cette variable sera null.
+	 * @param title Titre de la boite de dialogue.
+	 * @param modal Modalité de la boite de dialogue. On optera pour une boite de dialogue modale.
+	 * @param nbEssaisRecherchePlusMoins Paramètre du jeu RecherchePlusMoins.
+	 * @param nbreCasesRecherchePlusMoins Paramètre du jeu RecherchePlusMoins.
+	 * @param nbEssaisMastermind Paramètre du jeu Mastermind.
+	 * @param nbreCasesMastermind Paramètre du jeu Mastermind.
+	 * @param nbCouleursUtilisablesMastermind Paramètre du jeu Mastermind.
+	 * @param modeDeveloppeurActive Paramètre relatif aux jeux RecherchePlusMoins et Mastermind.
+	 * 		  Par défaut, le mode développeur est désactivé.
+	 */
 	public BoiteDialogueParametrage(JFrame parent, String title, boolean modal, int nbEssaisRecherchePlusMoins,
 			int nbreCasesRecherchePlusMoins,int nbEssaisMastermind,int nbreCasesMastermind,int nbCouleursUtilisablesMastermind,
 			boolean modeDeveloppeurActive){
@@ -64,6 +161,11 @@ public class BoiteDialogueParametrage extends JDialog {
 		this.showDialog(true);
 	}
 
+	/**
+	 * Méthode permettant de réaliser l'interface graphique de la boite de dialogue mais également de lire
+	 * les données du fichier resources/config.properties et d'enregistrer les paramètres souhaités dans le
+	 * même fichier.
+	 */
 	private void initComponent() {
 
 		//Mise en place de l'interface graphique
@@ -90,7 +192,7 @@ public class BoiteDialogueParametrage extends JDialog {
 		jpContainerButton.add(jbOK);
 		jpContainerButton.add(jbAnnuler);
 
-		jpContainer.setPreferredSize(new Dimension(600,300));
+		jpContainer.setPreferredSize(new Dimension(600,290));
 		jpContainer.add(jpContainerRecherchePlusMoins);
 		jpContainer.add(jpContainerMastermind);
 		jpContainer.add(jpContainerModeDeveloppeur);
@@ -116,7 +218,7 @@ public class BoiteDialogueParametrage extends JDialog {
 			tabNbCasesMastermind=strNbCasesMastermind.split(",");
 			strNbCouleursUtilisablesMastermind=prop.getProperty("param.nbCouleursUtilisablesMastermind");
 			tabNbCouleursUtilisablesMastermind=strNbCouleursUtilisablesMastermind.split(",");
-			
+
 			for (int i=0;i<choixNombreEssaisFichierConfigRecherchePlusMoins;i++) {
 				jcbNbEssaisRecherchePlusMoins.addItem(tabNbEssaisRecherchePlusMoins[i]);
 				if(i<choixNombreEssaisFichierConfigRecherchePlusMoins-1)
@@ -128,7 +230,7 @@ public class BoiteDialogueParametrage extends JDialog {
 				if(i<3)
 					jcbNbCasesMastermind.addItem(tabNbCasesMastermind[i]);
 			}
-			
+
 			for (int i=0;i<choixNombreCouleursUtilisablesFichierConfig;i++) {
 				jcbNbCouleursUtilisablesMastermind.addItem(tabNbCouleursUtilisablesMastermind[i]);
 			}
@@ -182,7 +284,7 @@ public class BoiteDialogueParametrage extends JDialog {
 					nbreCasesMastermind=Integer.valueOf((String)jcbNbCasesMastermind.getSelectedItem());
 					nbEssaisMastermind=Integer.valueOf((String)jcbNbEssaisMastermind.getSelectedItem());
 					nbCouleursUtilisablesMastermind=Integer.valueOf((String)jcbNbCouleursUtilisablesMastermind.getSelectedItem());
-					
+
 					prop.setProperty("param.nbreCasesActifMastermind", (String)jcbNbCasesMastermind.getSelectedItem());
 					prop.setProperty("param.nbEssaisActifMastermind", (String)jcbNbEssaisMastermind.getSelectedItem());
 					prop.setProperty("param.nbCouleursUtilisablesActifMastermind",(String)jcbNbCouleursUtilisablesMastermind.getSelectedItem());
@@ -221,36 +323,62 @@ public class BoiteDialogueParametrage extends JDialog {
 			}
 
 		});
-
 	}
 
+	/**
+	 * Méthode permettant de rendre visible la boite de dialogue.
+	 * @param affichage Variable de type booléenne permettant d'indiquer
+	 * si la boite de dialogue doit être visible ou non.
+	 */
 	private void showDialog(boolean affichage) {
 		this.setVisible(affichage);
 	}
 
-	//Accesseurs
+	/**
+	 * Accesseur permettant de récupérer le nombre de cases pour le jeu RecherchePlusMoins.
+	 * @return Le nombre de cases pour le jeu RecherchePlusMoins
+	 */
 	public int getNbreCasesRecherchePlusMoins() {
 		return nbreCasesRecherchePlusMoins;
 	}
 
+	/**
+	 * Accesseur permettant de récupérer le nombre d'essais pour le jeu RecherchePlusMoins.
+	 * @return Le nombre d'essais pour le jeu RecherchePlusMoins.
+	 */
 	public int getNbEssaisRecherchePlusMoins() {
 		return nbEssaisRecherchePlusMoins;
 	}
 
+	/**
+	 * Accesseur permettant de récupérer le nombre de cases pour le jeu Mastermind.
+	 * @return Le nombre de cases pour le jeu Mastermind.
+	 */
 	public int getNbreCasesMastermind() {
 		return nbreCasesMastermind;
 	}
 
+	/**
+	 * Accesseur permettant de récupérer le nombre d'essais pour le jeu Mastermind.
+	 * @return Le nombre d'essais pour le jeu Mastermind.
+	 */
 	public int getNbEssaisMastermind() {
 		return nbEssaisMastermind;
 	}
-	
+
+	/**
+	 * Accesseur permettant de récupérer le nombre de couleurs utilisables pour le jeu Mastermind.
+	 * @return Le nombre de couleurs utilisables pour le jeu Mastermind.
+	 */
 	public int getNbCouleursUtilisablesMastermind(){
 		return nbCouleursUtilisablesMastermind;
 	}
 
+	/**
+	 * Accesseur permettant de récupérer la variable indiquant si le mode développeur est activé ou non.
+	 * @return La variable indiquant si le mode développeur est activé ou non.
+	 */
 	public boolean getModeDeveloppeurActive() {
 		return modeDeveloppeurActive;
 	}
-
 }

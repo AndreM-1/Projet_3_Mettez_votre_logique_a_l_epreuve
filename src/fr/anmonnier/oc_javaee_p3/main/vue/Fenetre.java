@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,50 +23,147 @@ import javax.swing.KeyStroke;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonneesMastermind;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 
+/************************************************************************************************************
+ * La classe Fenetre est la fenêtre principale de l'application. Elle correspond à la page d'accueil du jeu.
+ * Elle est composée d'une barre de menu permettant d'accéder aux jeux RecherchePlusMoins et Mastermind
+ * dans les modes Challenger, Défenseur et Duel, mais également aux paramètres de jeu et aux instructions.
+ * Elle implémente les interfaces Observateur et ObservateurMastermind.
+ * @author André Monnier
+ * @see Observateur
+ * @see ObservateurMastermind
+ ************************************************************************************************************/
 public class Fenetre extends JFrame implements Observateur,ObservateurMastermind {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * JPanel principal de la classe.
+	 */
 	private JPanel jpContainer = new JPanel();
+
+	/**
+	 * Image de la page d'accueil.
+	 */
 	private JLabel imageJeu = new JLabel(new ImageIcon("resources/Mastermind.jpg"));
+
+	/**
+	 * Barre de menu.
+	 */
 	private JMenuBar jmbMenuBar = new JMenuBar();
-	private JMenu jmFichier = new JMenu("Fichier"), jmInstructions = new JMenu("Instructions");
-	private JMenu jmJeuRecherchePlusMoins = new JMenu("Recherche +/-"), jmJeuMastermind = new JMenu("Mastermind"),
+
+	/**
+	 * Elément de la barre de menu.
+	 */
+	private JMenu jmFichier = new JMenu("Fichier"), jmInstructions = new JMenu("Instructions"),
+			jmJeuRecherchePlusMoins = new JMenu("Recherche +/-"), jmJeuMastermind = new JMenu("Mastermind"),
 			jmParametres=new JMenu("Paramètres");
+	/**
+	 * Champ permettant d'accéder à la fonctionnalité correspondante de l'application.
+	 */
 	private JMenuItem jmiModeChallenger=new JMenuItem("Mode Challenger"), jmiModeDefenseur=new JMenuItem("Mode Défenseur"),
 			jmiModeDuel=new JMenuItem("Mode Duel"),jmi2ModeChallenger=new JMenuItem("Mode Challenger"), 
 			jmi2ModeDefenseur=new JMenuItem("Mode Défenseur"),jmi2ModeDuel=new JMenuItem("Mode Duel"),
 			jmiQuitter = new JMenuItem("Quitter"), jmiJeuRecherchePlusMoins = new JMenuItem("Recherche +/-"),
 			jmiMastermind = new JMenuItem("Mastermind"),jmiParametres=new JMenuItem("Paramètres");
+	/**
+	 * Modéle de données relatif au jeu RecherchePlusMoins.
+	 * @see ModeleDonnees
+	 */
 	private ModeleDonnees model;
+	
+	/**
+	 * Modéle de données relatif au jeu Mastermind.
+	 * @see ModeleDonneesMastermind
+	 */
 	private ModeleDonneesMastermind modelMastermind;
+	
+	/**
+	 * Objet lié au jeu correspondant.
+	 * @see RecherchePlusMoinsModeChallenger
+	 */
 	private RecherchePlusMoinsModeChallenger jpRecherchePlusMoinsModeChallenger;
+	
+	/**
+	 * Objet lié au jeu correspondant.
+	 * @see RecherchePlusMoinsModeDefenseur
+	 */
 	private RecherchePlusMoinsModeDefenseur jpRecherchePlusMoinsModeDefenseur;
+	
+	/**
+	 * Objet lié au jeu correspondant.
+	 * @see RecherchePlusMoinsModeDuel
+	 */
 	private RecherchePlusMoinsModeDuel jpRecherchePlusMoinsModeDuel;
+	
+	/**
+	 * Objet lié au jeu correspondant.
+	 * @see MastermindModeChallenger
+	 */
 	private MastermindModeChallenger jpMastermindModeChallenger;
+	
+	/**
+	 * Objet lié au jeu correspondant.
+	 * @see MastermindModeDefenseur
+	 */
 	private MastermindModeDefenseur jpMastermindModeDefenseur;
+	
+	/**
+	 * Objet lié au jeu correspondant.
+	 * @see MastermindModeDuel
+	 */
 	private MastermindModeDuel jpMastermindModeDuel;
+	
+	/**
+	 * Boite de dialogue permettant de changer les paramètres du jeu.
+	 * @see BoiteDialogueParametrage
+	 */
 	private BoiteDialogueParametrage jdParametrage;
+	
+	/**
+	 * Flux d'entrée permettant de lire le fichier resources/config.properties.
+	 */
 	private InputStream input;
+	
+	/**
+	 * Objet permettant de charger le fichier resources/config.properties.
+	 */
 	private Properties prop;
-	private Logger logger=(Logger)LogManager.getLogger(Fenetre.class);
-	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-	private File file = new File("resources/log4j2.xml");  
+	
+	/**
+	 * Variable permettant la gestion des logs d'erreurs.
+	 */
+	private static final Logger LOGGER=LogManager.getLogger();
 
-	//Valeurs nominales
-	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10,nbreCasesMastermind=4,nbEssaisMastermind=10,
-			nbCouleursUtilisablesMastermind=6;
+	/**
+	 * Paramètre du jeu RecherchePlusMoins.
+	 */
+	private int nbreCasesRecherchePlusMoins=4, nbEssaisRecherchePlusMoins=10;
+	
+	/**
+	 * Paramètre du jeu Mastermind.
+	 */
+	private int nbreCasesMastermind=4,nbEssaisMastermind=10,nbCouleursUtilisablesMastermind=6;
+	
+	/**
+	 * Paramètre relatif aux jeux RecherchePlusMoins et Mastermind. Par défaut, le mode développeur est désactivé.
+	 */
 	private boolean modeDeveloppeurActive=false;
 
+	/**
+	 * Constructeur de la classe Fenetre.
+	 * @param model Modèle de données correspondant au jeu RecherchePlusMoins.
+	 * @param modelMastermind Modèle de données correspondant au jeu Mastermind.
+	 * @see ModeleDonnees
+	 * @see ModeleDonneesMastermind
+	 */
 	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind) {      
-		context.setConfigLocation(file.toURI());
-		logger.trace("Instanciation de la fenêtre principale");
+		LOGGER.trace("Instanciation de la fenêtre principale");
 		this.setTitle("Mettez votre logique à l'épreuve");
 		this.setSize(1000, 740);
 		this.setLocationRelativeTo(null);
@@ -75,7 +171,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.setResizable(false);
 		this.setIconImage(new ImageIcon("resources/MastermindFormatIcone.png").getImage());
 		imageJeu.setPreferredSize(new Dimension(600,637));
-		jpContainer.setPreferredSize(new Dimension(1000,800));
+		jpContainer.setPreferredSize(new Dimension(1000,740));
 		jpContainer.add(imageJeu);
 		jpContainer.setBackground(Color.WHITE);
 		this.setContentPane(jpContainer);
@@ -83,7 +179,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.model.addObservateur(this);
 		this.modelMastermind=modelMastermind;
 		this.modelMastermind.addObservateurMastermind(this);
-		logger.trace("Initialisation des modèles de données");
+		LOGGER.trace("Initialisation des modèles de données");
 
 		//On récupère les données enregistrées dans le fichier config.properties
 		prop=new Properties();
@@ -114,9 +210,12 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.setVisible(true);
 	}
 
-
+	/**
+	 * Méthode permettant d'initialiser le menu de la fenêtre principale. 
+	 * Un listener a été ajouté à chaque élément du menu.
+	 * */
 	public void initMenu() {
-		logger.trace("Initialisation du menu");
+		LOGGER.trace("Initialisation du menu");
 
 		// Définition des mnémoniques
 		jmFichier.setMnemonic('F');
@@ -158,13 +257,13 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
-				/**
+				/*
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
 				 * cette instruction après le .add
 				 */
 				jpRecherchePlusMoinsModeChallenger.getJftfPropositionJoueur().requestFocusInWindow();
 
-				/*********************************************************************************************************
+				/* *******************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
 				initModel();
@@ -184,13 +283,13 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 				jmParametres.setEnabled(false);
 
-				/**
+				/*
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
 				 * cette instruction après le .add
 				 */
 				jpRecherchePlusMoinsModeDefenseur.getJftfCombinaisonSecreteJoueur().requestFocusInWindow();
 
-				/*********************************************************************************************************
+				/* *******************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
 				initModel();
@@ -209,13 +308,13 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
-				/**
+				/*
 				 * Cette instruction permet de placer le curseur sur le JFormattedTextField voulu. Il faut impérativement placer
 				 * cette instruction après le .add
 				 */
 				jpRecherchePlusMoinsModeDuel.getJftfCombinaisonSecreteJoueur().requestFocusInWindow();
 
-				/*********************************************************************************************************
+				/* *******************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
 				initModel();
@@ -234,7 +333,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
-				/*********************************************************************************************************
+				/* *******************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
 				initModel();
@@ -253,7 +352,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
-				/*********************************************************************************************************
+				/* *******************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
 				initModel();
@@ -272,7 +371,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				jpContainer.repaint();
 				jmParametres.setEnabled(false);
 
-				/*********************************************************************************************************
+				/* *******************************************************************************************************
 				 *Ne pas oublier de réinitialiser le modèle dans le cas où on revient plusieurs fois à la page d'acceuil
 				 *********************************************************************************************************/
 				initModel();
@@ -292,12 +391,12 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				nbreCasesMastermind=jdParametrage.getNbreCasesMastermind();		
 				modeDeveloppeurActive=jdParametrage.getModeDeveloppeurActive();
 				nbCouleursUtilisablesMastermind=jdParametrage.getNbCouleursUtilisablesMastermind();
-				logger.debug("Menu Paramètres - Nb essais RecherchePlusMoins :"+nbEssaisRecherchePlusMoins);
-				logger.debug("Menu Paramètres - Nb cases RecherchePlusMoins :"+nbreCasesRecherchePlusMoins);
-				logger.debug("Menu Paramètres - Nb essais Mastermind :"+nbEssaisMastermind);
-				logger.debug("Menu Paramètres - Nb cases Mastermind :"+nbreCasesMastermind);
-				logger.debug("Menu Paramètres - Etat du mode développeur :"+modeDeveloppeurActive);
-				logger.debug("Menu Paramètres - Etat du mode développeur :"+nbCouleursUtilisablesMastermind);
+				LOGGER.debug("Menu Paramètres - Nb essais RecherchePlusMoins :"+nbEssaisRecherchePlusMoins);
+				LOGGER.debug("Menu Paramètres - Nb cases RecherchePlusMoins :"+nbreCasesRecherchePlusMoins);
+				LOGGER.debug("Menu Paramètres - Nb essais Mastermind :"+nbEssaisMastermind);
+				LOGGER.debug("Menu Paramètres - Nb cases Mastermind :"+nbreCasesMastermind);
+				LOGGER.debug("Menu Paramètres - Etat du mode développeur :"+modeDeveloppeurActive);
+				LOGGER.debug("Menu Paramètres - Etat du mode développeur :"+nbCouleursUtilisablesMastermind);
 			}
 		});
 
@@ -328,31 +427,48 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 
 		jmiQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				logger.trace("Fin de l'application");
-				LogManager.shutdown();
+				LOGGER.trace("Fin de l'application");
 				System.exit(0);
 			}
 		});
 	}
 
+	/**
+	 * Méthode qui permet de réinitialiser les modèles de données relatifs aux jeux RecherchePlusMoins et Mastermind.
+	 */
 	private void initModel() {
 		this.model=new ModeleDonnees();
 		this.model.addObservateur(this);	
 		this.modelMastermind=new ModeleDonneesMastermind();
 		this.modelMastermind.addObservateurMastermind(this);
-		logger.trace("Réinitialisation des modèles de données");
+		LOGGER.trace("Réinitialisation des modèles de données");
 	}
 
-	//Implémentation du pattern Observer pour le jeu RecherchePlusMoins
+	/* ******************************************************************
+	 * Implémentation du pattern Observer pour le jeu RecherchePlusMoins
+	 * ******************************************************************/
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans la classe Fenêtre.
+	 */
 	public void update(String propositionJoueur, String reponse) {}
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans la classe Fenêtre.
+	 */
 	public void updateDuel(String affichage) {}
 
+	/**
+	 * Pattern Observer - Méthode permettant de quitter l'application.
+	 */
 	public void quitterApplication() {
-		logger.trace("Fin de l'application");
-		LogManager.shutdown();
+		LOGGER.trace("Fin de l'application");
 		System.exit(0);
 	}
 
+	/**
+	 * Pattern Observer - Méthode permettant de revenir à la page d'accueil.
+	 */
 	public void acceuilObservateur() {
 		jmParametres.setEnabled(true);
 		jpContainer.removeAll();
@@ -360,25 +476,38 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		jpContainer.add(imageJeu);
 		jpContainer.revalidate();
 
-		/****************************************************************************************************************************
+		/* **************************************************************************************************************************
 		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
 		 ****************************************************************************************************************************/
 		jpContainer.repaint();
-		logger.trace("Retour à l'accueil");
+		LOGGER.trace("Retour à l'accueil");
 	}
 
+	/**
+	 * Pattern Observer - Méthode non utilisée dans la classe Fenêtre.
+	 */
 	public void relancerPartie() {}
 
-	//Implémentation du pattern Observer pour le jeu Mastermind
+	/* **********************************************************
+	 * Implémentation du pattern Observer pour le jeu Mastermind
+	 ************************************************************/
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans la classe Fenêtre.
+	 */
 	public void updateMastermind(String reponse) {}
 
-
+	/**
+	 * Pattern Observer - Méthode permettant de quitter l'application.
+	 */
 	public void quitterApplicationMastermind() {
-		logger.trace("Fin de l'application");
-		LogManager.shutdown();
+		LOGGER.trace("Fin de l'application");
 		System.exit(0);
 	}
 
+	/**
+	 * Pattern Observer - Méthode permettant de revenir à la page d'accueil.
+	 */
 	public void acceuilObservateurMastermind() {
 		jmParametres.setEnabled(true);
 		jpContainer.removeAll();
@@ -386,12 +515,15 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		jpContainer.add(imageJeu);
 		jpContainer.revalidate();
 
-		/****************************************************************************************************************************
+		/* **************************************************************************************************************************
 		 * ATTENTION : Il faut impérativement utiliser la méthode repaint() sinon des composants de l'ancien JPanel resteront visible
 		 ****************************************************************************************************************************/
 		jpContainer.repaint();
-		logger.trace("Retour à l'accueil");
+		LOGGER.trace("Retour à l'accueil");
 	}
 
+	/**
+	 * Pattern Observer - Méthode non utilisée dans la classe Fenêtre.
+	 */
 	public void relancerPartieMastermind() {}
 }

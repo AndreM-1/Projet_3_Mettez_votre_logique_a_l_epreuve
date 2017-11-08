@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Arrays;
 
 import javax.swing.BorderFactory;
@@ -19,24 +18,62 @@ import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.MastermindControler;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonneesMastermind;
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 
+/*************************************************************
+ * Classe relative au jeu Mastermind en mode duel.
+ * Cette classe implémente l'interface ObservateurMastermind.
+ * @author André Monnier
+ * @see ObservateurMastermind
+ *************************************************************/
 public class MastermindModeDuel extends JPanel implements ObservateurMastermind {
 
 	private static final long serialVersionUID = 1L;
-	private int nbreCases,nbEssais,nbCouleursUtilisables,ligne=0,colonne=1,colonneCombinaisonSecrete=0,remplissageSolution=0,
-			verifCombinaisonSecrete=0;
+
+	/**
+	 * Paramètre du jeu Mastermind.
+	 */
+	private int nbreCases,nbEssais,nbCouleursUtilisables;
+
+	/**
+	 * Variable permettant d'effectuer des contrôles.
+	 */
+	private int ligne=0,colonne=1,colonneCombinaisonSecrete=0,remplissageSolution=0,verifCombinaisonSecrete=0;
+
+	/**
+	 * Tableau d'entier utilisé pour enregistrer la réponse du joueur.
+	 */
 	private int [] tabReponseJoueur;
-	private GridLayout gl,glSolution;
+
+	/**
+	 * GridLayout correspondant à l'ensemble de la grille de jeu.
+	 */
+	private GridLayout gl;
+
+	/**
+	 * GridLayout correspondant à la dernière colonne de la grille de jeu.
+	 */
+	private GridLayout glSolution;
+
+	/**
+	 * JPanel utilisé pour réaliser l'interface graphique.
+	 */
 	private JPanel jpContainerGrilleDeJeuGauche=new JPanel(),jpContainerButtonCouleur=new JPanel(),
 			jpContainerReponseJoueur=new JPanel(),jPanelContainerSolutionCombinaisonSecreteJoueur=new JPanel(),
 			jPanelContainerSolutionCombinaisonSecreteOrdinateur=new JPanel(),jpContainerPartieGauche=new JPanel(),
 			jpContainerPartieDroite=new JPanel(),jpContainerGrilleDeJeuDroite=new JPanel();
+
+	/**
+	 * Tableau de JPanel utilisé pour réaliser l'interface graphique.
+	 */
 	private JPanel[] jpContainerSolutionGauche,jpContainerSolutionDroite;
+
+	/**
+	 * Image utilisée pour réaliser l'interface graphique.
+	 */
 	private ImageIcon imgIconMastermindEmplacementVide=new ImageIcon("resources/MastermindEmplacementVide.png"),
 			imgIconMastermindEmplacementVideSolution=new ImageIcon("resources/MastermindEmplacementVideSolution.png"),
 			imgIconCouleurVerte=new ImageIcon("resources/imgCouleurVerte.png"),imgIconCouleurBleu=new ImageIcon("resources/imgCouleurBleu.png"),
@@ -48,13 +85,29 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 			imgIconCouleurGris=new ImageIcon("resources/imgCouleurGris.png"),imgIconCouleurBleuFonce=new ImageIcon("resources/imgCouleurBleuFonce.png"),
 			imgIconCouleurNoir=new ImageIcon("resources/imgCouleurNoir.png"),imgIconCouleurMarron=new ImageIcon("resources/imgCouleurMarron.png"),
 			imgIconMastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur=new ImageIcon("resources/MastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur.png");
+
+	/**
+	 * Tableau de JLabel à deux dimensions.
+	 */
 	private JLabel [][] tabJLabelGrilleDeJeuGauche,tabJLabelGrilleDeJeuDroite;
+
+	/**
+	 * Tableau de JLabel à une dimension.
+	 */
 	private JLabel [] tabJLabelSolutionGauche,tabJLabelSolutionCombinaisonSecreteJoueur,tabJLabelSolutionCombinaisonSecreteOrdinateur,
 	tabJLabelSolutionDroite;
+
+	/**
+	 * JLabel de type informatif.
+	 */
 	private JLabel jlPremiereInstruction= new JLabel("La combinaison secrète a été générée par l'ordinateur."),
 			jlDeuxiemeInstruction=new JLabel("Veuillez choisir une combinaison secrète."),
 			jlReponseJoueur=new JLabel("Votre réponse :"),jlCombinaisonSecreteJoueur=new JLabel("Combinaison Secrète Joueur :"),
 			jlCombinaisonSecreteOrdinateur=new JLabel("Combinaison Secrète Ordinateur :");
+
+	/**
+	 * JButton utilisé pour réaliser l'interface graphique.
+	 */
 	private JButton jbValiderCombinaisonSecreteEtPropositionJoueur=new JButton("Valider"),
 			jbEffacerCombinaisonSecreteEtPropositionJoueur=new JButton("Effacer"), 
 			jbCouleurVerte=new JButton(imgIconCouleurVerte),jbCouleurBleu=new JButton(imgIconCouleurBleu),
@@ -64,21 +117,96 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 			jbPionRougeSolution=new JButton(imgIconMastermindPionRougeSolution),jbPionBlancSolution=new JButton(imgIconMastermindPionBlancSolution),
 			jbCouleurGris=new JButton(imgIconCouleurGris),jbCouleurBleuFonce=new JButton(imgIconCouleurBleuFonce),
 			jbCouleurNoir=new JButton(imgIconCouleurNoir),jbCouleurMarron=new JButton(imgIconCouleurMarron);	
+
+	/**
+	 * Police d'écriture : nom de la police, style et taille.
+	 */
 	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14),policeSolution=new Font("Segoe UI Semilight",Font.BOLD,14);
-	private String propositionSecreteJoueurModeDuel="",propositionOrdinateurModeDuel="",reponseJoueurModeDuel="",
-			reponseAttendue="",combinaisonSecreteOrdinateur="",propositionJoueurModeDuel="";
+
+	/**
+	 * Combinaison secrète du joueur en mode duel.
+	 */
+	private String propositionSecreteJoueurModeDuel="";
+
+	/**
+	 * Proposition de l'ordinateur en mode duel.
+	 */
+	private String propositionOrdinateurModeDuel="";
+
+	/**
+	 * Réponse du joueur en mode duel.
+	 */
+	private String reponseJoueurModeDuel="";
+
+	/**
+	 * Réponse attendue par le joueur.
+	 */
+	private String reponseAttendue="";
+
+	/**
+	 * Combinaison secrète générée par l'ordinateur.
+	 */
+	private String combinaisonSecreteOrdinateur="";
+
+	/**
+	 * Proposition du joueur en mode duel.
+	 */
+	private String propositionJoueurModeDuel="";
+
+	/**
+	 * Modéle de données relatif au jeu Mastermind.
+	 * @see ModeleDonneesMastermind
+	 */
 	private ModeleDonneesMastermind modelMastermind;
+
+	/**
+	 * Controler relatif au jeu Mastermind.
+	 * @see MastermindControler
+	 */
 	private MastermindControler controlerMastermind;
+
+	/**
+	 * Boite de dialogue permettant d'effectuer un choix en fin de partie.
+	 * @see BoiteDialogueFinDePartie
+	 */
 	private BoiteDialogueFinDePartie jdFinDePartie;
-	private boolean finDePartie=false, combinaisonSecreteJoueurValide=false,miseAJourAffichageModeDuel=false,modeDeveloppeurActive;
-	private Logger logger=(Logger)LogManager.getLogger(MastermindModeDuel.class);
-	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-	private File file = new File("resources/log4j2.xml"); 
 
+	/**
+	 * Variable de type booléenne permettant d'indiquer la fin de la partie.
+	 */
+	private boolean finDePartie=false; 
 
+	/**
+	 * Paramètre de type booléen indiquant si la combinaison secrète du joueur a été validé.
+	 */
+	private boolean	combinaisonSecreteJoueurValide=false;
+
+	/**
+	 * Paramètre de type booléen permettant de sélectionner la grille de jeu à mettre à jour.
+	 */
+	private boolean	miseAJourAffichageModeDuel=false;
+
+	/**
+	 * Paramètre de type booléen indiquant si le mode développeur est activé ou non.
+	 */
+	private boolean	modeDeveloppeurActive;
+
+	/**
+	 * Variable permettant la gestion des logs d'erreurs.
+	 */
+	private static final Logger LOGGER=LogManager.getLogger();
+
+	/**
+	 * Constructeur de la classe MastermindModeDuel.
+	 * @param nbCases Nombre de cases du jeu Mastermind.
+	 * @param nbEssais Nombre d'essais du jeu Mastermind.
+	 * @param nbCouleursUtilisables Nombre de couleurs utilisables du jeu Mastermind.
+	 * @param modeDeveloppeurActive Paramètre de type booléen indiquant si le mode développeur est activé ou non.
+	 * @param modelMastermind Modèle de données correspondant au jeu Mastermind.
+	 * @see ModeleDonneesMastermind
+	 */
 	public MastermindModeDuel(int nbCases, int nbEssais,int nbCouleursUtilisables,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
-		context.setConfigLocation(file.toURI());
-		logger.trace("Instanciation du jeu Mastermind en mode Duel");
+		LOGGER.trace("Instanciation du jeu Mastermind en mode Duel");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -182,7 +310,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 			jpContainerButtonCouleur.add(jbCouleurNoir);
 			break;
 		default :
-			logger.error("Jeu Mastermind en mode Duel - Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
+			LOGGER.error("Jeu Mastermind en mode Duel - Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
 		}
 
 		jpContainerButtonCouleur.add(jbValiderCombinaisonSecreteEtPropositionJoueur);
@@ -234,8 +362,8 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 			tabJLabelSolutionCombinaisonSecreteJoueur[i].setIcon(imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
 			jPanelContainerSolutionCombinaisonSecreteJoueur.add(tabJLabelSolutionCombinaisonSecreteJoueur[i]);
 		}
-		this.InitialisationGrilleJeuDroite();
-		this.InitialisationGrilleJeuGauche();
+		this.initialisationGrilleJeuDroite();
+		this.initialisationGrilleJeuGauche();
 
 		//On va ajuster la taille des 2 JPanel principaux en fonction de la taille de la grille de jeu
 		if (this.nbEssais==5) {
@@ -280,11 +408,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurBleu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleu,"0");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleu,"0");
 					colonneCombinaisonSecrete++;
 				}
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurBleu,"0");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurBleu,"0");
 					colonne++;
 				}
 			}	
@@ -293,11 +421,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurJaune.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurJaune,"1");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurJaune,"1");
 					colonneCombinaisonSecrete++;
 				}	
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurJaune,"1");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurJaune,"1");
 					colonne++;
 				}
 			}	
@@ -306,11 +434,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurOrange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurOrange,"2");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurOrange,"2");
 					colonneCombinaisonSecrete++;
 				}	
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurOrange,"2");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurOrange,"2");
 					colonne++;
 				}
 			}	
@@ -319,11 +447,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurRouge.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurRouge,"3");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurRouge,"3");
 					colonneCombinaisonSecrete++;
 				}	
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurRouge,"3");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurRouge,"3");
 					colonne++;
 				}
 			}	
@@ -332,11 +460,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurVerte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurVerte,"4");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurVerte,"4");
 					colonneCombinaisonSecrete++;
 				}
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurVerte,"4");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurVerte,"4");
 					colonne++;
 				}
 			}	
@@ -345,11 +473,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurViolet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurViolet,"5");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurViolet,"5");
 					colonneCombinaisonSecrete++;
 				}
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurViolet,"5");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurViolet,"5");
 					colonne++;
 				}
 			}	
@@ -358,11 +486,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurGris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurGris,"6");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurGris,"6");
 					colonneCombinaisonSecrete++;
 				}
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurGris,"6");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurGris,"6");
 					colonne++;
 				}
 			}	
@@ -371,11 +499,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurBleuFonce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleuFonce,"7");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleuFonce,"7");
 					colonneCombinaisonSecrete++;
 				}
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurBleuFonce,"7");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurBleuFonce,"7");
 					colonne++;
 				}
 			}	
@@ -384,11 +512,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurMarron.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurMarron,"8");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurMarron,"8");
 					colonneCombinaisonSecrete++;
 				}	
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurMarron,"8");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurMarron,"8");
 					colonne++;
 				}
 			}	
@@ -397,11 +525,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbCouleurNoir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurNoir,"9");
+					updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurNoir,"9");
 					colonneCombinaisonSecrete++;
 				}	
 				else {
-					AffichagePropositionJoueur(ligne, colonne,imgIconCouleurNoir,"9");
+					affichagePropositionJoueur(ligne, colonne,imgIconCouleurNoir,"9");
 					colonne++;
 				}
 			}	
@@ -445,11 +573,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jbEffacerCombinaisonSecreteEtPropositionJoueur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!combinaisonSecreteJoueurValide) {
-					EffacerCombinaisonSecrete(colonneCombinaisonSecrete,imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
+					effacerCombinaisonSecrete(colonneCombinaisonSecrete,imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
 					colonneCombinaisonSecrete=0;
 				}	
 				else {
-					EffacerPropositionJoueur(ligne, colonne, imgIconMastermindEmplacementVide);
+					effacerPropositionJoueur(ligne, colonne, imgIconMastermindEmplacementVide);
 					colonne=1;
 				}
 			}	
@@ -469,9 +597,9 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 
 		jbValiderReponseJoueur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				logger.debug("Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :"+reponseJoueurModeDuel);
+				LOGGER.debug("Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :"+reponseJoueurModeDuel);
 				calculReponseAttendue();
-				logger.debug("Jeu Mastermind en mode Duel - Reponse attendue :" + reponseAttendue);
+				LOGGER.debug("Jeu Mastermind en mode Duel - Reponse attendue :" + reponseAttendue);
 				if(!reponseJoueurModeDuel.equals(reponseAttendue)) {
 					JOptionPane.showMessageDialog(null,"Attention : votre réponse est erronée. Veuillez saisir une autre réponse, svp.", 
 							"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
@@ -518,11 +646,10 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 
 	}
 
-	/***************************************************************************************************************
-	 * Méthode permettant d'initialiser la grille de jeu gauche : propositions du joueur, réponses de l'ordinateur
-	 * 
-	 * *************************************************************************************************************/
-	private void InitialisationGrilleJeuGauche() {
+	/**
+	 * Méthode permettant d'initialiser la grille de jeu gauche : propositions du joueur, réponses de l'ordinateur.
+	 */
+	private void initialisationGrilleJeuGauche() {
 		gl=new GridLayout(this.nbEssais,this.nbreCases+2);
 		jpContainerGrilleDeJeuGauche.setLayout(gl);
 		jpContainerGrilleDeJeuGauche.setPreferredSize(new Dimension(30*(this.nbreCases+2),29*this.nbEssais));
@@ -539,7 +666,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		tabJLabelSolutionGauche= new JLabel[this.nbreCases];
 		jpContainerSolutionGauche=new JPanel[this.nbEssais];
 
-		/**
+		/*
 		 * La grille de jeu est un JPanel organisé en GridLayout composé d'un tableau de JLabel et d'un tableau de JPanel organisé 
 		 * également en GridLayout.
 		 * 
@@ -587,11 +714,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jpContainerGrilleDeJeuGauche.repaint();
 	}
 
-	/****************************************************************************************************************
-	 * Méthode permettant d'initialiser la grille de jeu droite : propositions de l'ordinateur, réponses du joueur
+	/**
+	 * Méthode permettant d'initialiser la grille de jeu droite : propositions de l'ordinateur, réponses du joueur.
 	 * 
-	 * **************************************************************************************************************/
-	private void InitialisationGrilleJeuDroite() {
+	 */
+	private void initialisationGrilleJeuDroite() {
 		gl=new GridLayout(this.nbEssais,this.nbreCases+2);
 		jpContainerGrilleDeJeuDroite.setLayout(gl);
 		jpContainerGrilleDeJeuDroite.setPreferredSize(new Dimension(30*(this.nbreCases+2),29*this.nbEssais));
@@ -608,7 +735,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		tabJLabelSolutionDroite= new JLabel[this.nbreCases];
 		jpContainerSolutionDroite=new JPanel[this.nbEssais];
 
-		/**
+		/*
 		 * La grille de jeu est un JPanel organisé en GridLayout composé d'un tableau de JLabel et d'un tableau de JPanel organisé 
 		 * également en GridLayout.
 		 * 
@@ -656,10 +783,10 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jpContainerGrilleDeJeuDroite.repaint();
 	}
 
-	/*****************************************************************************************************************
-	 * Génération de la combinaison secrète par l'ordinateur. On genère une combinaison de chiffres castés en String,
-	 * chaque chiffre correspondant à une couleur.
-	 ******************************************************************************************************************/
+	/**
+	 * Génération de la combinaison secrète par l'ordinateur. La combinaison secrète est une combinaison de chiffres 
+	 * castés en String, chaque chiffre correspondant à une couleur.
+	 */
 	private void generationCombinaisonSecreteOrdinateur(){
 		int nbreAleatoire;
 		for (int i=0;i<this.nbreCases;i++) {
@@ -673,12 +800,13 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		controlerMastermind.setPropositionSecreteOrdinateurModeDuel(combinaisonSecreteOrdinateur);
 	}
 
-
-	/**************************************************************
-	 * Méthodes permettant de mettre à jour la combinaison secrète.
-	 * 
-	 **************************************************************/
-	private void UpdateCombinaisonSecrete(int col,ImageIcon couleurChoisie, String codeCouleur) {
+	/**
+	 * Méthode permettant de mettre à jour la combinaison secrète choisie par le joueur.
+	 * @param col Colonne de la combinaison secrète.
+	 * @param couleurChoisie Couleur choisie par le joueur.
+	 * @param codeCouleur Code couleur associé à une couleur. Exemple : Bleu :"0", Jaune :"1",...,Noir :"9".
+	 */
+	private void updateCombinaisonSecrete(int col,ImageIcon couleurChoisie, String codeCouleur) {
 		if(colonneCombinaisonSecrete<this.nbreCases) {
 			propositionSecreteJoueurModeDuel+=codeCouleur;
 			tabJLabelSolutionCombinaisonSecreteJoueur[col]=new JLabel(couleurChoisie);
@@ -698,10 +826,14 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 					JOptionPane.WARNING_MESSAGE);
 			colonneCombinaisonSecrete=this.nbreCases-1;
 		}
-
 	}
 
-	private void EffacerCombinaisonSecrete(int col,ImageIcon emplacementVide) {
+	/**
+	 * Méthode permettant d'effacer la combinaison secrète choisie par le joueur.
+	 * @param col Colonne de la combinaison secrète.
+	 * @param emplacementVide Image correspondant à un emplacement vide.
+	 */
+	private void effacerCombinaisonSecrete(int col,ImageIcon emplacementVide) {
 		for (int i=0;i<col;i++) {
 			tabJLabelSolutionCombinaisonSecreteJoueur[i]=new JLabel(emplacementVide);
 		}
@@ -714,14 +846,16 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jPanelContainerSolutionCombinaisonSecreteJoueur.repaint();
 		jbValiderCombinaisonSecreteEtPropositionJoueur.setEnabled(false);
 		propositionSecreteJoueurModeDuel="";
-
 	}
 
-	/****************************************************************************************
-	 * Méthodes permettant de mettre à jour la grille de jeu suite aux propositions du joueur
-	 * 
-	 * **************************************************************************************/
-	private void AffichagePropositionJoueur(int lig, int col,ImageIcon couleurChoisie, String codeCouleur) {
+	/**
+	 * Méthode permettant de mettre à jour la grille de jeu gauche suite aux propositions du joueur.
+	 * @param lig Ligne de la grille de jeu gauche.
+	 * @param col Colonne de la grille de jeu gauche.
+	 * @param couleurChoisie Couleur choisie par le joueur.
+	 * @param codeCouleur Code couleur associé à une couleur. Exemple : Bleu :"0", Jaune :"1",...,Noir :"9".
+	 */
+	private void affichagePropositionJoueur(int lig, int col,ImageIcon couleurChoisie, String codeCouleur) {
 		if(colonne<=this.nbreCases) {
 			tabJLabelGrilleDeJeuGauche[lig][col]=new JLabel(couleurChoisie);
 			propositionJoueurModeDuel+=codeCouleur;
@@ -748,7 +882,13 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		}
 	}
 
-	private void EffacerPropositionJoueur(int lig, int col,ImageIcon emplacementVide) {
+	/**
+	 * Méthode permettant d'effacer une ligne de la grille de jeu gauche.
+	 * @param lig Ligne de la grille de jeu gauche.
+	 * @param col Colonne de la grille de jeu gauche.
+	 * @param emplacementVide Image correspondant à un emplacement vide.
+	 */
+	private void effacerPropositionJoueur(int lig, int col,ImageIcon emplacementVide) {
 		for(int i=1;i<col;i++) {
 			tabJLabelGrilleDeJeuGauche[lig][i]=new JLabel(emplacementVide);
 		}
@@ -767,6 +907,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 
 	}
 
+	/**
+	 * Méthode permettant d'afficher la réponse du joueur sur la grille de jeu droite.
+	 * @param couleurChoisieReponse Couleur choisie par le joueur pour répondre : Rouge ou blanc.
+	 * @param codeCouleurReponse Code couleur associé à une couleur. Exemple : Rouge:1, Blanc:2, Vide:3.
+	 */
 	private void affichageReponseJoueur(ImageIcon couleurChoisieReponse, int codeCouleurReponse) {
 		if(remplissageSolution<this.nbreCases) {
 			jpContainerSolutionDroite[ligne].removeAll();
@@ -815,6 +960,9 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		}
 	}
 
+	/**
+	 * Méthode permettant d'effacer la réponse du joueur sur la grille de jeu droite.
+	 */
 	private void effacerReponseJoueur() {
 		jpContainerSolutionDroite[ligne].removeAll();
 		jpContainerSolutionDroite[ligne].revalidate();
@@ -831,7 +979,9 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		}
 	}
 
-	//Cette méthode permet de déterminer la réponse attendue par le joueur
+	/**
+	 * Cette méthode permet de déterminer la réponse attendue par le joueur.
+	 */
 	private void calculReponseAttendue() {
 		//Analyse des boules bien placées (pions rouges) et mal placées (pions blancs). Pour faciliter le traitement, on va dire 
 		//que pions rouges équivaut à 1, pions blancs à 2 et emplacement vide à 3.
@@ -874,9 +1024,9 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		}
 	}
 
-	/*******************************************************************************************************************************
-	 * Cette méthode est utilisée pour afficher la combinaison secrète de l'ordinateur dans le cas où le mode développeur est activé.
-	 *******************************************************************************************************************************/
+	/**
+	 * Méthode permettant d'afficher la combinaison secrète générée par l'ordinateur.
+	 */
 	private void affichageSolution() {
 		jPanelContainerSolutionCombinaisonSecreteOrdinateur.removeAll();
 		jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(jlCombinaisonSecreteOrdinateur);
@@ -913,7 +1063,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 				tabJLabelSolutionCombinaisonSecreteOrdinateur[i]=new JLabel(imgIconCouleurNoir);
 				break;		
 			default :
-				logger.error("Jeu Mastermind en mode Duel - Erreur de correspondance entre la combinaison secrète de l'ordinateur et les couleurs");
+				LOGGER.error("Jeu Mastermind en mode Duel - Erreur de correspondance entre la combinaison secrète de l'ordinateur et les couleurs");
 			}
 			tabJLabelSolutionCombinaisonSecreteOrdinateur[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			jPanelContainerSolutionCombinaisonSecreteOrdinateur.add(tabJLabelSolutionCombinaisonSecreteOrdinateur[i]);
@@ -922,7 +1072,11 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 		jPanelContainerSolutionCombinaisonSecreteOrdinateur.repaint();
 	}
 
-	//Gestion de la fin de la partie
+	/**
+	 * Gestion de la fin de la partie en fonction de la réponse du joueur ou de l'ordinateur.
+	 * @param reponse Réponse du joueur ou de l'ordinateur.
+	 * @param identiteJoueur Identite de celui qui répond : joueur ou ordinateur.
+	 */
 	private void gestionFinDePartie(String reponse, char identiteJoueur) {
 		verifCombinaisonSecrete=0;
 		for (int i=0;i<reponse.length();i++) {
@@ -952,18 +1106,34 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 					JOptionPane.INFORMATION_MESSAGE);	
 		}
 
-		//En cas de défaîte ou de victoire
+		//En cas de défaîte, de victoire ou de match nul
 		if (ligne==nbEssais||verifCombinaisonSecrete==nbreCases) {
+			LOGGER.trace("Jeu Mastermind en mode Duel - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controlerMastermind.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 	}
 
-	//Implémentation du pattern Observer
+	/* ***********************************
+	 * Implémentation du pattern Observer	
+	 *************************************/
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void quitterApplicationMastermind() {}
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void acceuilObservateurMastermind() {}
 
+	/**
+	 * Pattern Observer - Méthode permettant de mettre à jour soit la grille de jeu gauche avec les réponses de l'ordinateur,
+	 * soit la grille de jeu droite avec les propositions de l'ordinateur.
+	 * @param affichage Cette variable peut correspondre aux propositions et aux réponses de l'ordinateur.
+	 */
 	public void updateMastermind(String affichage) {
 
 		//Dans un cas, on met à jour la grille de jeu gauche avec les réponses de l'ordinateur
@@ -1040,7 +1210,7 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 					tabJLabelGrilleDeJeuDroite[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 					break;
 				default :
-					logger.error("Jeu Mastermind en mode Duel - Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
+					LOGGER.error("Jeu Mastermind en mode Duel - Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
 				}
 			}
 			for (int i=0;i<this.nbEssais;i++) {
@@ -1054,14 +1224,17 @@ public class MastermindModeDuel extends JPanel implements ObservateurMastermind 
 			miseAJourAffichageModeDuel=false;
 		}	
 	}
-
-	/*On réinitialise l'IHM des grilles de jeu et des combinaisons secrètes en bas de page ainsi que toutes les variables,
-	et on regénère une nouvelle combinaison secrète pour l'ordinateur.*/
+	
+	/**
+	 * Pattern Observer - Méthode permettant de relancer le même jeu : Réinitialisation de l'IHM des grilles de jeu et
+	 * des combinaisons secrètes en bas de page ainsi que toutes les variables, et regénèration d'une nouvelle combinaison 
+	 * secrète pour l'ordinateur.
+	 */
 	public void relancerPartieMastermind() {
-		logger.trace("Jeu Mastermind en mode Duel - Partie relancée");
+		LOGGER.trace("Jeu Mastermind en mode Duel - Partie relancée");
 		//Réinitialisation de l'IHM des grilles de jeu
-		this.InitialisationGrilleJeuGauche();
-		this.InitialisationGrilleJeuDroite();
+		this.initialisationGrilleJeuGauche();
+		this.initialisationGrilleJeuDroite();
 
 		//Réinitialisation de la combinaison secrète de l'ordinateur lorsque le mode développeur est désactivé
 		if(this.modeDeveloppeurActive==false) {

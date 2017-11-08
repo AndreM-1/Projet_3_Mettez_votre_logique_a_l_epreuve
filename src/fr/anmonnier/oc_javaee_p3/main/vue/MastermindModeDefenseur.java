@@ -1,12 +1,12 @@
 package fr.anmonnier.oc_javaee_p3.main.vue;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Arrays;
 
 import javax.swing.BorderFactory;
@@ -18,22 +18,60 @@ import javax.swing.JPanel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 import fr.anmonnier.oc_javaee_p3.main.controler.MastermindControler;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonneesMastermind;
 import fr.anmonnier.oc_javaee_p3.main.observer.ObservateurMastermind;
 
+/*************************************************************
+ * Classe relative au jeu Mastermind en mode défenseur.
+ * Cette classe implémente l'interface ObservateurMastermind.
+ * @author André Monnier
+ * @see ObservateurMastermind
+ *************************************************************/
 public class MastermindModeDefenseur extends JPanel implements ObservateurMastermind {
 
 	private static final long serialVersionUID = 1L;
-	private int nbreCases, nbEssais,nbCouleursUtilisables,ligne=0,colonne=1,colonneCombinaisonSecrete=0,remplissageSolution=0,
-			verifCombinaisonSecrete=0;
+
+	/**
+	 * Paramètre du jeu Mastermind.
+	 */
+	private int nbreCases, nbEssais,nbCouleursUtilisables;
+
+	/**
+	 * Variable permettant d'effectuer des contrôles.
+	 */
+	private int ligne=0,colonne=1,colonneCombinaisonSecrete=0,remplissageSolution=0,verifCombinaisonSecrete=0;
+
+	/**
+	 * Tableau d'entier utilisé pour enregistrer la réponse du joueur.
+	 */
 	private int [] tabReponseJoueur;
-	private GridLayout gl,glSolution;
+
+	/**
+	 * GridLayout correspondant à l'ensemble de la grille de jeu.
+	 */
+	private GridLayout gl;
+
+	/**
+	 * GridLayout correspondant à la dernière colonne de la grille de jeu.
+	 */
+	private GridLayout glSolution;
+
+	/**
+	 * JPanel utilisé pour réaliser l'interface graphique.
+	 */
 	private JPanel jpContainerGrilleDeJeu=new JPanel(),jpContainerButtonCouleur=new JPanel(),
 			jpContainerReponseJoueur=new JPanel(),jPanelContainerSolutionCombinaisonSecreteJoueur=new JPanel();
+
+	/**
+	 * Tableau de JPanel utilisé pour réaliser l'interface graphique.
+	 */
 	private JPanel[] jpContainerSolution;
+
+	/**
+	 * Image utilisée pour réaliser l'interface graphique.
+	 */
 	private ImageIcon imgIconMastermindEmplacementVide=new ImageIcon("resources/MastermindEmplacementVide.png"),
 			imgIconMastermindEmplacementVideSolution=new ImageIcon("resources/MastermindEmplacementVideSolution.png"),
 			imgIconCouleurVerte=new ImageIcon("resources/imgCouleurVerte.png"),imgIconCouleurBleu=new ImageIcon("resources/imgCouleurBleu.png"),
@@ -44,10 +82,26 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 			imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur=new ImageIcon("resources/MastermindEmplacementVideSolutionCombinaisonSecreteOrdinateur.png"),
 			imgIconCouleurGris=new ImageIcon("resources/imgCouleurGris.png"),imgIconCouleurBleuFonce=new ImageIcon("resources/imgCouleurBleuFonce.png"),
 			imgIconCouleurNoir=new ImageIcon("resources/imgCouleurNoir.png"),imgIconCouleurMarron=new ImageIcon("resources/imgCouleurMarron.png");
+
+	/**
+	 * Tableau de JLabel à deux dimensions.
+	 */
 	private JLabel [][] tabJLabelGrilleDeJeu;
+
+	/**
+	 * Tableau de JLabel à une dimension.
+	 */
 	private JLabel [] tabJLabelSolution,tabJLabelSolutionCombinaisonSecreteJoueur;
+
+	/**
+	 * JLabel de type informatif.
+	 */
 	private JLabel jlPremiereInstruction=new JLabel("Veuillez choisir une combinaison secrète."),jlReponseJoueur=new JLabel("Votre réponse :"),
 			jlSolution=new JLabel("Combinaison Secrète :");
+
+	/**
+	 * JButton utilisé pour réaliser l'interface graphique.
+	 */
 	private JButton jbEffacerCombinaisonSecrete=new JButton("Effacer"), jbValiderCombinaisonSecrete=new JButton("Valider"),
 			jbCouleurVerte=new JButton(imgIconCouleurVerte),jbCouleurBleu=new JButton(imgIconCouleurBleu),
 			jbCouleurOrange=new JButton(imgIconCouleurOrange),jbCouleurRouge=new JButton(imgIconCouleurRouge),
@@ -56,21 +110,71 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 			jbPionRougeSolution=new JButton(imgIconMastermindPionRougeSolution),jbPionBlancSolution=new JButton(imgIconMastermindPionBlancSolution),
 			jbCouleurGris=new JButton(imgIconCouleurGris),jbCouleurBleuFonce=new JButton(imgIconCouleurBleuFonce),
 			jbCouleurNoir=new JButton(imgIconCouleurNoir),jbCouleurMarron=new JButton(imgIconCouleurMarron);	
+
+	/**
+	 * Police d'écriture : nom de la police, style et taille.
+	 */
 	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14),policeSolution=new Font("Segoe UI Semilight",Font.BOLD,14);
-	private String propositionSecreteJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="",
-			reponseJoueurModeDefenseur="",reponseAttendue="";
+
+	/**
+	 * Combinaison secrète du joueur en mode défenseur.
+	 */
+	private String propositionSecreteJoueurModeDefenseur="";
+
+	/**
+	 * Proposition de l'ordinateur en mode défenseur.
+	 */
+	private String propositionOrdinateurModeDefenseur="";
+
+	/**
+	 * Réponse du joueur en mode défenseur.
+	 */
+	private String reponseJoueurModeDefenseur="";
+
+	/**
+	 * Réponse attendue par le joueur.
+	 */
+	private String reponseAttendue="";
+
+	/**
+	 * Modéle de données relatif au jeu Mastermind.
+	 * @see ModeleDonneesMastermind
+	 */
 	private ModeleDonneesMastermind modelMastermind;
+
+	/**
+	 * Controler relatif au jeu Mastermind.
+	 * @see MastermindControler
+	 */
 	private MastermindControler controlerMastermind;
+
+	/**
+	 * Boite de dialogue permettant d'effectuer un choix en fin de partie.
+	 * @see BoiteDialogueFinDePartie
+	 */
 	private BoiteDialogueFinDePartie jdFinDePartie;
+
+	/**
+	 * Variable de type booléenne permettant d'indiquer la fin de la partie.
+	 */
 	private boolean finDePartie=false;
-	private Logger logger=(Logger)LogManager.getLogger(MastermindModeDefenseur.class);
-	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-	private File file = new File("resources/log4j2.xml"); 
 
+	/**
+	 * Variable permettant la gestion des logs d'erreurs.
+	 */
+	private static final Logger LOGGER=LogManager.getLogger();
 
+	/**
+	 * Constructeur de la classe MastermindModeDefenseur.
+	 * @param nbCases Nombre de cases du jeu Mastermind.
+	 * @param nbEssais Nombre d'essais du jeu Mastermind.
+	 * @param nbCouleursUtilisables Nombre de couleurs utilisables du jeu Mastermind.
+	 * @param modeDeveloppeurActive Paramètre de type booléen indiquant si le mode développeur est activé ou non.
+	 * @param modelMastermind Modèle de données correspondant au jeu Mastermind.
+	 * @see ModeleDonneesMastermind
+	 */
 	public MastermindModeDefenseur(int nbCases, int nbEssais,int nbCouleursUtilisables,boolean modeDeveloppeurActive,ModeleDonneesMastermind modelMastermind) {
-		context.setConfigLocation(file.toURI());
-		logger.trace("Instanciation du jeu Mastermind en mode Défenseur");
+		LOGGER.trace("Instanciation du jeu Mastermind en mode Défenseur");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -169,7 +273,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 			jpContainerButtonCouleur.add(jbCouleurNoir);
 			break;
 		default :
-			logger.error("Jeu Mastermind en mode Défenseur - Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
+			LOGGER.error("Jeu Mastermind en mode Défenseur - Erreur lors de la mise en place de l'IHM pour les boutons liés aux couleurs");
 		}
 
 		jpContainerButtonCouleur.add(jbValiderCombinaisonSecrete);
@@ -206,7 +310,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		this.add(jlPremiereInstruction);
 		this.add(jpContainerButtonCouleur);
 		this.add(jpContainerReponseJoueur);
-		this.InitialisationGrilleJeu();
+		this.initialisationGrilleJeu();
 		this.add(jpContainerGrilleDeJeu);
 		this.add(jPanelContainerSolutionCombinaisonSecreteJoueur);
 
@@ -217,70 +321,70 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 		jbCouleurBleu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleu,"0");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleu,"0");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurJaune.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurJaune,"1");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurJaune,"1");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurOrange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurOrange,"2");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurOrange,"2");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurRouge.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurRouge,"3");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurRouge,"3");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurVerte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurVerte,"4");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurVerte,"4");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurViolet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurViolet,"5");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurViolet,"5");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurGris.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurGris,"6");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurGris,"6");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurBleuFonce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleuFonce,"7");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurBleuFonce,"7");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurMarron.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurMarron,"8");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurMarron,"8");
 				colonneCombinaisonSecrete++;
 			}	
 		});
 
 		jbCouleurNoir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UpdateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurNoir,"9");
+				updateCombinaisonSecrete(colonneCombinaisonSecrete,imgIconCouleurNoir,"9");
 				colonneCombinaisonSecrete++;
 			}	
 		});
@@ -313,7 +417,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 		jbEffacerCombinaisonSecrete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EffacerCombinaisonSecrete(colonneCombinaisonSecrete,imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
+				effacerCombinaisonSecrete(colonneCombinaisonSecrete,imgIconMastermindEmplacementVideSolutionCombinaisonSecreteJoueur);
 				colonneCombinaisonSecrete=0;
 			}	
 		});
@@ -333,9 +437,9 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 		jbValiderReponseJoueur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				logger.debug("Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :"+reponseJoueurModeDefenseur);
+				LOGGER.debug("Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :"+reponseJoueurModeDefenseur);
 				calculReponseAttendue();
-				logger.debug("Jeu Mastermind en mode Défenseur - Reponse attendue :"+reponseAttendue);
+				LOGGER.debug("Jeu Mastermind en mode Défenseur - Reponse attendue :"+reponseAttendue);
 				if(!reponseJoueurModeDefenseur.equals(reponseAttendue)) {
 					JOptionPane.showMessageDialog(null,"Attention : votre réponse est erronée. Veuillez saisir une autre réponse, svp.", 
 							"Message d'avertissement", JOptionPane.WARNING_MESSAGE);
@@ -367,11 +471,11 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 	}
 
-	/*****************************************************
+	/**
 	 * Méthode permettant d'initialiser la grille de jeu.
 	 * 
-	 * ***************************************************/
-	private void InitialisationGrilleJeu() {
+	 */
+	private void initialisationGrilleJeu() {
 		gl=new GridLayout(this.nbEssais,this.nbreCases+2);
 		jpContainerGrilleDeJeu.setLayout(gl);
 		jpContainerGrilleDeJeu.setPreferredSize(new Dimension(30*(this.nbreCases+2),29*this.nbEssais));
@@ -386,7 +490,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		tabJLabelSolution= new JLabel[this.nbreCases];
 		jpContainerSolution=new JPanel[this.nbEssais];
 
-		/**
+		/*
 		 * La grille de jeu est un JPanel organisé en GridLayout composé d'un tableau de JLabel et d'un tableau de JPanel organisé 
 		 * également en GridLayout.
 		 * 
@@ -433,11 +537,13 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jpContainerGrilleDeJeu.repaint();
 	}
 
-	/**************************************************************
-	 * Méthode permettant de mettre à jour la combinaison secrète.
-	 * 
-	 **************************************************************/
-	private void UpdateCombinaisonSecrete(int col,ImageIcon couleurChoisie, String codeCouleur) {
+	/**
+	 * Méthode permettant de mettre à jour la combinaison secrète choisie par le joueur.
+	 * @param col Colonne de la combinaison secrète.
+	 * @param couleurChoisie Couleur choisie par le joueur.
+	 * @param codeCouleur Code couleur associé à une couleur. Exemple : Bleu :"0", Jaune :"1",...,Noir :"9".
+	 */
+	private void updateCombinaisonSecrete(int col,ImageIcon couleurChoisie, String codeCouleur) {
 		if(colonneCombinaisonSecrete<this.nbreCases) {
 			propositionSecreteJoueurModeDefenseur+=codeCouleur;
 			tabJLabelSolutionCombinaisonSecreteJoueur[col]=new JLabel(couleurChoisie);
@@ -457,10 +563,14 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 					JOptionPane.WARNING_MESSAGE);
 			colonneCombinaisonSecrete=this.nbreCases-1;
 		}
-
 	}
 
-	private void EffacerCombinaisonSecrete(int col,ImageIcon emplacementVide) {
+	/**
+	 * Méthode permettant d'effacer la combinaison secrète choisie par le joueur.
+	 * @param col Colonne de la combinaison secrète.
+	 * @param emplacementVide Image correspondant à un emplacement vide.
+	 */
+	private void effacerCombinaisonSecrete(int col,ImageIcon emplacementVide) {
 		for (int i=0;i<col;i++) {
 			tabJLabelSolutionCombinaisonSecreteJoueur[i]=new JLabel(emplacementVide);
 		}
@@ -473,13 +583,26 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jPanelContainerSolutionCombinaisonSecreteJoueur.repaint();
 		jbValiderCombinaisonSecrete.setEnabled(false);
 		propositionSecreteJoueurModeDefenseur="";
-
 	}
 
-	//Implémentation du pattern Observer
+	/* ***********************************
+	 * Implémentation du pattern Observer	
+	 *************************************/
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void quitterApplicationMastermind() {}
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void acceuilObservateurMastermind() {}
 
+	/**
+	 * Pattern Observer - Méthode permettant de mettre à jour la grille de jeu selon la proposition de l'ordinateur.
+	 * @param propositionOrdinateur Proposition de l'ordinateur.
+	 */
 	public void updateMastermind(String propositionOrdinateur) {
 		this.propositionOrdinateurModeDefenseur=propositionOrdinateur;
 		/*On convertit la proposition de l'ordinateur en JLabel avec les images adéquates en vue de l'affichage
@@ -528,7 +651,7 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				tabJLabelGrilleDeJeu[ligne][i+1].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				break;
 			default :
-				logger.error("Jeu Mastermind en mode Défenseur - Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
+				LOGGER.error("Jeu Mastermind en mode Défenseur - Erreur de correspondance entre la proposition de l'ordinateur et les couleurs");
 			}
 		}
 		for (int i=0;i<this.nbEssais;i++) {
@@ -541,10 +664,13 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		jpContainerGrilleDeJeu.repaint();
 	}
 
-	//On réinitialise l'IHM de la grille de jeu et de la combinaison secrète en bas de page ainsi que toutes les variables.
+	/**
+	 * Pattern Observer - Méthode permettant de relancer le même jeu : Réinitialisation de l'IHM de la grille de jeu et
+	 * de la combinaison secrète en bas de page ainsi que toutes les variables.
+	 */
 	public void relancerPartieMastermind() {
-		logger.trace("Jeu Mastermind en mode Défenseur - Partie relancée");
-		this.InitialisationGrilleJeu();
+		LOGGER.trace("Jeu Mastermind en mode Défenseur - Partie relancée");
+		this.initialisationGrilleJeu();
 		jPanelContainerSolutionCombinaisonSecreteJoueur.removeAll();
 		jPanelContainerSolutionCombinaisonSecreteJoueur.add(jlSolution);
 		for (int i=0;i<this.nbreCases;i++) {
@@ -585,7 +711,10 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		propositionOrdinateurModeDefenseur="";
 	}
 
-	//Gestion de la fin de la partie
+	/**
+	 * Gestion de la fin de la partie en fonction de la réponse du joueur.
+	 * @param reponse Réponse du joueur.
+	 */
 	private void gestionFinDePartie(String reponse) {
 		verifCombinaisonSecrete=0;
 		for (int i=0;i<reponse.length();i++) {
@@ -607,13 +736,16 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 
 		//En cas de défaîte ou de victoire
 		if (ligne==nbEssais||verifCombinaisonSecrete==nbreCases) {
-			logger.trace("Jeu Mastermind en mode Défenseur - Fin de partie");
+			LOGGER.trace("Jeu Mastermind en mode Défenseur - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controlerMastermind.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 	}
 
+	/**
+	 * Méthode permettant d'effacer la réponse du joueur.
+	 */
 	private void effacerReponseJoueur() {
 		jpContainerSolution[ligne].removeAll();
 		jpContainerSolution[ligne].revalidate();
@@ -630,6 +762,11 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		}
 	}
 
+	/**
+	 * Méthode permettant d'afficher la réponse du joueur.
+	 * @param couleurChoisieReponse Couleur choisie par le joueur pour répondre : Rouge ou blanc.
+	 * @param codeCouleurReponse Code couleur associé à une couleur. Exemple : Rouge:1, Blanc:2, Vide:3.
+	 */
 	private void affichageReponseJoueur(ImageIcon couleurChoisieReponse, int codeCouleurReponse) {
 		if(remplissageSolution<this.nbreCases) {
 			jpContainerSolution[ligne].removeAll();
@@ -678,7 +815,9 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 		}
 	}
 
-	//Cette méthode permet de déterminer la réponse attendue par le joueur
+	/**
+	 * Cette méthode permet de déterminer la réponse attendue par le joueur.
+	 */
 	private void calculReponseAttendue() {
 		//Analyse des boules bien placées (pions rouges) et mal placées (pions blancs). Pour faciliter le traitement, on va dire 
 		//que pions rouges équivaut à 1, pions blancs à 2 et emplacement vide à 3.
@@ -720,6 +859,4 @@ public class MastermindModeDefenseur extends JPanel implements ObservateurMaster
 				reponseAttendue+="V";
 		}
 	}
-
-
 }

@@ -2,35 +2,97 @@ package fr.anmonnier.oc_javaee_p3.main.model;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import fr.anmonnier.oc_javaee_p3.main.observer.Observable;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
 
+/***********************************************************************************
+ * Pattern MVC - Classe relative au Modèle de données du jeu RecherchePlusMoins.
+ * Le modèle de données va réceptionner les données du controler, les analyser et
+ * mettre à jour les observateurs. Cette classe implémente donc l'interface
+ * Observable.
+ * @author André Monnier
+ * @see Observable
+ ************************************************************************************/
 public class ModeleDonnees implements Observable{
 
+	/**
+	 * ArrayList contenant la liste des observateurs.
+	 */
 	private ArrayList<Observateur> listeObservateur=new ArrayList<Observateur>();
-	private String propositionJoueurModeChallenger="", propositionSecreteModeChallenger="",reponseModeChallenger="", choixFinDePartie="";
+
+	/**
+	 * Variable de type chaine de caractères relative au mode challenger.
+	 */
+	private String propositionJoueurModeChallenger="", propositionSecreteModeChallenger="",reponseModeChallenger="";
+
+	/**
+	 * Choix du joueur en fin de partie.
+	 */
+	private String choixFinDePartie="";
+
+	/**
+	 * Variable de type chaine de caractères relative au mode défenseur.
+	 */
 	private String propositionSecreteModeDefenseur="",reponseJoueurModeDefenseur="",propositionOrdinateurModeDefenseur="";
-	private int modeDeJeu=0,compteurReponseJoueurModeDefenseur=0,nbEssais=0;
-	private int[] bornesMin, bornesMax;
+
+	/**
+	 * Variable relative au mode de jeu : 0 - Challenger, 1 - Défenseur, 2 - Duel. 
+	 */
+	private int modeDeJeu=0;
+
+	/**
+	 * Variable permettant d'effectuer des contrôles.
+	 */
+	private int compteurReponseJoueurModeDefenseur=0;
+
+	/**
+	 * Nombre d'essais.
+	 */
+	private int nbEssais=0;
+
+	/**
+	 * Bornes min.
+	 */
+	private int[] bornesMin;
+
+	/**
+	 * Bornes max.
+	 */
+	private int[]bornesMax;
+
+	/**
+	 * Variable de type chaine de caractères relative au mode duel.
+	 */
 	private String propositionSecreteOrdinateurModeDuel="",propositionSecreteJoueurModeDuel="",propositionJoueurModeDuel="",
 			reponseOrdinateurModeDuel="",affichage="",reponseJoueurModeDuel="",propositionOrdinateurModeDuel="";
 
-	/*****************************************
+	/* ***************************************
 	 * Méthodes relatives au mode Challenger
 	 *****************************************/
 
+	/**
+	 * Méthode relative au mode Challenger qui permet de récupérer la proposition du joueur.
+	 * Suite à la proposition du joueur, l'ordinateur devra répondre.
+	 * @param propositionJoueur Proposition du joueur en mode challenger.
+	 */
 	public void setPropositionJoueurModeChallenger(String propositionJoueur) {
 		this.propositionJoueurModeChallenger=propositionJoueur;
 		this.analysePropositionJoueurModeChallenger();
 		this.updateObservateur();
 	}
 
+	/**
+	 * Méthode relative au mode Challenger qui permet de récupérer la combinaison secrète de l'ordinateur.
+	 * @param propositionSecrete Combinaison secrète de l'ordinateur en mode challenger.
+	 */
 	public void setPropositionSecreteModeChallenger(String propositionSecrete) {
 		this.propositionSecreteModeChallenger=propositionSecrete;
 	}
 
+	/**
+	 * Méthode relative au mode Challenger qui permet d'analyser la proposition du joueur en la comparant
+	 * à la combinaison secrète de l'ordinateur.
+	 */
 	public void analysePropositionJoueurModeChallenger() {
 		char[] tabReponse=new char [this.propositionSecreteModeChallenger.length()];
 		reponseModeChallenger="";
@@ -48,10 +110,15 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 
-	/*****************************************
+	/* ***************************************
 	 * Méthodes relatives au mode Défenseur
 	 *****************************************/
 
+	/**
+	 * Méthode relative au mode Défenseur qui permet de récupérer la combinaison secrète du joueur.
+	 * Après récupération de la combinaison secrète du joueur, l'ordinateur devra faire une proposition.
+	 * @param propositionSecrete Combinaison secrète du joueur en mode défenseur.
+	 */
 	public void setPropositionSecreteModeDefenseur(String propositionSecrete) {
 		this.propositionSecreteModeDefenseur=propositionSecrete;
 		//En cas de relance d'une partie
@@ -68,6 +135,11 @@ public class ModeleDonnees implements Observable{
 		this.updateObservateur();
 	}
 
+	/**
+	 * Méthode relative au mode Défenseur qui permet de récupérer la réponse du joueur.
+	 * Suite à la réponse du joueur, l'ordinateur devra faire une proposition.
+	 * @param reponseJoueur Réponse du joueur en mode défenseur.
+	 */
 	public void setReponseJoueurModeDefenseur(String reponseJoueur) {
 		int verifReponseJoueurModeDefenseur=0;
 		compteurReponseJoueurModeDefenseur++;
@@ -83,9 +155,14 @@ public class ModeleDonnees implements Observable{
 			this.propositionOrdinateurModeDefenseur();
 			this.updateObservateur();
 		}
-
 	}
 
+	/**
+	 * Méthode relative au mode Défenseur qui permet de déterminer la proposition de l'ordinateur
+	 * en fonction de la réponse du joueur. La première proposition de l'ordinateur est aléatoire
+	 * vu que le joueur n'a pas encore répondu. Par la suite, nous adoptons un raisonnement par
+	 * dichotomie.
+	 */
 	public void propositionOrdinateurModeDefenseur() {
 		int tabAnalyse[]=new int[this.propositionSecreteModeDefenseur.length()];
 		int tabReponse[]=new int[this.propositionSecreteModeDefenseur.length()];
@@ -125,10 +202,14 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 
-	/*****************************************
+	/* ***************************************
 	 * Méthodes relatives au mode Duel
 	 *****************************************/
 
+	/**
+	 * Méthode relative au mode Duel qui permet de récupérer la combinaison secrète de l'ordinateur.
+	 * @param propositionSecrete Combinaison secrète de l'ordinateur en mode duel.
+	 */
 	public void setPropositionSecreteOrdinateurModeDuel(String propositionSecrete) {
 		this.propositionSecreteOrdinateurModeDuel=propositionSecrete;
 		bornesMin=new int[propositionSecreteOrdinateurModeDuel.length()];
@@ -139,10 +220,20 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 
+	/**
+	 * Méthode relative au mode Duel qui permet de récupérer la combinaison secrète du joueur.
+	 * @param propositionSecrete Combinaison secrète du joueur en mode duel.
+	 */
 	public void setPropositionSecreteJoueurModeDuel(String propositionSecrete) {
 		this.propositionSecreteJoueurModeDuel=propositionSecrete;
 	}
 
+	/**
+	 * Méthode relative au mode Duel qui permet de récupérer la proposition du joueur.
+	 * Suite à la proposition du joueur, l'ordinateur devra répondre et également
+	 * faire une proposition.
+	 * @param propositionJoueur Proposition du joueur en mode duel.
+	 */
 	public void setPropositionJoueurModeDuel(String propositionJoueur) {
 		int verifReponseOrdinateurModeDuel=0;
 		this.propositionJoueurModeDuel=propositionJoueur;
@@ -164,12 +255,20 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 
+	/**
+	 * Méthode relative au mode Duel qui permet de récupérer la réponse du joueur.
+	 * @param reponseJoueur Réponse du joueur en mode duel.
+	 */
 	public void setReponseJoueurModeDuel(String reponseJoueur) {
 		this.reponseJoueurModeDuel=reponseJoueur;
 		affichage=this.reponseJoueurModeDuel;
 		this.updateObservateur();
 	}
 
+	/**
+	 * Méthode relative au mode Duel qui permet d'analyser la proposition du joueur en la comparant
+	 * à la combinaison secrète de l'ordinateur.
+	 */
 	public void analysePropositionJoueurModeDuel() {
 		char[] tabReponse=new char [this.propositionSecreteOrdinateurModeDuel.length()];
 		reponseOrdinateurModeDuel="";
@@ -187,6 +286,12 @@ public class ModeleDonnees implements Observable{
 		}
 	}
 
+	/**
+	 * Méthode relative au mode Duel qui permet de déterminer la proposition de l'ordinateur
+	 * en fonction de la réponse du joueur. La première proposition de l'ordinateur est aléatoire
+	 * vu que le joueur n'a pas encore répondu. Par la suite, nous adoptons un raisonnement par
+	 * dichotomie.
+	 */
 	public void propositionOrdinateurModeDuel() {
 		int tabAnalyse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
 		int tabReponse[]=new int[this.propositionSecreteOrdinateurModeDuel.length()];
@@ -227,18 +332,31 @@ public class ModeleDonnees implements Observable{
 	}
 
 
-	/**********************************************
+	/* ********************************************
 	 * Méthodes communes à tous les modes de jeu
 	 *********************************************/
 
+	/**
+	 * Mutateur commun à tous les modes de jeu qui permet de modifier le mode de jeu.
+	 * @param modeDeJeu Variable relative au mode de jeu : 0 - Challenger, 1 - Défenseur, 2 - Duel.
+	 */
 	public void setModeDeJeu(int modeDeJeu) {
 		this.modeDeJeu=modeDeJeu;
 	}
 
+	/**
+	 * Mutateur commun à tous les modes de jeu qui permet de modifier le nombre d'essais.
+	 * @param nbEssais Nombre d'essais.
+	 */
 	public void setNbEssais(int nbEssais) {
 		this.nbEssais=nbEssais;
 	}
 
+	/**
+	 * Méthode commune à tous les modes de jeu qui permet de récupérer le choix du joueur en fin de partie et
+	 * en fonction de cela, faire appel à la méthode adéquate correspondant au choix du joueur.
+	 * @param choixFinDePartie Choix du joueur en fin de partie.
+	 */
 	public void setChoixFinDePartie(String choixFinDePartie) {
 		this.choixFinDePartie=choixFinDePartie;
 		if(this.choixFinDePartie.equals("Quitter l'application"))
@@ -251,9 +369,10 @@ public class ModeleDonnees implements Observable{
 	}
 
 
-	/**********************************
+	/* ********************************
 	 * Mise à jour des observateurs
 	 **********************************/
+
 	public void addObservateur(Observateur obs) {
 		listeObservateur.add(obs);
 	}
@@ -270,7 +389,6 @@ public class ModeleDonnees implements Observable{
 				obs.updateDuel(affichage);
 		}
 	}
-
 
 	public void delObservateur() {
 		listeObservateur=new ArrayList<Observateur>();
@@ -298,5 +416,4 @@ public class ModeleDonnees implements Observable{
 			obs.relancerPartie();
 		}
 	}
-
 }

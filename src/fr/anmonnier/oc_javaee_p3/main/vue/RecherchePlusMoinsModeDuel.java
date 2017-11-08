@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -22,7 +21,6 @@ import javax.swing.text.MaskFormatter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -31,37 +29,170 @@ import fr.anmonnier.oc_javaee_p3.main.model.ModelTableau;
 import fr.anmonnier.oc_javaee_p3.main.model.ModeleDonnees;
 import fr.anmonnier.oc_javaee_p3.main.observer.Observateur;
 
+/**********************************************************
+ * Classe relative au jeu RecherchePlusMoins en mode duel.
+ * Cette classe implémente l'interface Observateur.
+ * @author André Monnier
+ * @see Observateur
+ **********************************************************/
 public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * JLabel de type informatif.
+	 */
 	private JLabel jlPremiereInstruction=new JLabel("La combinaison secrète a été générée par l'ordinateur."),
 			jlDeuxiemeInstruction=new JLabel("Veuillez saisir votre combinaison secrète :"),jlPropositionJoueur=new JLabel("Votre proposition :"),
 			jlReponseJoueur=new JLabel("Votre réponse (+,-,=) :"),jlLegendeJoueur=new JLabel("Le joueur est en vert."),
 			jlLegendeOrdinateur=new JLabel ("L'ordinateur est en rouge.");
-	private JButton jbValiderCombinaisonSecreteJoueur=new JButton("Valider"),jbValiderPropositionJoueur=new JButton("Valider"),
-			jbValiderReponseJoueur=new JButton("Valider");
-	private JFormattedTextField jftfCombinaisonSecreteJoueur,jftfPropositionJoueur,jftfReponseJoueur;
-	private JPanel jpContainerCombinaisonSecreteJoueur=new JPanel(),jpContainerTableau=new JPanel(),
-			jpContainerPropositionReponseJoueur=new JPanel(),jpContainerLegendes=new JPanel();
+
+	/**
+	 * Un JButton permettant de valider la combinaison secrète du joueur.
+	 */
+	private JButton jbValiderCombinaisonSecreteJoueur=new JButton("Valider");
+
+	/**
+	 * Un JButton permettant de valider la proposition du joueur.
+	 */
+	private JButton	jbValiderPropositionJoueur=new JButton("Valider");
+
+	/**
+	 * Un JButton permettant de valider la réponse du joueur.
+	 */
+	private JButton	jbValiderReponseJoueur=new JButton("Valider");
+
+	/**
+	 * Un JFormattedTextField relatif à la combinaison secrète du joueur.
+	 */
+	private JFormattedTextField jftfCombinaisonSecreteJoueur;
+
+	/**
+	 * Un JFormattedTextField correspondant à la proposition du joueur.
+	 */
+	private JFormattedTextField jftfPropositionJoueur;
+
+	/**
+	 * Un JFormattedTextField relatif à la réponse du joueur.
+	 */
+	private JFormattedTextField jftfReponseJoueur;
+
+	/**
+	 * Un JPanel contenant les composants relatifs à la combinaison secrète du joueur.
+	 */
+	private JPanel jpContainerCombinaisonSecreteJoueur=new JPanel();
+
+	/**
+	 * Un JPanel contenant le tableau où sont affichées les propositions et les réponses du joueur et de l'ordinateur.
+	 */	
+	private JPanel jpContainerTableau=new JPanel();
+
+	/**
+	 * Un JPanel contenant les composants relatifs aux propositions et aux réponses du joueur.
+	 */
+	private JPanel jpContainerPropositionReponseJoueur=new JPanel();
+
+	/**
+	 * Un JPanel contenant une légende.
+	 */
+	private JPanel jpContainerLegendes=new JPanel();
+
+	/**
+	 * Paramètre du jeu RecherchePlusMoins.
+	 */
 	private int nbreCases, nbEssais;
+
+	/**
+	 * Variable permettant d'effectuer des contrôles.
+	 */
 	private int verificationJftf=0,verificationJftfCombinaisonSecreteJoueur=0,verificationJftfPropositionJoueur=0,
 			rowIndex=0,columnIndex=0,min=0,max=10,verifCombinaisonSecrete=0,miseAJourAffichageModeDuel=0;
-	private String combinaisonSecreteOrdinateur="",reponseAttendue="",propositionSecreteJoueurModeDuel="",propositionOrdinateurModeDuel="";
-	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14);
-	private JTable jtTableau;
-	private ModelTableau modelTableau;
-	private ModeleDonnees model;
-	private RecherchePlusMoinsControler controler;
-	private BoiteDialogueFinDePartie jdFinDePartie;
-	private LabelRenderer labelRenderer=new LabelRenderer();
-	private boolean finDePartie=false,modeDeveloppeurActive;
-	private Logger logger=(Logger)LogManager.getLogger(RecherchePlusMoinsModeDuel.class);
-	private LoggerContext context=(org.apache.logging.log4j.core.LoggerContext) LogManager.getContext(false);
-	private File file = new File("resources/log4j2.xml"); 
 
+	/**
+	 * Combinaison secrète générée par l'ordinateur.
+	 */
+	private String combinaisonSecreteOrdinateur="";
+
+	/**
+	 * Réponse attendue de la part du joueur. Cette variable a pour but de vérifier que la réponse du joueur est correcte.
+	 */
+	private String reponseAttendue="";
+
+	/**
+	 * Proposition secrète du joueur en mode duel.
+	 */
+	private String propositionSecreteJoueurModeDuel="";
+
+	/**
+	 * Proposition de l'ordinateur en mode duel.
+	 */
+	private String propositionOrdinateurModeDuel="";
+
+	/**
+	 * Police d'écriture : nom de la police, style et taille.
+	 */
+	private Font police=new Font("Segoe UI Semilight",Font.PLAIN,14);
+
+	/**
+	 * Tableau où sont affichées les propositions et les réponses du joueur et de l'ordinateur.
+	 */
+	private JTable jtTableau;
+
+	/**
+	 * Modèle de données lié au tableau.
+	 * @see ModelTableau
+	 */
+	private ModelTableau modelTableau;
+
+	/**
+	 * Modéle de données relatif au jeu RecherchePlusMoins.
+	 * @see ModeleDonnees
+	 */
+	private ModeleDonnees model;
+
+	/**
+	 * Controler relatif au jeu RecherchePlusMoins.
+	 * @see RecherchePlusMoinsControler
+	 */
+	private RecherchePlusMoinsControler controler;
+
+	/**
+	 * Boite de dialogue permettant d'effectuer un choix en fin de partie.
+	 * @see BoiteDialogueFinDePartie
+	 */
+	private BoiteDialogueFinDePartie jdFinDePartie;
+
+	/**
+	 * Variable permettant de gérer l'affichage du tableau.
+	 * @see LabelRenderer
+	 */
+	private LabelRenderer labelRenderer=new LabelRenderer();
+
+	/**
+	 * Variable de type booléenne permettant d'indiquer la fin de la partie.
+	 */
+	private boolean finDePartie=false;
+
+	/**
+	 * Paramètre de type booléen indiquant si le mode développeur est activé ou non.
+	 */
+	private boolean	modeDeveloppeurActive;
+
+	/**
+	 * Variable permettant la gestion des logs d'erreurs.
+	 */
+	private static final Logger LOGGER=LogManager.getLogger();
+
+	/**
+	 * Constructeur de la classe RecherchePlusMoinsModeDuel
+	 * @param nbCases Nombre de cases du jeu RecherchePlusMoins.
+	 * @param nbEssais Nombre d'essais du jeu RecherchePlusMoins.
+	 * @param modeDeveloppeurActive Paramètre de type booléen indiquant si le mode développeur est activé ou non.
+	 * @param model Modèle de données correspondant au jeu RecherchePlusMoins.
+	 * @see ModeleDonnees
+	 */
 	public RecherchePlusMoinsModeDuel(int nbCases, int nbEssais,boolean modeDeveloppeurActive,ModeleDonnees model) {
-		context.setConfigLocation(file.toURI());
-		logger.trace("Instanciation du jeu RecherchePlusMoins en mode Duel");
+		LOGGER.trace("Instanciation du jeu RecherchePlusMoins en mode Duel");
 		this.setPreferredSize(new Dimension(1000,740));
 		this.setBackground(Color.WHITE);
 		this.nbreCases=nbCases;
@@ -172,10 +303,10 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 				jftfReponseJoueur.setPreferredSize(new Dimension(100,20));
 				break;
 			default:
-				logger.error("Jeu RecherchePlusMoins en mode Duel - Erreur d'initialisation des JFormattedTextField");
+				LOGGER.error("Jeu RecherchePlusMoins en mode Duel - Erreur d'initialisation des JFormattedTextField");
 			}	
 		} catch (ParseException e) {
-			logger.error("Jeu RecherchePlusMoins en mode Duel -"+e.getMessage());
+			LOGGER.error("Jeu RecherchePlusMoins en mode Duel -"+e.getMessage());
 		}
 
 		jftfCombinaisonSecreteJoueur.setFont(police);
@@ -388,14 +519,29 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		this.model.addObservateur(this);
 	}
 
+	/**
+	 * Accesseur permettant de retourner un objet de type JFormattedTextField correspondant à la combinaison secrète du joueur.
+	 * @return Un objet de type JFormattedTextField correspondant à la combinaison secrète du joueur.
+	 */
 	public JFormattedTextField getJftfCombinaisonSecreteJoueur() {
 		return jftfCombinaisonSecreteJoueur;
 	}
 
+	/* ***********************************
+	 * Implémentation du pattern Observer	
+	 *************************************/
 
-	//Implémentation du pattern Observer
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void update(String propositionJoueur,String reponse) {}
 
+
+	/**
+	 * Pattern Observer - Méthode permettant de mettre à jour le tableau en fonction 
+	 * des propositions et des réponses du joueur et de l'ordinateur.
+	 * @param affichage Cette variable peut correspondre aux propositions/réponses du joueur et de l'ordinateur.
+	 */
 	public void updateDuel(String affichage) {
 
 		if(miseAJourAffichageModeDuel==0) {
@@ -423,8 +569,11 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 
 	}
 
+	/**
+	 * Pattern Observer - Méthode permettant de relancer le jeu RecherchePlusMoins en mode duel.
+	 */
 	public void relancerPartie() {
-		logger.trace("Jeu RecherchePlusMoins en mode Duel - Partie relancée");
+		LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Partie relancée");
 		for(int i=0;i<=rowIndex;i++) {
 			for (int j=0;j<2;j++) {
 				((AbstractTableModel)jtTableau.getModel()).setValueAt("", i, j);
@@ -457,23 +606,35 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		}
 	}
 
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void quitterApplication() {}
+
+	/**
+	 * Pattern Observer - Méthode non utilisée dans cette classe. 
+	 */
 	public void acceuilObservateur() {}
 
-
-	//Génération de la combinaison secrètre par l'ordinateur
+	/**
+	 * Génération de la combinaison secrète par l'ordinateur
+	 */
 	public void generationCombinaisonSecrete(){
 		int nbreAleatoire;
 		for (int i=0;i<this.nbreCases;i++) {
 			nbreAleatoire=(int)(Math.random()*(max-min));
 			combinaisonSecreteOrdinateur+=String.valueOf(nbreAleatoire);	
 		}
-		logger.debug("Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:"+combinaisonSecreteOrdinateur);
+		LOGGER.debug("Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:"+combinaisonSecreteOrdinateur);
 		controler.setModeDeJeu(2);
 		controler.setNbEssais(nbEssais);
 		controler.setPropositionSecreteOrdinateurModeDuel(combinaisonSecreteOrdinateur);
 	}
 
+	/**
+	 * Gestion de la fin de la partie en fonction des réponses du joueur ou de l'ordinateur.
+	 * @param affichage Réponse du joueur ou de l'ordinateur.
+	 */
 	public void gestionFinDePartie(String affichage) {
 		//Gestion de la fin de la partie
 		verifCombinaisonSecrete=0;
@@ -502,7 +663,7 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 		if(verifCombinaisonSecrete!=nbreCases&&rowIndex==2*nbEssais-1) {
 			JOptionPane.showMessageDialog(null, "Match nul. Le nombre d'essai maximal a été dépassé.",
 					"Fin de Partie",JOptionPane.INFORMATION_MESSAGE);	
-			logger.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
@@ -510,13 +671,10 @@ public class RecherchePlusMoinsModeDuel extends JPanel implements Observateur {
 
 		//En cas de défaîte ou de victoire 
 		if(verifCombinaisonSecrete==nbreCases) {
-			logger.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
+			LOGGER.trace("Jeu RecherchePlusMoins en mode Duel - Fin de partie");
 			finDePartie=true;
 			jdFinDePartie =new BoiteDialogueFinDePartie(null,"Fin de Partie",true);
 			controler.setChoixFinDePartie(jdFinDePartie.getChoixFinDePartie());
 		}
 	}
-
 }
-
-
