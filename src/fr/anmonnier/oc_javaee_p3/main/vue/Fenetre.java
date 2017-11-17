@@ -159,10 +159,11 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 	 * Constructeur de la classe Fenetre.
 	 * @param model Modèle de données correspondant au jeu RecherchePlusMoins.
 	 * @param modelMastermind Modèle de données correspondant au jeu Mastermind.
+	 * @param modeDeveloppeurActiveConsole Paramètre de type booléen indiquant si le mode développeur est activé ou non. 
 	 * @see ModeleDonnees
 	 * @see ModeleDonneesMastermind
 	 */
-	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind) {      
+	public Fenetre(ModeleDonnees model,ModeleDonneesMastermind modelMastermind, boolean modeDeveloppeurActiveConsole) {      
 		LOGGER.trace("Instanciation de la fenêtre principale");
 		this.setTitle("Mettez votre logique à l'épreuve");
 		this.setSize(1000, 740);
@@ -179,6 +180,7 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 		this.model.addObservateur(this);
 		this.modelMastermind=modelMastermind;
 		this.modelMastermind.addObservateurMastermind(this);
+		this.modeDeveloppeurActive=modeDeveloppeurActiveConsole;
 		LOGGER.trace("Initialisation des modèles de données");
 
 		//On récupère les données enregistrées dans le fichier config.properties
@@ -395,8 +397,9 @@ public class Fenetre extends JFrame implements Observateur,ObservateurMastermind
 				LOGGER.debug("Menu Paramètres - Nb cases RecherchePlusMoins :"+nbreCasesRecherchePlusMoins);
 				LOGGER.debug("Menu Paramètres - Nb essais Mastermind :"+nbEssaisMastermind);
 				LOGGER.debug("Menu Paramètres - Nb cases Mastermind :"+nbreCasesMastermind);
+				LOGGER.debug("Menu Paramètres - Nb couleurs utilisables Mastermind :"+nbCouleursUtilisablesMastermind);
 				LOGGER.debug("Menu Paramètres - Etat du mode développeur :"+modeDeveloppeurActive);
-				LOGGER.debug("Menu Paramètres - Etat du mode développeur :"+nbCouleursUtilisablesMastermind);
+				
 			}
 		});
 

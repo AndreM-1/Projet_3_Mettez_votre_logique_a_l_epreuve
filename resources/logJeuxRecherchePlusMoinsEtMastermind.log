@@ -1,557 +1,406 @@
-2017-11-08 20:13:01,743 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 20:13:01,748 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 20:13:01,753 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 20:13:18,476 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:394) - Menu Paramètres - Nb essais RecherchePlusMoins :10
-2017-11-08 20:13:18,477 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:395) - Menu Paramètres - Nb cases RecherchePlusMoins :5
-2017-11-08 20:13:18,478 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais Mastermind :15
-2017-11-08 20:13:18,479 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases Mastermind :6
-2017-11-08 20:13:18,479 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Etat du mode développeur :true
-2017-11-08 20:13:18,479 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Etat du mode développeur :10
-2017-11-08 20:13:23,006 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:394) - Menu Paramètres - Nb essais RecherchePlusMoins :10
-2017-11-08 20:13:23,006 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:395) - Menu Paramètres - Nb cases RecherchePlusMoins :5
-2017-11-08 20:13:23,007 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais Mastermind :15
-2017-11-08 20:13:23,007 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases Mastermind :6
-2017-11-08 20:13:23,007 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Etat du mode développeur :true
-2017-11-08 20:13:23,007 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Etat du mode développeur :10
-2017-11-08 20:13:24,997 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
-2017-11-08 20:13:25,004 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:33761
-2017-11-08 20:13:25,075 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:14:18,198 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 20:14:20,806 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:328) - Jeu RecherchePlusMoins en mode Challenger - Partie relancée
-2017-11-08 20:14:20,807 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:17330
-2017-11-08 20:14:41,024 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 20:14:42,401 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 20:14:44,581 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDefenseur (RecherchePlusMoinsModeDefenseur.java:166) - Instanciation du jeu RecherchePlusMoins en mode Défenseur
-2017-11-08 20:14:44,626 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:15:42,447 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDefenseur (RecherchePlusMoinsModeDefenseur.java:512) - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
-2017-11-08 20:15:43,945 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 20:15:46,364 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:195) - Instanciation du jeu RecherchePlusMoins en mode Duel
-2017-11-08 20:15:46,365 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:15528
-2017-11-08 20:15:46,408 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:19:22,782 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:674) - Jeu RecherchePlusMoins en mode Duel - Fin de partie
-2017-11-08 20:19:23,821 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:576) - Jeu RecherchePlusMoins en mode Duel - Partie relancée
-2017-11-08 20:19:23,825 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:12943
-2017-11-08 20:20:06,032 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:674) - Jeu RecherchePlusMoins en mode Duel - Fin de partie
-2017-11-08 20:20:07,528 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 20:20:09,839 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
-2017-11-08 20:20:09,840 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:479148
-2017-11-08 20:20:09,926 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:25:11,382 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
-2017-11-08 20:25:15,548 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:588) - Jeu Mastermind en mode Challenger - Partie relancée
-2017-11-08 20:25:15,553 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:086205
-2017-11-08 20:25:44,957 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
-2017-11-08 20:25:46,534 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 20:25:48,787 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:177) - Instanciation du jeu Mastermind en mode Défenseur
-2017-11-08 20:25:48,943 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:26:16,426 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:152) - Jeu Mastermind en mode Défenseur - Combinaison secrète joueur Modèle de données :012345
-2017-11-08 20:26:17,969 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:154) - Jeu Mastermind en mode Défenseur - Taille de la liste chaînée :1000000
-2017-11-08 20:26:17,970 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:181) - Jeu Mastermind en mode Défenseur - Proposition de l'ordinateur en mode défenseur :000000
-2017-11-08 20:26:29,168 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RVVVVV
-2017-11-08 20:26:29,168 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RVVVVV
-2017-11-08 20:26:29,168 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RVVVVV
-2017-11-08 20:26:29,923 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :354294
-2017-11-08 20:26:29,923 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :011111
-2017-11-08 20:26:39,744 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :VVVVVV
-2017-11-08 20:26:39,744 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRVVVV
-2017-11-08 20:26:43,513 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :VVVVVV
-2017-11-08 20:26:43,513 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRVVVV
-2017-11-08 20:26:52,144 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRVVVV
-2017-11-08 20:26:52,144 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRVVVV
-2017-11-08 20:26:52,144 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRVVVV
-2017-11-08 20:26:52,307 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :20480
-2017-11-08 20:26:52,308 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012222
-2017-11-08 20:26:54,720 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRVVV
-2017-11-08 20:26:54,720 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRVVV
-2017-11-08 20:26:54,721 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRVVV
-2017-11-08 20:26:54,726 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :1372
-2017-11-08 20:26:54,726 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012333
-2017-11-08 20:26:57,416 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRVV
-2017-11-08 20:26:57,416 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRVV
-2017-11-08 20:26:57,417 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRRVV
-2017-11-08 20:26:57,417 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :108
-2017-11-08 20:26:57,417 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012344
-2017-11-08 20:27:00,280 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRV
-2017-11-08 20:27:00,280 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRV
-2017-11-08 20:27:00,280 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRRRV
-2017-11-08 20:27:00,280 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :10
-2017-11-08 20:27:00,280 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012345
-2017-11-08 20:27:03,535 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
-2017-11-08 20:27:03,536 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRR
-2017-11-08 20:27:06,207 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:739) - Jeu Mastermind en mode Défenseur - Fin de partie
-2017-11-08 20:27:10,323 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:672) - Jeu Mastermind en mode Défenseur - Partie relancée
-2017-11-08 20:27:16,596 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:152) - Jeu Mastermind en mode Défenseur - Combinaison secrète joueur Modèle de données :765983
-2017-11-08 20:27:16,857 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:154) - Jeu Mastermind en mode Défenseur - Taille de la liste chaînée :1000000
-2017-11-08 20:27:16,857 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:181) - Jeu Mastermind en mode Défenseur - Proposition de l'ordinateur en mode défenseur :000000
-2017-11-08 20:27:18,631 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :VVVVVV
-2017-11-08 20:27:18,632 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :VVVVVV
-2017-11-08 20:27:18,632 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :VVVVVV
-2017-11-08 20:27:19,341 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :531441
-2017-11-08 20:27:19,342 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :111111
-2017-11-08 20:27:20,240 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :VVVVVV
-2017-11-08 20:27:20,240 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :VVVVVV
-2017-11-08 20:27:20,241 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :VVVVVV
-2017-11-08 20:27:20,349 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :262144
-2017-11-08 20:27:20,349 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :222222
-2017-11-08 20:27:21,135 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :VVVVVV
-2017-11-08 20:27:21,136 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :VVVVVV
-2017-11-08 20:27:21,136 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :VVVVVV
-2017-11-08 20:27:21,188 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :117649
-2017-11-08 20:27:21,188 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :333333
-2017-11-08 20:27:23,351 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RVVVVV
-2017-11-08 20:27:23,352 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RVVVVV
-2017-11-08 20:27:23,352 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RVVVVV
-2017-11-08 20:27:23,375 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :46656
-2017-11-08 20:27:23,376 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :344444
-2017-11-08 20:27:26,215 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BVVVVV
-2017-11-08 20:27:26,216 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :BVVVVV
-2017-11-08 20:27:26,216 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :BVVVVV
-2017-11-08 20:27:26,225 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :15625
-2017-11-08 20:27:26,226 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :535555
-2017-11-08 20:27:38,159 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RBVVVV
-2017-11-08 20:27:38,160 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBVVVV
-2017-11-08 20:27:38,160 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RBVVVV
-2017-11-08 20:27:38,165 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :4096
-2017-11-08 20:27:38,165 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :563666
-2017-11-08 20:27:47,079 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RBBVVV
-2017-11-08 20:27:47,080 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBBVVV
-2017-11-08 20:27:47,080 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RBBVVV
-2017-11-08 20:27:47,081 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :729
-2017-11-08 20:27:47,082 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :576377
-2017-11-08 20:27:54,519 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBVV
-2017-11-08 20:27:54,520 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :BBBBVV
-2017-11-08 20:27:54,520 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :BBBBVV
-2017-11-08 20:27:54,521 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :120
-2017-11-08 20:27:54,521 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :683758
-2017-11-08 20:28:03,039 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBBB
-2017-11-08 20:28:03,040 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :BBBBBV
-2017-11-08 20:28:20,135 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBBV
-2017-11-08 20:28:20,135 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :BBBBBV
-2017-11-08 20:28:20,136 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :BBBBBV
-2017-11-08 20:28:20,136 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :22
-2017-11-08 20:28:20,136 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :765839
-2017-11-08 20:28:35,463 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBBB
-2017-11-08 20:28:35,464 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRBBB
-2017-11-08 20:28:49,119 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRBBB
-2017-11-08 20:28:49,120 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRBBB
-2017-11-08 20:28:49,120 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRBBB
-2017-11-08 20:28:49,120 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :5
-2017-11-08 20:28:49,120 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :765983
-2017-11-08 20:28:54,527 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRB
-2017-11-08 20:28:54,528 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRR
-2017-11-08 20:29:02,184 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
-2017-11-08 20:29:02,184 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRR
-2017-11-08 20:29:03,716 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:739) - Jeu Mastermind en mode Défenseur - Fin de partie
-2017-11-08 20:29:05,230 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 20:29:07,860 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
-2017-11-08 20:29:07,860 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 397307
-2017-11-08 20:29:07,978 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:29:33,013 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :002133
-2017-11-08 20:29:33,323 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 20:29:47,821 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :983777
-2017-11-08 20:29:47,822 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBBBVV
-2017-11-08 20:29:47,822 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 20:29:59,807 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRVVVV
-2017-11-08 20:29:59,808 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRVVVV
-2017-11-08 20:30:19,053 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :983722
-2017-11-08 20:30:19,054 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :BBBVVV
-2017-11-08 20:30:19,054 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRVVVV
-2017-11-08 20:30:19,438 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :98415
-2017-11-08 20:30:19,438 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :001111
-2017-11-08 20:30:54,287 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRVVV
-2017-11-08 20:30:54,287 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRVVV
-2017-11-08 20:31:01,061 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :876777
-2017-11-08 20:31:01,061 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBVVVV
-2017-11-08 20:31:01,062 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRVVV
-2017-11-08 20:31:01,159 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :2048
-2017-11-08 20:31:01,159 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :001222
-2017-11-08 20:31:15,319 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRBBVV
-2017-11-08 20:31:15,319 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRBBVV
-2017-11-08 20:31:19,908 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :333888
-2017-11-08 20:31:19,908 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBVVVV
-2017-11-08 20:31:19,909 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRBBVV
-2017-11-08 20:31:19,910 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :147
-2017-11-08 20:31:19,910 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :002133
-2017-11-08 20:31:45,031 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRBB
-2017-11-08 20:31:45,031 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRRR
-2017-11-08 20:31:48,695 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRRR
-2017-11-08 20:31:48,695 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRRR
-2017-11-08 20:31:52,412 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 20:31:54,012 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1234) - Jeu Mastermind en mode Duel - Partie relancée
-2017-11-08 20:31:54,023 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 272511
-2017-11-08 20:32:01,900 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :000011
-2017-11-08 20:32:02,331 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 20:32:10,717 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :111111
-2017-11-08 20:32:10,718 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
-2017-11-08 20:32:10,718 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 20:32:17,087 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRVV
-2017-11-08 20:32:17,087 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRVV
-2017-11-08 20:32:24,390 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :272511
-2017-11-08 20:32:24,390 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
-2017-11-08 20:32:25,661 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 20:32:28,237 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 20:32:31,016 TRACE [AWT-EventQueue-0] vue.Fenetre$10 (Fenetre.java:430) - Fin de l'application
-2017-11-08 20:41:45,807 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 20:41:45,812 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 20:41:45,813 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 20:41:50,292 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
-2017-11-08 20:41:50,294 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:011466
-2017-11-08 20:41:50,316 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:42:11,044 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
-2017-11-08 20:42:12,291 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:504) - Fin de l'application
-2017-11-08 20:46:32,834 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 20:46:32,839 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 20:46:32,839 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 20:46:38,099 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:394) - Menu Paramètres - Nb essais RecherchePlusMoins :10
-2017-11-08 20:46:38,100 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:395) - Menu Paramètres - Nb cases RecherchePlusMoins :5
-2017-11-08 20:46:38,101 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais Mastermind :15
-2017-11-08 20:46:38,101 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases Mastermind :6
-2017-11-08 20:46:38,101 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Etat du mode développeur :true
-2017-11-08 20:46:38,102 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Etat du mode développeur :10
-2017-11-08 20:46:40,898 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
-2017-11-08 20:46:40,899 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:306985
-2017-11-08 20:46:40,925 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 20:47:16,173 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
-2017-11-08 20:47:18,458 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:504) - Fin de l'application
-2017-11-08 21:26:08,812 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 21:26:08,817 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 21:26:08,817 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 21:26:11,443 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
-2017-11-08 21:26:11,445 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 007071
-2017-11-08 21:26:11,489 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 21:26:20,113 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :000033
-2017-11-08 21:26:20,425 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 21:26:33,279 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :771000
-2017-11-08 21:26:33,279 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBBBBB
-2017-11-08 21:26:33,280 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 21:26:36,608 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRVV
-2017-11-08 21:26:36,609 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRVV
-2017-11-08 21:27:01,287 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :007071
-2017-11-08 21:27:01,288 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
-2017-11-08 21:27:02,510 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 21:27:04,525 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:504) - Fin de l'application
-2017-11-08 22:01:58,602 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 22:01:58,608 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 22:01:58,609 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 22:02:17,933 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:394) - Menu Paramètres - Nb essais RecherchePlusMoins :15
-2017-11-08 22:02:17,934 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:395) - Menu Paramètres - Nb cases RecherchePlusMoins :10
-2017-11-08 22:02:17,934 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais Mastermind :15
-2017-11-08 22:02:17,934 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases Mastermind :6
-2017-11-08 22:02:17,934 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Etat du mode développeur :true
-2017-11-08 22:02:17,935 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Etat du mode développeur :10
-2017-11-08 22:02:19,769 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
-2017-11-08 22:02:19,770 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:6231788228
-2017-11-08 22:02:19,797 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:02:36,632 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 22:02:40,040 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:328) - Jeu RecherchePlusMoins en mode Challenger - Partie relancée
-2017-11-08 22:02:40,041 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:1547562922
-2017-11-08 22:03:29,059 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 22:03:30,743 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:328) - Jeu RecherchePlusMoins en mode Challenger - Partie relancée
-2017-11-08 22:03:30,743 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:9774060365
-2017-11-08 22:03:44,169 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 22:03:45,481 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:328) - Jeu RecherchePlusMoins en mode Challenger - Partie relancée
-2017-11-08 22:03:45,482 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:2050801923
-2017-11-08 22:04:07,641 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 22:04:09,035 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 22:04:11,070 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDefenseur (RecherchePlusMoinsModeDefenseur.java:166) - Instanciation du jeu RecherchePlusMoins en mode Défenseur
-2017-11-08 22:04:11,079 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:05:09,759 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDefenseur (RecherchePlusMoinsModeDefenseur.java:512) - Jeu RecherchePlusMoins en mode Défenseur - Fin de partie
-2017-11-08 22:05:11,404 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 22:05:14,606 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:195) - Instanciation du jeu RecherchePlusMoins en mode Duel
-2017-11-08 22:05:14,606 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:7129759248
-2017-11-08 22:05:14,613 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:06:36,825 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:674) - Jeu RecherchePlusMoins en mode Duel - Fin de partie
-2017-11-08 22:06:38,257 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:576) - Jeu RecherchePlusMoins en mode Duel - Partie relancée
-2017-11-08 22:06:38,261 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:3036217325
-2017-11-08 22:06:52,752 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:674) - Jeu RecherchePlusMoins en mode Duel - Fin de partie
-2017-11-08 22:06:53,943 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 22:06:58,648 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
-2017-11-08 22:06:58,649 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:932913
-2017-11-08 22:06:58,660 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:07:44,820 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
-2017-11-08 22:07:46,171 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 22:07:47,966 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:177) - Instanciation du jeu Mastermind en mode Défenseur
-2017-11-08 22:07:47,977 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:07:52,065 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:152) - Jeu Mastermind en mode Défenseur - Combinaison secrète joueur Modèle de données :543210
-2017-11-08 22:07:52,640 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:154) - Jeu Mastermind en mode Défenseur - Taille de la liste chaînée :1000000
-2017-11-08 22:07:52,640 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:181) - Jeu Mastermind en mode Défenseur - Proposition de l'ordinateur en mode défenseur :000000
-2017-11-08 22:07:54,731 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RVVVVV
-2017-11-08 22:07:54,731 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RVVVVV
-2017-11-08 22:07:54,732 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RVVVVV
-2017-11-08 22:07:55,500 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :354294
-2017-11-08 22:07:55,500 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :011111
-2017-11-08 22:07:58,859 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBVVVV
-2017-11-08 22:07:58,859 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBVVVV
-2017-11-08 22:08:03,379 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RBVVVV
-2017-11-08 22:08:03,379 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBVVVV
-2017-11-08 22:08:03,379 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RBVVVV
-2017-11-08 22:08:03,504 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :81920
-2017-11-08 22:08:03,504 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :201222
-2017-11-08 22:08:09,315 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RBBVVV
-2017-11-08 22:08:09,315 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBBVVV
-2017-11-08 22:08:09,315 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RBBVVV
-2017-11-08 22:08:09,340 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :13720
-2017-11-08 22:08:09,340 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :210333
-2017-11-08 22:08:14,523 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBVV
-2017-11-08 22:08:14,523 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :BBBBVV
-2017-11-08 22:08:14,524 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :BBBBVV
-2017-11-08 22:08:14,532 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :864
-2017-11-08 22:08:14,532 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :302144
-2017-11-08 22:08:19,498 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBBV
-2017-11-08 22:08:19,499 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :BBBBBV
-2017-11-08 22:08:19,499 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :BBBBBV
-2017-11-08 22:08:19,501 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :80
-2017-11-08 22:08:19,501 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :435012
-2017-11-08 22:08:25,451 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :BBBBBB
-2017-11-08 22:08:25,451 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBBBBB
-2017-11-08 22:08:33,202 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RBBBBB
-2017-11-08 22:08:33,203 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RBBBBB
-2017-11-08 22:08:33,203 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RBBBBB
-2017-11-08 22:08:33,203 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :4
-2017-11-08 22:08:33,204 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :453201
-2017-11-08 22:08:37,738 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
-2017-11-08 22:08:37,739 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRBBBB
-2017-11-08 22:08:44,386 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRBB
-2017-11-08 22:08:44,387 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRBBBB
-2017-11-08 22:08:52,195 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRBBBB
-2017-11-08 22:08:52,195 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRBBBB
-2017-11-08 22:08:52,195 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRBBBB
-2017-11-08 22:08:52,195 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :2
-2017-11-08 22:08:52,196 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :543021
-2017-11-08 22:08:56,018 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
-2017-11-08 22:08:56,018 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRBBB
-2017-11-08 22:09:09,138 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRBBB
-2017-11-08 22:09:09,139 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRBBB
-2017-11-08 22:09:09,139 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRBBB
-2017-11-08 22:09:09,139 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :1
-2017-11-08 22:09:09,139 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :543210
-2017-11-08 22:09:14,666 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
-2017-11-08 22:09:14,667 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRR
-2017-11-08 22:09:15,646 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:739) - Jeu Mastermind en mode Défenseur - Fin de partie
-2017-11-08 22:09:17,107 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 22:09:19,295 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
-2017-11-08 22:09:19,295 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 523280
-2017-11-08 22:09:19,304 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:09:29,384 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :210987
-2017-11-08 22:09:29,725 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 22:09:32,702 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :555555
-2017-11-08 22:09:32,702 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RVVVVV
-2017-11-08 22:09:32,703 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 22:09:35,395 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RVVVVV
-2017-11-08 22:09:35,395 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RVVVVV
-2017-11-08 22:09:45,457 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
-2017-11-08 22:09:45,457 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
-2017-11-08 22:09:45,458 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RVVVVV
-2017-11-08 22:09:45,829 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :354294
-2017-11-08 22:09:45,829 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :011111
-2017-11-08 22:09:52,802 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBVVVV
-2017-11-08 22:09:52,803 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBVVVV
-2017-11-08 22:09:56,145 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :444444
-2017-11-08 22:09:56,145 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
-2017-11-08 22:09:56,146 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBVVVV
-2017-11-08 22:09:56,299 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :81920
-2017-11-08 22:09:56,300 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :201222
-2017-11-08 22:10:04,650 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRVVVV
-2017-11-08 22:10:04,651 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBVVV
-2017-11-08 22:10:11,794 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :BBBVVV
-2017-11-08 22:10:11,795 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBVVV
-2017-11-08 22:10:19,362 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBBVVV
-2017-11-08 22:10:19,363 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBVVV
-2017-11-08 22:10:24,458 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :222222
-2017-11-08 22:10:24,458 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
-2017-11-08 22:10:24,459 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBBVVV
-2017-11-08 22:10:24,500 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :13720
-2017-11-08 22:10:24,500 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210333
-2017-11-08 22:10:27,882 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRVVV
-2017-11-08 22:10:27,883 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRVVV
-2017-11-08 22:10:31,408 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :555552
-2017-11-08 22:10:31,408 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBVVVV
-2017-11-08 22:10:31,409 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRVVV
-2017-11-08 22:10:31,411 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :216
-2017-11-08 22:10:31,412 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210444
-2017-11-08 22:10:40,210 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRVVV
-2017-11-08 22:10:40,211 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRVVV
-2017-11-08 22:10:43,208 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :666666
-2017-11-08 22:10:43,208 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
-2017-11-08 22:10:43,209 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRVVV
-2017-11-08 22:10:43,209 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :125
-2017-11-08 22:10:43,209 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210555
-2017-11-08 22:10:46,258 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRVVV
-2017-11-08 22:10:46,259 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRVVV
-2017-11-08 22:10:49,328 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :888888
-2017-11-08 22:10:49,328 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RVVVVV
-2017-11-08 22:10:49,328 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRVVV
-2017-11-08 22:10:49,329 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :64
-2017-11-08 22:10:49,329 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210666
-2017-11-08 22:10:53,258 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRVVV
-2017-11-08 22:10:53,259 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRVVV
-2017-11-08 22:10:57,206 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
-2017-11-08 22:10:57,206 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
-2017-11-08 22:10:57,207 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRVVV
-2017-11-08 22:10:57,207 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :27
-2017-11-08 22:10:57,207 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210777
-2017-11-08 22:11:03,538 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRVV
-2017-11-08 22:11:03,538 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRVV
-2017-11-08 22:11:07,041 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :555555
-2017-11-08 22:11:07,041 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RVVVVV
-2017-11-08 22:11:07,042 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRRVV
-2017-11-08 22:11:07,042 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :12
-2017-11-08 22:11:07,042 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210788
-2017-11-08 22:11:14,314 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRBBV
-2017-11-08 22:11:14,314 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRBV
-2017-11-08 22:11:20,242 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRBV
-2017-11-08 22:11:20,242 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRBV
-2017-11-08 22:11:24,354 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :666664
-2017-11-08 22:11:24,354 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
-2017-11-08 22:11:24,354 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRRBV
-2017-11-08 22:11:24,354 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :2
-2017-11-08 22:11:24,355 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210978
-2017-11-08 22:11:31,042 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRBB
-2017-11-08 22:11:31,042 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRBB
-2017-11-08 22:11:34,689 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :567899
-2017-11-08 22:11:34,689 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBVVVV
-2017-11-08 22:11:34,690 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRRBB
-2017-11-08 22:11:34,690 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :1
-2017-11-08 22:11:34,690 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210987
-2017-11-08 22:11:45,658 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRRR
-2017-11-08 22:11:45,658 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRRR
-2017-11-08 22:11:46,560 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 22:11:48,823 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1234) - Jeu Mastermind en mode Duel - Partie relancée
-2017-11-08 22:11:48,836 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 877230
-2017-11-08 22:11:54,439 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :762100
-2017-11-08 22:11:54,660 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 22:12:01,613 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :877222
-2017-11-08 22:12:01,613 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRVV
-2017-11-08 22:12:01,614 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 22:12:05,242 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :BVVVVV
-2017-11-08 22:12:05,242 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRVVVV
-2017-11-08 22:12:07,594 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRVVVV
-2017-11-08 22:12:07,594 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRVVVV
-2017-11-08 22:12:13,829 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :877230
-2017-11-08 22:12:13,829 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
-2017-11-08 22:12:14,833 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 22:12:17,839 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 22:12:19,483 TRACE [AWT-EventQueue-0] vue.Fenetre$10 (Fenetre.java:430) - Fin de l'application
-2017-11-08 22:14:32,778 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 22:14:32,879 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 22:14:32,880 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 22:14:45,110 TRACE [main] vue.Fenetre (Fenetre.java:166) - Instanciation de la fenêtre principale
-2017-11-08 22:14:45,115 TRACE [main] vue.Fenetre (Fenetre.java:182) - Initialisation des modèles de données
-2017-11-08 22:14:45,116 TRACE [main] vue.Fenetre (Fenetre.java:218) - Initialisation du menu
-2017-11-08 22:14:49,718 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:394) - Menu Paramètres - Nb essais RecherchePlusMoins :15
-2017-11-08 22:14:49,719 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:395) - Menu Paramètres - Nb cases RecherchePlusMoins :10
-2017-11-08 22:14:49,720 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais Mastermind :15
-2017-11-08 22:14:49,720 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases Mastermind :6
-2017-11-08 22:14:49,720 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Etat du mode développeur :true
-2017-11-08 22:14:49,720 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Etat du mode développeur :10
-2017-11-08 22:14:51,350 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
-2017-11-08 22:14:51,351 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:6915917287
-2017-11-08 22:14:51,378 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:15:06,030 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 22:15:07,764 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:328) - Jeu RecherchePlusMoins en mode Challenger - Partie relancée
-2017-11-08 22:15:07,765 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:9044495975
-2017-11-08 22:15:17,837 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
-2017-11-08 22:15:19,081 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:483) - Retour à l'accueil
-2017-11-08 22:15:21,114 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
-2017-11-08 22:15:21,115 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:688494
-2017-11-08 22:15:21,134 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:15:53,266 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
-2017-11-08 22:15:54,766 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 22:15:56,661 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:177) - Instanciation du jeu Mastermind en mode Défenseur
-2017-11-08 22:15:56,676 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:16:01,944 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:152) - Jeu Mastermind en mode Défenseur - Combinaison secrète joueur Modèle de données :012345
-2017-11-08 22:16:02,448 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:154) - Jeu Mastermind en mode Défenseur - Taille de la liste chaînée :1000000
-2017-11-08 22:16:02,449 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:181) - Jeu Mastermind en mode Défenseur - Proposition de l'ordinateur en mode défenseur :000000
-2017-11-08 22:16:04,649 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RVVVVV
-2017-11-08 22:16:04,650 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RVVVVV
-2017-11-08 22:16:04,650 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RVVVVV
-2017-11-08 22:16:05,129 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :354294
-2017-11-08 22:16:05,129 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :011111
-2017-11-08 22:16:06,378 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRVVVV
-2017-11-08 22:16:06,378 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRVVVV
-2017-11-08 22:16:06,379 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRVVVV
-2017-11-08 22:16:06,512 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :20480
-2017-11-08 22:16:06,513 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012222
-2017-11-08 22:16:07,977 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRVVVV
-2017-11-08 22:16:07,978 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRVVV
-2017-11-08 22:16:13,881 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRVVV
-2017-11-08 22:16:13,881 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRVVV
-2017-11-08 22:16:13,882 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRVVV
-2017-11-08 22:16:13,892 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :1372
-2017-11-08 22:16:13,892 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012333
-2017-11-08 22:16:16,033 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRVV
-2017-11-08 22:16:16,034 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRVV
-2017-11-08 22:16:16,034 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRRVV
-2017-11-08 22:16:16,035 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :108
-2017-11-08 22:16:16,035 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012344
-2017-11-08 22:16:18,058 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRV
-2017-11-08 22:16:18,058 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRV
-2017-11-08 22:16:18,059 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRRRV
-2017-11-08 22:16:18,059 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :10
-2017-11-08 22:16:18,059 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :012345
-2017-11-08 22:16:20,330 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
-2017-11-08 22:16:20,330 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRR
-2017-11-08 22:16:21,063 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:739) - Jeu Mastermind en mode Défenseur - Fin de partie
-2017-11-08 22:16:22,305 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 22:16:24,086 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
-2017-11-08 22:16:24,086 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 367447
-2017-11-08 22:16:24,102 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:444) - Réinitialisation des modèles de données
-2017-11-08 22:16:29,385 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :210012
-2017-11-08 22:16:30,337 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 22:16:32,393 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
-2017-11-08 22:16:32,394 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
-2017-11-08 22:16:32,394 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 22:16:34,777 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
-2017-11-08 22:16:34,778 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRVVVV
-2017-11-08 22:16:37,274 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBVVVV
-2017-11-08 22:16:37,275 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRVVVV
-2017-11-08 22:16:39,017 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRVVVV
-2017-11-08 22:16:39,018 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRVVVV
-2017-11-08 22:16:46,089 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :444447
-2017-11-08 22:16:46,089 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRVVV
-2017-11-08 22:16:46,090 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRVVVV
-2017-11-08 22:16:46,398 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :98415
-2017-11-08 22:16:46,398 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :001111
-2017-11-08 22:16:54,361 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBBVVV
-2017-11-08 22:16:54,362 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBBVV
-2017-11-08 22:17:02,545 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBBBVV
-2017-11-08 22:17:02,545 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBBVV
-2017-11-08 22:17:08,868 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :432102
-2017-11-08 22:17:08,869 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :BBVVVV
-2017-11-08 22:17:08,869 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBBBVV
-2017-11-08 22:17:08,994 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :1536
-2017-11-08 22:17:08,995 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :120012
-2017-11-08 22:17:18,754 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRRR
-2017-11-08 22:17:18,754 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRBB
-2017-11-08 22:17:25,641 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRBB
-2017-11-08 22:17:25,642 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRBB
-2017-11-08 22:17:32,152 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :447763
-2017-11-08 22:17:32,152 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RBBBBB
-2017-11-08 22:17:32,153 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRRRBB
-2017-11-08 22:17:32,154 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :6
-2017-11-08 22:17:32,154 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :120021
-2017-11-08 22:17:48,114 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRBB
-2017-11-08 22:17:48,114 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRBBBB
-2017-11-08 22:17:53,785 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRBBBB
-2017-11-08 22:17:53,786 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRBBBB
-2017-11-08 22:17:56,892 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
-2017-11-08 22:17:56,893 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
-2017-11-08 22:17:56,893 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRBBBB
-2017-11-08 22:17:56,894 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :1
-2017-11-08 22:17:56,894 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :210012
-2017-11-08 22:18:05,458 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRRR
-2017-11-08 22:18:05,458 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRRR
-2017-11-08 22:18:08,376 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 22:18:09,500 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1234) - Jeu Mastermind en mode Duel - Partie relancée
-2017-11-08 22:18:09,510 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 750455
-2017-11-08 22:18:14,765 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :644022
-2017-11-08 22:18:15,005 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
-2017-11-08 22:18:18,081 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :555555
-2017-11-08 22:18:18,081 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRVVV
-2017-11-08 22:18:18,081 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
-2017-11-08 22:18:20,873 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RVVVVV
-2017-11-08 22:18:20,873 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RVVVVV
-2017-11-08 22:18:28,071 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :750455
-2017-11-08 22:18:28,071 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
-2017-11-08 22:18:29,094 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
-2017-11-08 22:18:30,250 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:522) - Retour à l'accueil
-2017-11-08 22:18:31,851 TRACE [AWT-EventQueue-0] vue.Fenetre$10 (Fenetre.java:430) - Fin de l'application
+2017-11-17 10:41:19,488 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:41:19,491 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:41:19,491 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:41:38,258 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:41:38,269 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:41:38,269 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:41:38,270 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:41:38,272 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:41:38,272 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:41:53,451 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:41:53,452 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:5998
+2017-11-17 10:41:53,469 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:42:11,707 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
+2017-11-17 10:42:13,667 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:328) - Jeu RecherchePlusMoins en mode Challenger - Partie relancée
+2017-11-17 10:42:13,676 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:5694
+2017-11-17 10:42:21,082 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
+2017-11-17 10:42:22,277 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:486) - Retour à l'accueil
+2017-11-17 10:42:25,575 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:195) - Instanciation du jeu RecherchePlusMoins en mode Duel
+2017-11-17 10:42:25,575 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:3663
+2017-11-17 10:42:25,580 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:43:30,312 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:674) - Jeu RecherchePlusMoins en mode Duel - Fin de partie
+2017-11-17 10:43:31,864 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:486) - Retour à l'accueil
+2017-11-17 10:43:41,633 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:177) - Instanciation du jeu Mastermind en mode Défenseur
+2017-11-17 10:43:41,645 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:43:48,003 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:152) - Jeu Mastermind en mode Défenseur - Combinaison secrète joueur Modèle de données :011011
+2017-11-17 10:43:48,545 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:154) - Jeu Mastermind en mode Défenseur - Taille de la liste chaînée :1000000
+2017-11-17 10:43:48,545 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:181) - Jeu Mastermind en mode Défenseur - Proposition de l'ordinateur en mode défenseur :000000
+2017-11-17 10:43:50,643 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRVVVV
+2017-11-17 10:43:50,643 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRVVVV
+2017-11-17 10:43:50,647 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRVVVV
+2017-11-17 10:43:51,039 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :98415
+2017-11-17 10:43:51,039 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :001111
+2017-11-17 10:43:59,176 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRBV
+2017-11-17 10:43:59,176 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRBB
+2017-11-17 10:44:23,310 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRBB
+2017-11-17 10:44:23,311 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRBB
+2017-11-17 10:44:23,311 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRRBB
+2017-11-17 10:44:23,377 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :8
+2017-11-17 10:44:23,378 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :010111
+2017-11-17 10:44:33,604 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRBB
+2017-11-17 10:44:33,604 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRBB
+2017-11-17 10:44:33,607 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:184) - Jeu Mastermind en mode Défenseur - Modele de données réponse du joueur :RRRRBB
+2017-11-17 10:44:33,607 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:227) - Jeu Mastermind en mode Défenseur - Taille liste chaînée réactualisée :4
+2017-11-17 10:44:33,608 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:228) - Jeu Mastermind en mode Défenseur - Premier élément réactualisé :011011
+2017-11-17 10:44:37,678 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:440) - Jeu Mastermind en mode Défenseur - Réponse du Joueur en Mode Défenseur :RRRRRR
+2017-11-17 10:44:37,678 DEBUG [AWT-EventQueue-0] vue.MastermindModeDefenseur$15 (MastermindModeDefenseur.java:442) - Jeu Mastermind en mode Défenseur - Reponse attendue :RRRRRR
+2017-11-17 10:44:38,464 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:739) - Jeu Mastermind en mode Défenseur - Fin de partie
+2017-11-17 10:44:39,656 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:44:41,753 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:44:41,757 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 569997
+2017-11-17 10:44:41,758 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:44:47,507 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :666666
+2017-11-17 10:44:47,854 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:44:53,631 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :569997
+2017-11-17 10:44:53,631 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
+2017-11-17 10:44:54,636 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:44:56,203 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1234) - Jeu Mastermind en mode Duel - Partie relancée
+2017-11-17 10:44:56,213 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 257514
+2017-11-17 10:45:02,818 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :876352
+2017-11-17 10:45:03,051 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:45:13,003 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :257514
+2017-11-17 10:45:13,003 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
+2017-11-17 10:45:13,981 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:45:19,708 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1234) - Jeu Mastermind en mode Duel - Partie relancée
+2017-11-17 10:45:19,719 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 392452
+2017-11-17 10:45:25,990 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :743859
+2017-11-17 10:45:26,265 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:45:29,599 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :333332
+2017-11-17 10:45:29,599 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
+2017-11-17 10:45:29,605 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
+2017-11-17 10:45:31,418 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:45:31,418 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:45:33,449 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
+2017-11-17 10:45:33,449 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:45:33,462 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:45:33,806 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :531441
+2017-11-17 10:45:33,806 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :111111
+2017-11-17 10:45:35,354 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:45:35,354 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:45:38,351 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :666666
+2017-11-17 10:45:38,351 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:45:38,366 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:45:38,757 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :262144
+2017-11-17 10:45:38,757 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :222222
+2017-11-17 10:45:41,958 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:45:41,958 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:45:51,050 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :999952
+2017-11-17 10:45:51,050 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRVVV
+2017-11-17 10:45:51,061 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:45:51,187 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :117649
+2017-11-17 10:45:51,187 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :333333
+2017-11-17 10:45:56,004 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RVVVVV
+2017-11-17 10:45:56,004 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RVVVVV
+2017-11-17 10:45:58,399 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :776666
+2017-11-17 10:45:58,399 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:45:58,414 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RVVVVV
+2017-11-17 10:45:58,431 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :46656
+2017-11-17 10:45:58,431 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :344444
+2017-11-17 10:46:03,795 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBVVVV
+2017-11-17 10:46:03,795 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBVVVV
+2017-11-17 10:46:06,892 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :432222
+2017-11-17 10:46:06,892 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRBBVV
+2017-11-17 10:46:06,893 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBVVVV
+2017-11-17 10:46:06,926 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :12500
+2017-11-17 10:46:06,926 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :534555
+2017-11-17 10:46:14,614 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBBVVV
+2017-11-17 10:46:14,614 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBVVV
+2017-11-17 10:46:17,005 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
+2017-11-17 10:46:17,005 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:46:17,006 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBBVVV
+2017-11-17 10:46:17,007 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :2560
+2017-11-17 10:46:17,007 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :543666
+2017-11-17 10:46:24,725 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRBVVV
+2017-11-17 10:46:24,725 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRBVVV
+2017-11-17 10:46:30,135 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777823
+2017-11-17 10:46:30,135 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :BBVVVV
+2017-11-17 10:46:30,150 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RRBVVV
+2017-11-17 10:46:30,151 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :243
+2017-11-17 10:46:30,151 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :547377
+2017-11-17 10:46:39,419 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBBBVV
+2017-11-17 10:46:39,419 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBBVV
+2017-11-17 10:46:41,965 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :888888
+2017-11-17 10:46:41,965 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:46:41,973 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBBBVV
+2017-11-17 10:46:41,973 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :40
+2017-11-17 10:46:41,973 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :573488
+2017-11-17 10:46:50,706 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RBBBBV
+2017-11-17 10:46:50,711 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RBBBBV
+2017-11-17 10:47:07,361 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :333333
+2017-11-17 10:47:07,361 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RVVVVV
+2017-11-17 10:47:07,373 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :RBBBBV
+2017-11-17 10:47:07,373 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :4
+2017-11-17 10:47:07,373 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :743859
+2017-11-17 10:47:14,456 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRRR
+2017-11-17 10:47:14,456 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRRR
+2017-11-17 10:47:18,573 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:47:20,191 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:47:25,102 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:47:25,102 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:47:25,108 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:47:25,108 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:47:25,108 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:47:25,108 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:48:44,500 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:48:44,507 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:48:44,507 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:48:55,424 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:48:55,429 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:48:55,429 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:48:55,429 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:48:55,430 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:48:55,430 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :false
+2017-11-17 10:48:57,044 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:48:57,052 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:3014
+2017-11-17 10:48:57,085 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:49:06,868 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
+2017-11-17 10:49:06,879 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:087768
+2017-11-17 10:49:06,880 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:49:18,858 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
+2017-11-17 10:49:20,003 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:49:21,813 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:49:21,813 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 278170
+2017-11-17 10:49:21,848 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:49:25,349 TRACE [AWT-EventQueue-0] vue.Fenetre$10 (Fenetre.java:433) - Fin de l'application
+2017-11-17 10:49:40,997 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:49:41,010 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:49:41,010 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:49:47,421 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:49:47,436 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:49:47,436 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:49:47,438 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:49:47,438 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:49:47,438 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:49:49,118 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:49:49,132 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:6850
+2017-11-17 10:49:49,149 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:49:53,312 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
+2017-11-17 10:49:54,290 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:486) - Retour à l'accueil
+2017-11-17 10:49:56,905 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:49:56,911 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 897204
+2017-11-17 10:49:56,928 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:50:01,385 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :666666
+2017-11-17 10:50:01,917 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:50:08,180 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :897204
+2017-11-17 10:50:08,181 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
+2017-11-17 10:50:09,177 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:50:11,585 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:50:15,657 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:50:15,657 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:50:15,669 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:50:15,669 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:50:15,669 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:50:15,669 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:50:21,612 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:50:21,617 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:50:21,617 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:50:27,312 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:50:27,316 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:50:27,316 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:50:27,316 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:50:27,318 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:50:27,318 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :false
+2017-11-17 10:50:28,886 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:50:28,894 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:5160
+2017-11-17 10:50:28,910 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:50:36,323 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:50:36,329 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 920541
+2017-11-17 10:50:36,346 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:51:11,846 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:51:11,853 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:51:11,853 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:51:16,374 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:51:16,377 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:3286
+2017-11-17 10:51:16,425 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:51:21,000 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:401) - Jeu RecherchePlusMoins en mode Challenger - Fin de partie
+2017-11-17 10:51:21,959 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:486) - Retour à l'accueil
+2017-11-17 10:51:24,889 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:51:24,902 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 400442
+2017-11-17 10:51:24,934 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:51:30,834 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :533325
+2017-11-17 10:51:31,402 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:51:33,216 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :444444
+2017-11-17 10:51:33,216 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRVVV
+2017-11-17 10:51:33,216 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
+2017-11-17 10:51:35,404 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:51:35,415 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:51:40,343 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :400442
+2017-11-17 10:51:40,343 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
+2017-11-17 10:51:41,909 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:51:46,865 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1234) - Jeu Mastermind en mode Duel - Partie relancée
+2017-11-17 10:51:46,871 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 306982
+2017-11-17 10:51:50,546 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :444444
+2017-11-17 10:51:51,418 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:51:57,959 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :306982
+2017-11-17 10:51:57,959 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRRRR
+2017-11-17 10:51:59,782 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:52:00,867 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:52:02,576 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:52:02,576 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:5320
+2017-11-17 10:52:02,586 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:05,672 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:195) - Instanciation du jeu RecherchePlusMoins en mode Duel
+2017-11-17 10:52:05,672 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:3927
+2017-11-17 10:52:05,676 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:09,457 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:52:09,457 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 381846
+2017-11-17 10:52:09,460 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:11,720 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
+2017-11-17 10:52:11,720 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:050154
+2017-11-17 10:52:11,734 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:27,754 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
+2017-11-17 10:52:29,009 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:52:31,509 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:52:31,509 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:52:31,524 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:52:31,524 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:52:31,524 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:52:31,524 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:52:34,293 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:52:34,293 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:52:34,300 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:52:34,300 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:52:34,300 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:52:34,301 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :false
+2017-11-17 10:52:36,018 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:52:36,018 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:9249
+2017-11-17 10:52:36,034 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:38,348 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:52:38,348 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 011796
+2017-11-17 10:52:38,355 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:45,008 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:52:45,029 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:52:45,029 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:52:53,296 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:52:53,302 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:52:53,302 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:52:53,303 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:52:53,303 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:52:53,303 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :false
+2017-11-17 10:52:55,136 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:52:55,141 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:1830
+2017-11-17 10:52:55,158 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:58,105 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:195) - Instanciation du jeu RecherchePlusMoins en mode Duel
+2017-11-17 10:52:58,105 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:8934
+2017-11-17 10:52:58,110 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:52:59,753 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
+2017-11-17 10:52:59,756 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:308901
+2017-11-17 10:52:59,757 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:01,755 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:53:01,755 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 428470
+2017-11-17 10:53:01,780 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:07,359 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:53:07,366 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:53:07,366 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:53:12,777 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:53:12,782 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:53:12,782 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:53:12,782 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:53:12,782 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:53:12,783 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:53:14,315 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 10:53:14,316 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:3521
+2017-11-17 10:53:14,333 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:16,974 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:195) - Instanciation du jeu RecherchePlusMoins en mode Duel
+2017-11-17 10:53:16,981 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeDuel (RecherchePlusMoinsModeDuel.java:628) - Jeu RecherchePlusMoins en mode Duel - Génération de la combinaison secrète:6439
+2017-11-17 10:53:16,982 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:20,841 TRACE [AWT-EventQueue-0] vue.MastermindModeDefenseur (MastermindModeDefenseur.java:177) - Instanciation du jeu Mastermind en mode Défenseur
+2017-11-17 10:53:20,861 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:23,096 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
+2017-11-17 10:53:23,096 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:622513
+2017-11-17 10:53:23,104 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:31,422 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:643) - Jeu Mastermind en mode Challenger - Fin de partie
+2017-11-17 10:53:33,506 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:53:37,123 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:53:37,123 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:53:37,132 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:53:37,132 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:53:37,132 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:53:37,132 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:53:38,855 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 10:53:38,860 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 434515
+2017-11-17 10:53:38,861 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 10:53:43,181 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:254) - Jeu Mastermind en mode Duel - Proposition Secrète Joueur Modèle de données :444444
+2017-11-17 10:53:43,698 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:256) - Jeu Mastermind en mode Duel - Taille de la liste chaînée :1000000
+2017-11-17 10:53:48,317 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :455555
+2017-11-17 10:53:48,324 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRRVVV
+2017-11-17 10:53:48,324 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:353) - Jeu Mastermind en mode Duel - Proposition Ordinateur Mode Duel :000000
+2017-11-17 10:53:49,470 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:53:49,470 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:53:52,867 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :444444
+2017-11-17 10:53:52,867 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
+2017-11-17 10:53:52,868 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:53:53,260 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :531441
+2017-11-17 10:53:53,260 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :111111
+2017-11-17 10:53:55,063 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:53:55,063 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:53:57,442 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :555555
+2017-11-17 10:53:57,442 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :RRVVVV
+2017-11-17 10:53:57,452 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:53:57,765 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :262144
+2017-11-17 10:53:57,765 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :222222
+2017-11-17 10:54:00,726 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:54:00,726 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:54:02,809 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :666666
+2017-11-17 10:54:02,809 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:54:02,812 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:54:02,891 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :117649
+2017-11-17 10:54:02,891 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :333333
+2017-11-17 10:54:04,565 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :VVVVVV
+2017-11-17 10:54:04,565 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :VVVVVV
+2017-11-17 10:54:07,031 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:268) - Jeu Mastermind en mode Duel - Proposition Joueur Modèle de données :777777
+2017-11-17 10:54:07,031 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:271) - Jeu Mastermind en mode Duel - Réponse Ordinateur Mode Duel :VVVVVV
+2017-11-17 10:54:07,046 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:356) - Jeu Mastermind en mode Duel - Modele de données réponse du joueur :VVVVVV
+2017-11-17 10:54:07,063 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:399) - Jeu Mastermind en mode Duel - Taille liste chaînée réactualisé :46656
+2017-11-17 10:54:07,063 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:400) - Jeu Mastermind en mode Duel - Premier élément réactualisé :444444
+2017-11-17 10:54:10,632 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:600) - Jeu Mastermind en mode Duel - Réponse du joueur en mode duel :RRRRRR
+2017-11-17 10:54:10,632 DEBUG [AWT-EventQueue-0] vue.MastermindModeDuel$15 (MastermindModeDuel.java:602) - Jeu Mastermind en mode Duel - Reponse attendue :RRRRRR
+2017-11-17 10:54:12,704 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:1111) - Jeu Mastermind en mode Duel - Fin de partie
+2017-11-17 10:54:14,079 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:525) - Retour à l'accueil
+2017-11-17 10:54:16,987 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:54:16,987 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:54:16,989 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:54:16,989 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:54:16,989 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:54:16,989 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 10:54:25,754 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 10:54:25,763 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 10:54:25,763 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 10:54:30,367 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 10:54:30,373 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 10:54:30,373 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 10:54:30,373 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 10:54:30,374 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 10:54:30,374 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :false
+2017-11-17 11:56:58,701 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 11:56:58,708 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 11:56:58,708 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 11:57:03,068 TRACE [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:162) - Instanciation du jeu Mastermind en mode Challenger
+2017-11-17 11:57:03,071 DEBUG [AWT-EventQueue-0] vue.MastermindModeChallenger (MastermindModeChallenger.java:520) - Jeu Mastermind en mode Challenger - Génération de la combinaison secrète:370283
+2017-11-17 11:57:03,088 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 14:57:30,648 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 14:57:30,667 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 14:57:30,667 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 14:57:38,215 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 14:57:38,217 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 14:57:38,217 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 14:57:38,218 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 14:57:38,218 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 14:57:38,218 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 14:57:40,562 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 14:57:40,570 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 913374
+2017-11-17 14:57:40,607 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 18:04:30,592 TRACE [main] vue.Fenetre (Fenetre.java:167) - Instanciation de la fenêtre principale
+2017-11-17 18:04:30,657 TRACE [main] vue.Fenetre (Fenetre.java:184) - Initialisation des modèles de données
+2017-11-17 18:04:30,691 TRACE [main] vue.Fenetre (Fenetre.java:220) - Initialisation du menu
+2017-11-17 18:04:50,295 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:396) - Menu Paramètres - Nb essais RecherchePlusMoins :10
+2017-11-17 18:04:50,296 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:397) - Menu Paramètres - Nb cases RecherchePlusMoins :4
+2017-11-17 18:04:50,296 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:398) - Menu Paramètres - Nb essais Mastermind :15
+2017-11-17 18:04:50,297 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:399) - Menu Paramètres - Nb cases Mastermind :6
+2017-11-17 18:04:50,297 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:400) - Menu Paramètres - Nb couleurs utilisables Mastermind :10
+2017-11-17 18:04:50,297 DEBUG [AWT-EventQueue-0] vue.Fenetre$7 (Fenetre.java:401) - Menu Paramètres - Etat du mode développeur :true
+2017-11-17 18:04:52,770 TRACE [AWT-EventQueue-0] vue.MastermindModeDuel (MastermindModeDuel.java:209) - Instanciation du jeu Mastermind en mode Duel
+2017-11-17 18:04:52,777 DEBUG [AWT-EventQueue-0] model.ModeleDonneesMastermind (ModeleDonneesMastermind.java:245) - Jeu Mastermind en mode Duel - Combinaison Secrète Ordinateur Modèle de données : 507880
+2017-11-17 18:04:52,990 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
+2017-11-17 18:04:55,763 TRACE [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:146) - Instanciation du jeu RecherchePlusMoins en mode Challenger
+2017-11-17 18:04:55,763 DEBUG [AWT-EventQueue-0] vue.RecherchePlusMoinsModeChallenger (RecherchePlusMoinsModeChallenger.java:367) - Jeu RecherchePlusMoins en mode Challenger - Génération de la combinaison secrète:0053
+2017-11-17 18:04:55,908 TRACE [AWT-EventQueue-0] vue.Fenetre (Fenetre.java:447) - Réinitialisation des modèles de données
